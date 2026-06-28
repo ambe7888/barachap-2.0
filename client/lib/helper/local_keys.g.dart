@@ -3,7 +3,7 @@ import 'package:prohandy_client/helper/extension/string_extension.dart';
 abstract class LocalKeys {
   static const String _welcomeToProhandy = "Welcome to Prohandy";
   static String get welcomeToProhandy => _welcomeToProhandy.tr();
-  static const String _bookExpertHandymen = "Book expert handymen for any task�repairs, shifting, plumbing, and laundry. Experience reliable service and peace of mind.";
+  static const String _bookExpertHandymen = "Book expert handymen for any task - repairs, shifting, plumbing, and laundry. Experience reliable service and peace of mind.";
   static String get bookExpertHandymen => _bookExpertHandymen.tr();
   static const String _bookFromServices = "Book from Services";
   static String get bookFromServices => _bookFromServices.tr();
@@ -11,7 +11,7 @@ abstract class LocalKeys {
   static String get bookYoursFromAWideRange => _bookYoursFromAWideRange.tr();
   static const String _postJobs = "Post Jobs";
   static String get postJobs => _postJobs.tr();
-  static const String _didntFindWhatYoureLookingFor = "Didn�t find what you�re looking for? Have no worries! Post a job and hire best candidate from hundreds of handyman.";
+  static const String _didntFindWhatYoureLookingFor = "Didn’t find what you’re looking for? Have no worries! Post a job and hire best candidate from hundreds of handyman.";
   static String get didntFindWhatYoureLookingFor => _didntFindWhatYoureLookingFor.tr();
   static const String _state = "State";
   static const String _area = "Area";
@@ -236,7 +236,7 @@ abstract class LocalKeys {
   static const String _reviews = "Reviews";
   static const String _faq = "FAQ";
   static const String _ourOffers = "Our Offers";
-  static const String _whatIsNotIncluded = "What’s not included:";
+  static const String _whatIsNotIncluded = "Whatâ€™s not included:";
   static const String _safetyAndSecurity = "Safety and Security";
   static const String _cancellationPolicy = "Cancellation Policy";
   static const String _bookService = "Book Service";
@@ -501,7 +501,7 @@ abstract class LocalKeys {
   static const String _noServiceFound = "No service found!";
   static const String _offerRejectedSuccessfully =
       "Offer rejected successfully";
-  static const String _hello = "Hello 👋";
+  static const String _hello = "Hello ðŸ‘‹";
   static const String _noServiceAddedYet = "No service added yet.";
   static const String _deleteJobConfirmation = "Confirm Job Deletion?";
   static const String _deleteJobDescription =

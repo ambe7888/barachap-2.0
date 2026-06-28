@@ -1313,12 +1313,11 @@
     "{copy} will replace by ©; and {year} will be replaced by current year.": "{copie} sera remplacé par © ; et {year} sera remplacé par l'année en cours.",
     "Seller can create <strong>%s<\/strong> Services Maximum.": "Le vendeur peut créer <strong>%s<\/strong> services maximum.",
     "Seller can create <strong>%s<\/strong> Jobs Maximum.": "Le vendeur peut créer <strong>%s<\/strong> demandes au maximum.",
-    "Welcome to Prohandy": "Bienvenue sur Prohandy",
-    "Book expert handymen for any task—repairs, shifting, plumbing, and laundry. Experience reliable service and peace of mind.": "Réservez des bricoleurs experts pour toute tâche — réparations, déménagement, plomberie et blanchisserie. Profitez d'un service fiable et d'une tranquillité d'esprit.",
+    "Welcome to Prohandy": "Bienvenue sur BaraChap",
     "Book from Services": "Réservez à partir des services",
-    "Book yours from a wide range of services listed by the professional handyman service providers & get your things done!": "Réservez le vôtre parmi une large gamme de services proposés par des prestataires professionnels et accomplissez vos tâches !",
+    "Book yours from a wide range of services listed by the professional handyman service providers & get your things done!": "Réservez votre prestation parmi un large choix de services proposés par des prestataires professionnels de bricolage et faites réaliser vos travaux !",
     "Post Jobs": "Publier des demandes",
-    "Didn’t find what you’re looking for? Have no worries! Post a job and hire best candidate from hundreds of handyman.": "Vous n'avez pas trouvé ce que vous cherchez ? Ne vous inquiétez pas ! Publiez une demande et embauchez le meilleur candidat parmi des centaines de professionnels.",
+    "Didn’t find what you’re looking for? Have no worries! Post a job and hire best candidate from hundreds of handyman.": "Vous n'avez pas trouvé ce que vous cherchez ? Ne vous inquiétez pas ! Publiez une demande et embauchez le meilleur prestataire parmi des centaines de professionnels.",
     "Post A Job": "Publier une demande",
     "Post Job": "Publier une demande",
     "Jobs": "Demandes",
@@ -1339,5 +1338,6 @@
     "Job edited successfully": "Demande modifiée avec succès",
     "Confirm Job Deletion?": "Confirmer la suppression de la demande ?",
     "Are you sure you want to delete this job? This action cannot be undone, and all associated data will be permanently removed.": "Êtes-vous sûr de vouloir supprimer cette demande ? Cette action est irréversible et toutes les données associées seront définitivement supprimées.",
-    "Job deleted successfully": "Demande supprimée avec succès"
+    "Job deleted successfully": "Demande supprimée avec succès",
+    "Book expert handymen for any task - repairs, shifting, plumbing, and laundry. Experience reliable service and peace of mind.": "Réservez des bricoleurs experts pour toute tâche - réparations, déménagement, plomberie et blanchisserie. Profitez d'un service fiable et d'une tranquillité d'esprit."
 }
