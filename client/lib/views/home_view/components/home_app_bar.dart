@@ -32,7 +32,7 @@ class HomeAppBar extends StatelessWidget {
                   : context.color.accentContrastColor;
               return AppBar(
                 leading: Padding(
-                  padding: const EdgeInsets.all(4.0),
+                  padding: const EdgeInsets.all(2.0),
                   child: Image.asset(
                     "assets/images/app_icon.png",
                     fit: BoxFit.contain,
@@ -41,7 +41,7 @@ class HomeAppBar extends StatelessWidget {
                 systemOverlayStyle: ts.darkTheme
                     ? SystemUiOverlayStyle.light
                     : SystemUiOverlayStyle.dark,
-                leadingWidth: 36,
+                leadingWidth: 50,
                 backgroundColor: Colors.transparent,
                 surfaceTintColor: Colors.transparent,
                 title: RichText(
