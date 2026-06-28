@@ -21,7 +21,14 @@ class FrontendController extends Controller
             return redirect()->route('admin.login');
         }
 
-        return view('frontend.pages.frontend-home', compact('page_details'));
+        // Fetch categories with active services count
+        $categories = \App\Models\Backend\Category::where('status', 1)
+            ->withCount(['services' => function($query) {
+                $query->where('status', 1);
+            }])
+            ->get();
+
+        return view('frontend.pages.frontend-home', compact('page_details', 'categories'));
     }
 
     public function dynamic_single_page($slug)

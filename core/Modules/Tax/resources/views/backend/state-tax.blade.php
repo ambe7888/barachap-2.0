@@ -35,7 +35,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ optional($tax->state)->state }}</td>
-                                            <td>{{ float_amount_with_currency_symbol($tax->tax_rate) }}</td>
+                                            <td>{{ $tax->tax_rate }}%</td>
                                             <td>
                                                 <x-popup.delete-popup :url="route('admin.tax.state.delete', $tax->id)"/>
                                                 <a href="#1" data-bs-toggle="modal"
@@ -100,7 +100,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">{{ __('Update State Tax') }}</h5>
+                        <h5 class="modal-title">{{ __('Add New State Tax') }}</h5>
                         <button type="button" class="close" data-bs-dismiss="modal"><span>×</span></button>
                     </div>
                     <form action="{{ route('admin.tax.state.new') }}" method="post" enctype="multipart/form-data">

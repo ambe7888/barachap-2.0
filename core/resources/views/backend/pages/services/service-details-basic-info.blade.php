@@ -152,11 +152,24 @@
                         <input class="effectBorder" type="checkbox" @if(!empty($service->is_featured)) checked @endif>
                         <span class="checkmark"></span>
                     </div>
+                    @php
+                        $stateName = '';
+                        $cityName = '';
+                        if($service->provider_id) {
+                            $location = \App\Models\UserServiceLocation::where('user_id', $service->provider_id)->first();
+                            $stateName = optional(optional($location)->state)->state;
+                            $cityName = optional(optional($location)->city)->city;
+                        } elseif($service->admin_id) {
+                            $location = \App\Models\Backend\Admin_service_location::where('admin_id', $service->admin_id)->first();
+                            $stateName = optional(optional($location)->state)->state;
+                            $cityName = optional(optional($location)->city)->city;
+                        }
+                    @endphp
                     <div class="editProduct__contents__brand mt-3">
-                        <span class="editProduct__contents__sku__para"><strong>{{ __('State:') }}</strong> {{ optional($service->state)->state }}</span>
+                        <span class="editProduct__contents__sku__para"><strong>{{ __('State:') }}</strong> {{ $stateName }}</span>
                     </div>
                     <div class="editProduct__contents__brand mt-3">
-                        <span class="editProduct__contents__sku__para"><strong>{{ __('City:') }}</strong> {{ optional($service->city)->city }}</span>
+                        <span class="editProduct__contents__sku__para"><strong>{{ __('City:') }}</strong> {{ $cityName }}</span>
                     </div>
                     <div class="editProduct__contents__brand mt-3">
                         <span class="editProduct__contents__sku__para">

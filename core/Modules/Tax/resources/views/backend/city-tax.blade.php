@@ -31,7 +31,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ optional($tax->city)->city }}</td>
-                                            <td>{{ float_amount_with_currency_symbol($tax->tax_rate) }}</td>
+                                            <td>{{ $tax->tax_rate }}%</td>
                                             <td>
                                                 <x-popup.delete-popup :url="route('admin.tax.city.delete', $tax->id)"/>
                                                 <a href="#1"

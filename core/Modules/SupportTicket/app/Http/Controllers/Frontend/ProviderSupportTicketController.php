@@ -151,6 +151,12 @@ class ProviderSupportTicketController extends Controller
             // send notification to user
             notificationToAdmin($id, $ticket_details?->user?->id,'ticket',__('Ticket New Message'));
 
+            // Reopen ticket if it was closed
+            if($ticket_details->status === 'close') {
+                $ticket_details->status = 'open';
+                $ticket_details->save();
+            }
+
             // email sent to user
             if($request->email_notify == 'on'){
                 try {

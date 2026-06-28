@@ -2381,3 +2381,10 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 .form_control, .form__control, .form--control, .form-control {
     background-color: #fff;
 }
+
+/* Fix for modal backdrop */
+.modal-backdrop { z-index: 1040 !important; }
+.modal { z-index: 1050 !important; }
+/* Fix for profile image sizing */
+.dashboard__header__author__thumb img, .user-avatar, .avatar.user-thumb, .profile-img img { object-fit: cover !important; width: 40px !important; height: 40px !important; border-radius: 50% !important; }
+
