@@ -30,15 +30,22 @@
 }
 
 .dropzone-form-wrapper form {
-    border: 2px dashed #ddd;
-    padding: 20px;
-    height: 488px;
-    background-color: #fff;
-    border-radius: 5px;
+    border: 2px dashed #007bff;
+    padding: 30px;
+    min-height: 400px;
+    background-color: #f8fbff;
+    border-radius: 12px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.dropzone-form-wrapper form:hover {
+    background-color: #e6f0ff;
+    border-color: #0056b3;
 }
 
 .dropzone-form-wrapper {
@@ -57,18 +64,21 @@
 
 .dropzone-form-wrapper form span.xg-accept-files {
     display: block;
-    font-size: 16px;
-    line-height: 26px;
-    margin-bottom: 5px;
-    color: #444;
+    font-size: 14px;
+    line-height: 24px;
+    margin-top: 10px;
+    color: #666;
+    text-align: center;
 }
 
 .dropzone-form-wrapper form span {
     display: block;
-    font-size: 25px;
-    color: #000000;
-    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
     text-transform: capitalize;
+    text-align: center;
 }
 
 .media-uploader-image-list {
@@ -343,16 +353,16 @@
     border-radius: 50%;
     overflow: hidden;
     border: none;
-    .media-upload-btn-wrapper .img-wrap .rmv-span {
-        display: none;
-    }
-    .img-inner-wrap {
-        margin: 0;
-      }
-      .attachment-preview {
-        height: 60px;
-        width: 60px;
-      }
+}
+.seller-img .media-upload-btn-wrapper .img-wrap .rmv-span {
+    display: none;
+}
+.seller-img .img-inner-wrap {
+    margin: 0;
+}
+.seller-img .attachment-preview {
+    height: 60px;
+    width: 60px;
 }
 .seller-details-wraper .media-upload-btn-wrapper .img-wrap .rmv-span{
     display: none;
