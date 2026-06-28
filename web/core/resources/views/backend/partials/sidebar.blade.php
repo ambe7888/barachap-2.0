@@ -14,6 +14,11 @@
         </div>
 
         <div class="dashboard__bottom">
+            @if(auth()->guard('admin')->check())
+                <div class="sidebar-welcome-msg text-center py-2 px-3 mb-2" style="font-family: 'Poppins', sans-serif; font-size: 0.9rem; color: var(--text-secondary); font-weight: 600; border-bottom: 1px solid var(--border-color);">
+                    {{ __('Bienvenue') }}, {{ auth()->guard('admin')->user()->name }}
+                </div>
+            @endif
             <div class="dashboard__bottom__search mb-3">
                 <input class="form--control  w-100" type="text" placeholder="{{ __('Search here') }}" id="search_sidebarList">
             </div>

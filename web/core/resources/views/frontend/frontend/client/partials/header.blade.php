@@ -27,12 +27,9 @@
     <link rel="stylesheet" href="{{asset('/assets/frontend/frontend/css/responsive.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('assets/frontend/css/animate.css')}}">
     <link rel="stylesheet" href="{{asset('assets/common/css/bootstrap.min.css')}}">
-    {{-- <link rel="stylesheet" href="{{asset('assets/frontend/css/fontawesome.min.css')}}"> --}}
-    {{-- <link rel="stylesheet" href="{{asset('assets/frontend/css/fontawesome-iconpicker.min.css')}}"> --}}
     <link rel="stylesheet" href="{{asset('assets/frontend/css/icon.css')}}">
     <link rel="stylesheet" href="{{asset('assets/frontend/css/slick.css')}}">
     <link rel="stylesheet" href="{{asset('assets/frontend/css/select2.min.css')}}">
@@ -41,7 +38,8 @@
     <link rel="stylesheet" href="{{asset('assets/frontend/css/dashboard.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/common/css/toastr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/telInput-plugin.css') }}">
-    <link rel="stylesheet" href="{{asset('assets/frontend/css/custom-style.css')}}">
+    <link class="main-custom-style-css" rel="stylesheet" href="{{asset('assets/frontend/css/custom-style.css')}}">
+    <link rel="stylesheet" href="{{asset('/assets/frontend/frontend/css/modern-theme.css')}}">
     @yield('style')
     @if(get_user_lang_direction() == 'rtl')
         <link rel="stylesheet" href="{{asset('assets/frontend/css/rtl.css')}}">
