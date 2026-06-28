@@ -1,0 +1,2 @@
+<link rel="stylesheet" href="<?php echo e(asset('assets/backend/css/jquery.dataTables.min.css')); ?>">
+<?php /**PATH C:\xampp\htdocs\barachap\web\core\resources\views/components/datatable/css.blade.php ENDPATH**/ ?>
