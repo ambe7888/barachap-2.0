@@ -17,7 +17,7 @@ class BookingScheduleService with ChangeNotifier {
   dynamic admin;
 
   bool shouldAutoFetch(proId, date) {
-    final weekdayName = DateFormat('EEEE').format(date);
+    final weekdayName = DateFormat('EEEE', 'en').format(date);
     return _scheduleListModel == null ||
         weekdayName != wd ||
         providerId.toString() != proId.toString();
@@ -26,7 +26,7 @@ class BookingScheduleService with ChangeNotifier {
   String wd = "";
 
   bool ignoreScheduleFetch(date, proId, ad) {
-    final weekdayName = DateFormat('EEEE').format(date);
+    final weekdayName = DateFormat('EEEE', 'en').format(date);
     if (proId != null) {
       return (weekdayName == wd && scheduleListModel.schedules.isNotEmpty) &&
           (providerId?.toString() == proId.toString());
@@ -37,7 +37,7 @@ class BookingScheduleService with ChangeNotifier {
   }
 
   fetchScheduleList(DateTime date, providerId, {admin}) async {
-    final weekdayName = DateFormat('EEEE').format(date);
+    final weekdayName = DateFormat('EEEE', 'en').format(date);
     if (providerId != null &&
         (weekdayName == wd && scheduleListModel.schedules.isNotEmpty) &&
         (providerId?.toString() == this.providerId.toString())) {
