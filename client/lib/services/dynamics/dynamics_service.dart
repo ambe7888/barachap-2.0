@@ -16,7 +16,7 @@ class DynamicsService with ChangeNotifier {
 
   bool _noConnection = false;
 
-  String languageSlug = 'fr_FR';
+  String languageSlug = 'en_GB';
 
   bool currencyRight = false;
   bool textDirectionRight = false;

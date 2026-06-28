@@ -11,23 +11,6 @@ import '../helper/local_keys.g.dart';
 class AppStringService with ChangeNotifier {
   var translatedString = {};
   String getString(String s) {
-    if (dProvider.languageSlug == 'fr' || dProvider.languageSlug == 'fr_FR' || sPref?.getString('lang_slug') == 'fr_FR') {
-      if (s == LocalKeys.postAJob) return "Publier une demande";
-      if (s == LocalKeys.jobs) return "Demandes";
-      if (s == LocalKeys.job) return "Demande";
-      if (s == LocalKeys.postJobs) return "Publier des demandes";
-      if (s == LocalKeys.welcomeToProhandy) return "Bienvenue sur Prohandy";
-      if (s == LocalKeys.bookExpertHandymen) return "Réservez des bricoleurs experts pour toute tâche — réparations, déménagement, plomberie et blanchisserie. Profitez d'un service fiable et d'une tranquillité d'esprit.";
-      if (s == LocalKeys.bookFromServices) return "Réserver parmi les services";
-      if (s == LocalKeys.bookYoursFromAWideRange) return "Réservez le vôtre parmi une large gamme de services proposés par des prestataires professionnels et accomplissez vos tâches !";
-      if (s == LocalKeys.didntFindWhatYoureLookingFor) return "Vous n'avez pas trouvé ce que vous cherchez ? Ne vous inquiétez pas ! Publiez une demande et embauchez le meilleur candidat parmi des centaines de professionnels.";
-      if (s == LocalKeys.jobBasicInfoSuggestion) return "Entrez un titre et choisissez la catégorie de demande dont vous avez besoin";
-      if (s == LocalKeys.jobTitle) return "Titre de la demande";
-      if (s == LocalKeys.enterJobTitle) return "Entrez le titre de la demande";
-      if (s == LocalKeys.jobDescription) return "Description de la demande";
-      if (s == LocalKeys.jobDescriptionSectionSuggestion) return "Écrivez sur votre demande";
-    }
-
     if (translatedString[s] != null && translatedString[s].isNotEmpty) {
       return translatedString[s];
     }
