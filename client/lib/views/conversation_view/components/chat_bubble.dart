@@ -118,7 +118,7 @@ class ChatBubble extends StatelessWidget {
                       ? Padding(
                           padding: const EdgeInsets.only(top: 4),
                           child: Text(
-                              DateFormat("EEEE, hh:mm aa")
+                              DateFormat("EEEE, HH:mm")
                                   .format(datum.createdAt ?? DateTime.now()),
                               style: context.bodySmall),
                         )

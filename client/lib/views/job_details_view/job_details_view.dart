@@ -80,7 +80,7 @@ class JobDetailsView extends StatelessWidget {
                         JobDetailsDateSchedule(
                             date: jobDetails.date,
                             schedule: DateFormat(
-                                    "hh:mm a", context.dProvider.languageSlug)
+                                    "HH:mm", context.dProvider.languageSlug)
                                 .format(DateFormat("HH:mm:ss")
                                     .parse(jobDetails.time ?? ""))),
                         8.toHeight,

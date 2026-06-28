@@ -101,7 +101,7 @@ class TicketChatBubble extends StatelessWidget {
                     return const SizedBox();
                   }
                   return Text(
-                      DateFormat("EEEE, hh:mm aa", dProvider.languageSlug)
+                      DateFormat("EEEE, HH:mm", dProvider.languageSlug)
                           .format(DateTime.now()),
                       style: context.bodySmall);
                 }), // if (message != null && name.toString().isNotEmpty) 8.toHeight,
