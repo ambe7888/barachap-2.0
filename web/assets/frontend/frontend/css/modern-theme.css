@@ -1,0 +1,184 @@
+/* 
+   ==========================================================================
+   BaraChap Modern UI Theme
+   Designed for premium, sleek, modern UX/UI.
+   ========================================================================== 
+*/
+
+:root {
+    --primary: #6366f1;         /* Modern Indigo */
+    --primary-hover: #4f46e5;
+    --primary-light: rgba(99, 102, 241, 0.1);
+    --secondary: #0ea5e9;       /* Sleek Cyan */
+    --accent: #10b981;          /* Emerald Green */
+    --bg-main: #f8fafc;         /* Light Slate Gray */
+    --card-bg: #ffffff;
+    --border-color: rgba(226, 232, 240, 0.8);
+    --text-primary: #0f172a;    /* Dark Slate */
+    --text-secondary: #475569;  /* Muted Slate */
+    --text-light: #94a3b8;
+    
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+    
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 10px 15px -3px rgba(99, 102, 241, 0.04), 0 4px 6px -4px rgba(99, 102, 241, 0.04);
+    --shadow-hover: 0 20px 25px -5px rgba(99, 102, 241, 0.08), 0 8px 10px -6px rgba(99, 102, 241, 0.08);
+    
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Global Font Override */
+body, html, p, span, h1, h2, h3, h4, h5, h6, a, input, button, select, textarea {
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+body {
+    background-color: var(--bg-main) !important;
+    color: var(--text-secondary) !important;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Cards Modernization */
+.card, 
+.single-service, 
+.service-card, 
+.seller-card, 
+.dashboard-card, 
+.single-service-list {
+    background: var(--card-bg) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-lg) !important;
+    box-shadow: var(--shadow-lg) !important;
+    transition: var(--transition) !important;
+    overflow: hidden;
+}
+
+.card:hover, 
+.single-service:hover, 
+.service-card:hover, 
+.dashboard-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: var(--shadow-hover) !important;
+    border-color: rgba(99, 102, 241, 0.25) !important;
+}
+
+/* Buttons Modernization */
+.btn, 
+button.submit-btn, 
+.cmn-btn {
+    border-radius: var(--radius-md) !important;
+    font-weight: 600 !important;
+    padding: 10px 24px !important;
+    transition: var(--transition) !important;
+    box-shadow: var(--shadow-sm) !important;
+    letter-spacing: -0.01em;
+}
+
+.btn-primary, 
+.cmn-btn-active, 
+.cmn-btn.style-1 {
+    background: linear-gradient(135deg, var(--primary), var(--primary-hover)) !important;
+    border: none !important;
+    color: #ffffff !important;
+}
+
+.btn-primary:hover, 
+.cmn-btn-active:hover, 
+.cmn-btn.style-1:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25) !important;
+    filter: brightness(1.05);
+}
+
+/* Inputs & Form Controls */
+.form-control, 
+input[type="text"], 
+input[type="email"], 
+input[type="password"], 
+select, 
+textarea {
+    border: 1.5px solid var(--border-color) !important;
+    border-radius: var(--radius-md) !important;
+    padding: 12px 16px !important;
+    background-color: #ffffff !important;
+    color: var(--text-primary) !important;
+    transition: var(--transition) !important;
+    box-shadow: none !important;
+}
+
+.form-control:focus, 
+input[type="text"]:focus, 
+input[type="email"]:focus, 
+input[type="password"]:focus, 
+select:focus, 
+textarea:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1) !important;
+    outline: none !important;
+}
+
+/* Navbar / Header Glassmorphism */
+.navbar, 
+.header-area, 
+.nav-container {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+/* Badges */
+.badge {
+    border-radius: var(--radius-sm) !important;
+    padding: 6px 12px !important;
+    font-weight: 600 !important;
+}
+
+.badge-success {
+    background-color: rgba(16, 185, 129, 0.1) !important;
+    color: var(--accent) !important;
+}
+
+.badge-warning {
+    background-color: rgba(245, 158, 11, 0.1) !important;
+    color: #d97706 !important;
+}
+
+.badge-danger {
+    background-color: rgba(239, 68, 68, 0.1) !important;
+    color: #dc2626 !important;
+}
+
+/* Smooth Image Loading */
+img {
+    transition: var(--transition) !important;
+}
+img:hover {
+    filter: contrast(1.02);
+}
