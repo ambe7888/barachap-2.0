@@ -1,0 +1,16 @@
+{
+    "PluginManage": true,
+    "CountryManage": true,
+    "EmailTemplate": true,
+    "Integrations": true,
+    "PaymentGateways": true,
+    "SMSGateway": true,
+    "SupportTicket": true,
+    "RolePermission": true,
+    "Chat": true,
+    "JobPost": true,
+    "Coupon": true,
+    "Tax": true,
+    "Blog": true,
+    "WhatsAppBookingSystem": false
+}
