@@ -22,51 +22,75 @@ class ResetPasswordView extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => OtpService(),
       child: Scaffold(
-        backgroundColor: context.color.accentContrastColor,
+        backgroundColor: context.color.backgroundColor,
         appBar: AppBar(
           leading: const NavigationPopIcon(),
           title: Text(LocalKeys.enterEmail.capitalizeWords),
         ),
         body: SingleChildScrollView(
-          padding: const EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              Align(
+                alignment: Alignment.center,
+                child: SizedBox(
+                  height: 220,
+                  child: LottieBuilder.asset(
+                    "assets/animations/forgot_pass.json",
+                    fit: BoxFit.contain,
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: context.color.accentContrastColor,
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(
+                    color: context.color.primaryBorderColor.withOpacity(0.6),
+                    width: 1,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.02),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
                 child: Form(
-                    key: rp.emailFormKey,
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          EmptySpaceHelper.emptyHeight(24),
-                          LottieBuilder.asset(
-                              "assets/animations/forgot_pass.json"),
-                          EmptySpaceHelper.emptyHeight(24),
-                          FieldWithLabel(
-                            label: LocalKeys.email,
-                            hintText: LocalKeys.enterEmail,
-                            keyboardType: TextInputType.emailAddress,
-                            controller: rp.emailController,
-                            validator: (value) {
-                              if (value!.validateEmail) {
-                                return null;
-                              }
-                              return LocalKeys.enterValidEmailAddress;
-                            },
-                          ),
-                          Consumer<OtpService>(
-                              builder: (context, otpProvider, child) {
-                            return CustomButton(
-                                btText: LocalKeys.sendVerificationCode,
-                                isLoading: otpProvider.loadingSendOTP,
-                                onPressed: () async {
-                                  FocusScope.of(context).unfocus();
-                                  rp.trySendingOTP(context);
-                                });
-                          })
-                        ])),
+                  key: rp.emailFormKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      FieldWithLabel(
+                        label: LocalKeys.email,
+                        hintText: LocalKeys.enterEmail,
+                        keyboardType: TextInputType.emailAddress,
+                        controller: rp.emailController,
+                        validator: (value) {
+                          if (value!.validateEmail) {
+                            return null;
+                          }
+                          return LocalKeys.enterValidEmailAddress;
+                        },
+                      ),
+                      12.toHeight,
+                      Consumer<OtpService>(
+                        builder: (context, otpProvider, child) {
+                          return CustomButton(
+                              btText: LocalKeys.sendVerificationCode,
+                              isLoading: otpProvider.loadingSendOTP,
+                              onPressed: () async {
+                                FocusScope.of(context).unfocus();
+                                rp.trySendingOTP(context);
+                              });
+                        },
+                      )
+                    ],
+                  ),
+                ),
               ),
             ],
           ),

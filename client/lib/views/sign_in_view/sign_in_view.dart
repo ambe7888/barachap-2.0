@@ -18,17 +18,35 @@ class SignInView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.color.accentContrastColor,
+      backgroundColor: context.color.backgroundColor,
       appBar: AppBar(
         leading: const NavigationPopIcon(),
         title: Text(LocalKeys.signIn),
       ),
       body: Scrollbar(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: Column(
             children: [
-              const EmailSignIn(),
+              Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: context.color.accentContrastColor,
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(
+                    color: context.color.primaryBorderColor.withOpacity(0.6),
+                    width: 1,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.02),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: const EmailSignIn(),
+              ),
               12.toHeight,
               SocialSignInButton(
                   title: LocalKeys.otpSignIn,

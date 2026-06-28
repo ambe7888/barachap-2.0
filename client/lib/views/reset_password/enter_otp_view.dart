@@ -31,6 +31,7 @@ class EnterOtpView extends StatelessWidget {
     return PopScope(
       onPopInvoked: (_) {},
       child: Scaffold(
+        backgroundColor: context.color.backgroundColor,
         appBar: AppBar(
           leading: NavigationPopIcon(
             onTap: () {
@@ -45,7 +46,18 @@ class EnterOtpView extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
                 color: context.color.accentContrastColor,
-                borderRadius: BorderRadius.circular(8)),
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(
+                  color: context.color.primaryBorderColor.withOpacity(0.6),
+                  width: 1,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.02),
+                    blurRadius: 10,
+                    offset: const Offset(0, 4),
+                  ),
+                ]),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
