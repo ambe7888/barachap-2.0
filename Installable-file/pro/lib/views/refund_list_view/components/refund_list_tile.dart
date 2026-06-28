@@ -1,0 +1,117 @@
+import 'package:flutter/material.dart';
+
+import '../../../customizations/colors.dart';
+import '../../../helper/extension/context_extension.dart';
+import '../../../helper/extension/int_extension.dart';
+import '../../../helper/extension/string_extension.dart';
+import '../../../helper/local_keys.g.dart';
+import '../../../helper/svg_assets.dart';
+import '../../../models/order_models/refund_list_model.dart';
+import '../../../utils/components/custom_squircle_widget.dart';
+import '../../refund_details_view/refund_details_view.dart';
+
+class RefundListTile extends StatelessWidget {
+  final RefundModel refundModel;
+  const RefundListTile({super.key, required this.refundModel});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        context.toPage(RefundDetailsView(refundId: refundModel.id));
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        color: context.color.accentContrastColor,
+        child: Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Wrap(
+                    spacing: 6,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: "${LocalKeys.id}: ",
+                              style: context.bodySmall?.bold6,
+                            ),
+                            TextSpan(
+                              text: refundModel.id.toString(),
+                              style: context.bodySmall?.bold
+                                  .copyWith(
+                                    color: context.color.primaryContrastColor,
+                                  )
+                                  .bold,
+                            ),
+                          ],
+                        ),
+                      ),
+                      SquircleContainer(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
+                        color: (refundModel.status)
+                            .toString()
+                            .getRefundMutedStatusColor,
+                        radius: 4,
+                        child: Text(
+                          (refundModel.status)
+                              .toString()
+                              .getRefundStatus
+                              .capitalize,
+                          style: context.bodySmall?.copyWith(
+                            color: (refundModel.status)
+                                .toString()
+                                .getRefundPrimaryStatusColor,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  8.toHeight,
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: "${LocalKeys.orderId}: ",
+                          style: context.titleSmall?.copyWith(
+                            color: context.color.secondaryContrastColor,
+                          ),
+                        ),
+                        TextSpan(
+                          text: "${refundModel.orderId} . ",
+                          style: context.bodySmall?.bold
+                              .copyWith(
+                                color: context.color.primaryContrastColor,
+                              )
+                              .bold,
+                        ),
+                        TextSpan(
+                          text: refundModel.amount.cur,
+                          style: context.titleSmall?.bold
+                              .copyWith(color: primaryColor)
+                              .bold,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SvgAssets.invisible.toSVGSized(
+              24,
+              color: context.color.secondaryContrastColor,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

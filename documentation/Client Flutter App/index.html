@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Prohandy-Client FLutter App</title>
+    <meta name="description" content="Thanks for purchasing Attorg. If you need any support, please contact with us.">
+    <meta name="author" content="Ir-tech">
+    <meta name="copyright" content="Ir-tech">
+    <link rel="shortcut icon" type="image/ico" href="img/favicons.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="left-side">
+            <div class="logo">
+                <a href="#">
+                    <img src="img/logo.png">
+                </a>
+            </div>
+            <div class="left-content">
+                <ul role="tablist">
+                    <li role="presentation" class="active"><a href="#one" aria-controls="home" role="tab"
+                            data-toggle="tab"><span><i class="fa fa-info"></i></span>Introduction</a></li>
+                    <li role="presentation"><a href="#two" aria-controls="home" role="tab" data-toggle="tab"><span><i
+                                    class="fa fa-gear"></i></span>Customizations</a></li>
+                    <li role="presentation"><a href="#three" aria-controls="home" role="tab" data-toggle="tab"><span><i
+                                    class="fa fa-code"></i></span>Run Project</a></li>
+                    <li role="presentation"><a href="#four" aria-controls="home" role="tab" data-toggle="tab"><span><i
+                                    class="fa fa-code"></i></span>Build and Release</a></li>
+                    <li role="presentation"><a href="#five" aria-controls="home" role="tab" data-toggle="tab"><span><i
+                                    class="fa fa-google"></i></span>Social Sign-In Setup</a></li>
+                    <li role="presentation"><a href="#scss" aria-controls="home" role="tab" data-toggle="tab"><span><i
+                                    class="fa fa-bell"></i></span>Push-Notification Setup</a></li>
+                    <!-- <li role="presentation"><a href="#source" aria-controls="home" role="tab" data-toggle="tab"><span><i
+                                    class="fa fa-thumbs-up"></i></span>Google Map Setup</a></li> -->
+                    <li role="presentation"><a href="#support" aria-controls="home" role="tab"
+                            data-toggle="tab"><span><i class="fa fa-support"></i></span>Support</a></li>
+                </ul>
+            </div>
+            <div class="copyright">
+                <p>Copyright &copy; 2024. <a href="https://codecanyon.net/user/xgenious/portfolio">Xgenious</a> <span>All
+                        Rights Reserved.</span></p>
+            </div>
+        </div>
+        <div class="right-side">
+            <div class="right-content">
+                <div id="one" class="content active fade in">
+
+                    <article id="post-19321" class="post-19321 docs type-docs status-publish hentry" itemscope=""
+                        itemtype="http://schema.org/Article">
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline">Requirements</h1>
+                        </header><!-- .entry-header -->
+
+                        <div class="entry-content" itemprop="articleBody">
+                            <p>At first setup flutter on your computer. To do that, you can follow this link: <a
+                                    href="https://docs.flutter.dev/get-started/install" target="_blank"
+                                    rel="noreferrer noopener">https://docs.flutter.dev/get-started/install</a></p>
+                            <p><strong>Recommended flutter version</strong>: 3.22.2 (channel stable) (anything lower or
+                                greater may make some parts of the project broken)</p>
+                            <p><strong>Recommended android version</strong>: 34.0.0 (anything lower or greater may make
+                                some parts of the project broken)</p>
+                            <p><strong>Recommended Xcode version</strong>: 15.4 (anything lower or greater may make some
+                                parts of the project broken)</p>
+                            <p><strong>Recommended dart version:</strong> 3.4.3 (anything lower or greater may make some
+                                parts of the project broken)</p>
+                            <p><strong>Recommended JDK and JRE version:</strong> 1.8.0_391</p>
+                        </div>
+                    </article>
+
+
+                </div>
+                <div id="two" class="content fade">
+
+                    <article id="post-19324" class="post-19324 docs type-docs status-publish hentry" itemscope=""
+                        itemtype="http://schema.org/Article">
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline">Change website url</h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header><!-- .entry-header -->
+
+                        <div class="entry-content" itemprop="articleBody">
+
+                            <h2 class="wp-block-heading" id="change-base-api-url"><strong>Change base Api url</strong><a
+                                    class="anchorjs-link " href="#change-base-api-url" aria-label="Anchor"
+                                    data-anchorjs-icon="#" style="padding-left: 0.375em;"></a></h2>
+                            <ul class="wp-block-list">
+                                <li>Go to&nbsp;<strong><mark style="background-color:rgba(0, 0, 0, 0)"
+                                            class="has-inline-color has-luminous-vivid-amber-color"><code>&lt;project&gt;/lib/customization.dart</code></mark></strong>&nbsp;and
+                                    replace <strong><mark style="background-color:rgba(0, 0, 0, 0)"
+                                            class="has-inline-color has-luminous-vivid-amber-color">siteLink</mark></strong>
+                                    variable value with your new url</li>
+                                <li>Go to File&gt;Save or Cntrl / Cmd + S to save the file</li>
+                            </ul>
+                            <figure class="wp-block-image size-full"><img decoding="async" width="498" height="27"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/10/image-4.png" alt=""
+                                    class="wp-image-18877"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/10/image-4.png 498w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-4-300x16.png 300w"
+                                    sizes="(max-width: 498px) 100vw, 498px"></figure>
+                            <p>your url will be, <strong>yourdomain.com</strong></p>
+                        </div><!-- .entry-content -->
+
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline"> </h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header>
+                    </article>
+
+
+                    <article id="post-19326" class="post-19326 docs type-docs status-publish hentry" itemscope=""
+                        itemtype="http://schema.org/Article">
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline">Change android package id</h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header><!-- .entry-header -->
+
+                        <div class="entry-content" itemprop="articleBody">
+                            <p>Change app package in system tray</p>
+                            <p>Open your project in Vscode. Put everything according to the image. <br>1.Select the
+                                search/find tab</p>
+                            <figure class="wp-block-image size-full"><img decoding="async" width="382" height="465"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/07/image-3.png" alt=""
+                                    class="wp-image-18249"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/07/image-3.png 382w, https://docs.xgenious.com/wp-content/uploads/2024/07/image-3-246x300.png 246w, https://docs.xgenious.com/wp-content/uploads/2024/07/image-3-370x450.png 370w"
+                                    sizes="(max-width: 382px) 100vw, 382px"></figure>
+                            <p>2.Enter your old app package, in this case <strong><em><mark
+                                            style="background-color:rgba(0, 0, 0, 0)"
+                                            class="has-inline-color has-luminous-vivid-amber-color">com.xgenious.prohandy_client</mark></em></strong>
+                            </p>
+                            <p>3.Make sure to Provide your app name properly.</p>
+                            <figure class="wp-block-image size-full"><img decoding="async" width="387" height="472"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/07/image-4.png" alt=""
+                                    class="wp-image-18251"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/07/image-4.png 387w, https://docs.xgenious.com/wp-content/uploads/2024/07/image-4-246x300.png 246w, https://docs.xgenious.com/wp-content/uploads/2024/07/image-4-369x450.png 369w"
+                                    sizes="(max-width: 387px) 100vw, 387px"></figure>
+                            <p class="has-black-color has-text-color">4.Turn on the Case sensitive option</p>
+                            <figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="391"
+                                    height="481" src="https://docs.xgenious.com/wp-content/uploads/2024/07/image-5.png"
+                                    alt="" class="wp-image-18252"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/07/image-5.png 391w, https://docs.xgenious.com/wp-content/uploads/2024/07/image-5-244x300.png 244w, https://docs.xgenious.com/wp-content/uploads/2024/07/image-5-366x450.png 366w"
+                                    sizes="(max-width: 391px) 100vw, 391px"></figure>
+                            <p>5.Enter the name of your folder where you want to make all the changes</p>
+                            <p>6.Click on this icon and replace the old app package</p>
+                            <figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="407"
+                                    height="513" src="https://docs.xgenious.com/wp-content/uploads/2024/07/image-6.png"
+                                    alt="" class="wp-image-18253"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/07/image-6.png 407w, https://docs.xgenious.com/wp-content/uploads/2024/07/image-6-238x300.png 238w, https://docs.xgenious.com/wp-content/uploads/2024/07/image-6-357x450.png 357w"
+                                    sizes="(max-width: 407px) 100vw, 407px"></figure>
+                            <p><br></p>
+                        </div><!-- .entry-content -->
+
+
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline"> </h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header>
+                    </article>
+
+                    <article id="post-19325" class="post-19325 docs type-docs status-publish hentry" itemscope=""
+                        itemtype="http://schema.org/Article">
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline">Change app colors</h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header><!-- .entry-header -->
+
+                        <div class="entry-content" itemprop="articleBody">
+                            <p>Go to&nbsp;<code><mark
+                                        class="has-inline-color has-luminous-vivid-amber-color">&lt;project&gt;/</mark></code><mark
+                                    class="has-inline-color has-luminous-vivid-amber-color"><code>lib/customizations/colors.dart</code></mark><br>Here
+                                you will see many colors used inside the app. To change the color you need to replace
+                                the color code. For example, if you want to change primary color of the app, replace the
+                                color code after 0xff (see the image below)</p>
+                            <figure class="wp-block-image size-full"><img decoding="async"
+                                    src="https://docs.bytesed.com/wp-content/uploads/2023/11/image-147.png" alt=""
+                                    class="wp-image-892"></figure>
+                        </div><!-- .entry-content -->
+
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline"> </h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header>
+                    </article>
+
+                    <article id="post-19327" class="post-19327 docs type-docs status-publish hentry" itemscope=""
+                        itemtype="http://schema.org/Article">
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline">Change app icon and splash screen</h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header><!-- .entry-header -->
+
+                        <div class="entry-content" itemprop="articleBody">
+                            <p>You can generate app icon from this website https://app icon.co.</p>
+                            <ul class="wp-block-list">
+                                <li>Go to&nbsp;<code><strong><mark
+                                                class="has-inline-color has-luminous-vivid-amber-color">&lt;project&gt;/assets/images/</mark></strong></code>&nbsp;and
+                                    replace <mark class="has-inline-color has-vivid-cyan-blue-color">app_icon.png</mark>
+                                    with your own logo.</li>
+                                <li>Then run the command given bellow in your command terminal or follow instruction
+                                    from <a href="https://pub.dev/packages/flutter_launcher_icons" target="_blank"
+                                        data-type="URL" data-id="https://pub.dev/packages/flutter_launcher_icons"
+                                        rel="noreferrer noopener">https://pub.dev/packages/flutter_launcher_icons</a>
+                                </li>
+                            </ul>
+                            <pre class="wp-block-code"><code><code><mark
+                                            class="has-inline-color has-luminous-vivid-amber-color">flutter pub get
+                                            flutter pub run flutter_launcher_icons</mark></code></code></pre>
+                            <ul class="wp-block-list">
+                                <li>Go to <code><mark
+                                            class="has-inline-color has-luminous-vivid-amber-color">&lt;project&gt;/assets/images/</mark></code>
+                                    and replace <mark
+                                        class="has-inline-color has-vivid-cyan-blue-color">loading_image.png</mark> with
+                                    your own logo which show as a placeholder image for product image( A square(24×24 or
+                                    370×370 or any) shape png image would be ideal- ).</li>
+                                <li>Go to <code><mark
+                                            class="has-inline-color has-luminous-vivid-amber-color">&lt;project&gt;/assets/images/</mark></code>
+                                    and replace <mark
+                                        class="has-inline-color has-vivid-cyan-blue-color">splash.png</mark> with your
+                                    own logo which show as a splash image. This image should be your logo with a
+                                    background with height and width of a phone screen. Example: w-374 x h-812.</li>
+                                <li>Go to <code><mark
+                                            class="has-inline-color has-luminous-vivid-amber-color">&lt;project&gt;/android/app/src/main/res/drawable/notification_icon.png</mark></code>
+                                    and replace <mark
+                                        class="has-inline-color has-vivid-cyan-blue-color">notification_icon.png</mark>
+                                    with your own logo ( A square(24×24 or 370×370 or any) which show as a Notification
+                                    Icon image.</li>
+                            </ul>
+                        </div><!-- .entry-content -->
+
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline"> </h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header>
+                    </article>
+
+                    <article id="post-19323" class="post-19323 docs type-docs status-publish hentry" itemscope=""
+                        itemtype="http://schema.org/Article">
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline">Change app label</h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header><!-- .entry-header -->
+
+                        <div class="entry-content" itemprop="articleBody">
+                            <p>Change the value of label from&nbsp;<code><mark style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">&lt;project&gt;/android/app/src/main/AndroidManifest.xml</mark></code><br><code><mark
+                                        style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">android:label="<code>Prohandy</code>"</mark></code>
+                            </p>
+                            <p>Change the value of CFBundleName from&nbsp;<code><mark
+                                        style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">&lt;project&gt;/iOS/Runner/info.plist</mark></code><br><mark
+                                    style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color"><code>&lt;key&gt;CFBundleName&lt;/key&gt;<br>&lt;string&gt;<code><mark
+                                                style="background-color:rgba(0, 0, 0, 0)"
+                                                class="has-inline-color has-luminous-vivid-amber-color"><code>Prohandy</code></mark></code>&lt;/string&gt;</code></mark>
+                            </p>
+                            <blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+                                <p><strong>Uninstall the previous apk and rebuild again</strong></p>
+                            </blockquote>
+                            <p>Change app name in system tray</p>
+                            <p>Open your project in Vscode. Put everything according to the image. <br>1.Select the
+                                search/find tab</p>
+                            <figure class="wp-block-image size-full is-resized"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/05/image-23.png" alt=""
+                                    class="wp-image-16775"></figure>
+                            <p>2.Enter your old app name, in this case <code><mark
+                                        style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color"><code><mark
+                                                style="background-color:rgba(0, 0, 0, 0)"
+                                                class="has-inline-color has-luminous-vivid-amber-color"><code>Prohandy</code></mark></code></mark></code></p>
+                            <figure class="wp-block-image size-full"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/05/image-21.png" alt=""
+                                    class="wp-image-16773"></figure>
+                            <p>3.Make sure to Provide your app name properly.</p>
+                            <figure class="wp-block-image size-full"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/05/image-19.png" alt=""
+                                    class="wp-image-16770"></figure>
+                            <p class="has-black-color has-text-color">4.Turn on the Case sensitive option</p>
+                            <figure class="wp-block-image size-full"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/05/image-18.png" alt=""
+                                    class="wp-image-16768"></figure>
+                            <p>5.Enter the name of your folder where you want to make all the changes</p>
+                            <figure class="wp-block-image size-full"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/05/image-22.png" alt=""
+                                    class="wp-image-16774"></figure>
+                            <p>6.Click on this icon and replace the old app name</p>
+                            <figure class="wp-block-image size-full"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/05/image-20.png" alt=""
+                                    class="wp-image-16772"></figure>
+                            <p><br></p>
+                        </div><!-- .entry-content -->
+
+
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline"> </h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header>
+                    </article>
+
+                    <article id="post-19328" class="post-19328 docs type-docs status-publish hentry" itemscope=""
+                        itemtype="http://schema.org/Article">
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline">Change intro page data</h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header><!-- .entry-header -->
+
+                        <div class="entry-content" itemprop="articleBody">
+                            <p>You can generate app icon from this website https://app icon.co.</p>
+                            <ul class="wp-block-list">
+                                <li>Go to <code><mark style="background-color:rgba(0, 0, 0, 0)"
+                                            class="has-inline-color has-luminous-vivid-amber-color">&lt;project&gt;/assets/images/</mark></code>
+                                    and replace <mark style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-vivid-cyan-blue-color">intro_1.png</mark>, <mark
+                                        style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-vivid-cyan-blue-color">intro_2.png</mark> and <mark
+                                        style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-vivid-cyan-blue-color">intro_3png</mark> with your
+                                    own images for intro images.</li>
+                                <li>Go to <code><mark style="background-color:rgba(0, 0, 0, 0)"
+                                            class="has-inline-color has-luminous-vivid-amber-color">&lt;project&gt;/lib/services/intro_service.dart</mark></code>
+                                    and replace title and description values fro your intro pages.</li>
+                            </ul>
+                            <figure class="wp-block-image size-full"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/12/image.png" alt=""
+                                    class="wp-image-17514"></figure>
+                        </div><!-- .entry-content -->
+
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline"> </h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header>
+                    </article>
+
+                    <article id="post-19329" class="post-19329 docs type-docs status-publish hentry" itemscope=""
+                        itemtype="http://schema.org/Article">
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline">Translate the app</h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header><!-- .entry-header -->
+
+                        <div class="entry-content" itemprop="articleBody">
+                            <p><mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-vivid-cyan-blue-color">After you added the translated
+                                    texts it might take 7 days to be able to see the changes if you have already
+                                    installed and opened the app in your device. If that happens, to check the changes
+                                    immediately uninstall the app or clear app data.</mark></p>
+                            <ol class="wp-block-list">
+                                <li>Go to the file <mark style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-orange-color">project/lib/helper/local_keys.g.dart</mark>
+                                </li>
+                                <li>Copy the texts you want to translate. </li>
+                            </ol>
+                            <figure class="wp-block-image size-full"><img decoding="async" width="1014" height="650"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/04/image-6.png" alt=""
+                                    class="wp-image-18058"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/04/image-6.png 1014w, https://docs.xgenious.com/wp-content/uploads/2024/04/image-6-300x192.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/04/image-6-768x492.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/04/image-6-702x450.png 702w"
+                                    sizes="(max-width: 1014px) 100vw, 1014px"></figure>
+                            <p>3. Go the the <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-orange-color">Language</mark> setting
+                                page in the website. Select the “<mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-orange-color">Edit All words</mark>”
+                                action.<br></p>
+                            <figure class="wp-block-image size-large"><img decoding="async" width="1024" height="506"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/10/image-5-1024x506.png"
+                                    alt="" class="wp-image-18883"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/10/image-5-1024x506.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-5-300x148.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-5-768x379.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-5-1536x758.png 1536w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-5-911x450.png 911w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-5.png 1906w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                            <p>4. First check if you have the text already translated or added. If you have already
+                                added then you can skip this text. If you have added the text and didn’t translate then
+                                update the changes<br></p>
+                            <figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024"
+                                    height="503"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/10/image-6-1024x503.png"
+                                    alt="" class="wp-image-18884"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/10/image-6-1024x503.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-6-300x147.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-6-768x377.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-6-1536x754.png 1536w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-6-917x450.png 917w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-6.png 1911w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                            <p>5. If you don’t find any match of the test then click on <mark
+                                    style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-orange-color">add new word</mark>. Paste
+                                the text you copied in the first input field. Provide the translated text into the
+                                second 2nd input field. Then click on “<mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-orange-color">Add New String</mark>“.</p>
+                            <figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024"
+                                    height="506"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/10/image-7-1024x506.png"
+                                    alt="" class="wp-image-18885"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/10/image-7-1024x506.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-7-300x148.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-7-768x380.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-7-1536x759.png 1536w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-7-911x450.png 911w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-7.png 1898w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                        </div><!-- .entry-content -->
+                    </article>
+                </div>
+                <div id="scss" class="content fade">
+
+
+                    <article id="post-19342" class="post-19342 docs type-docs status-publish hentry" itemscope=""
+                        itemtype="http://schema.org/Article">
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline">Firebase setup for android</h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header><!-- .entry-header -->
+
+                        <div class="entry-content" itemprop="articleBody">
+                            <p>You Don’t need to create separate projects for client and provider app. So if you have
+                                created a project for one of the apps already then you can skip the project creation
+                                process. </p>
+                            <p>1. First search for “<strong><mark style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">Firebase</mark></strong>”
+                                in google</p>
+                            <figure class="wp-block-image size-large"><img decoding="async" width="1024" height="648"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/03/image-1024x648.png" alt=""
+                                    class="wp-image-17888"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/03/image-1024x648.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-300x190.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-768x486.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-712x450.png 712w, https://docs.xgenious.com/wp-content/uploads/2024/03/image.png 1420w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                            <p><br>2. Click on the first result<br>3. Login to google</p>
+                            <figure class="wp-block-image size-large"><img decoding="async" width="1024" height="643"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/03/image-2-1024x643.png"
+                                    alt="" class="wp-image-17890"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/03/image-2-1024x643.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-2-300x188.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-2-768x483.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-2-716x450.png 716w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-2.png 1415w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                            <p><br>4. Click the “<strong><mark style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">Go to
+                                        console</mark></strong>” button on the top-right corner</p>
+                            <figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024"
+                                    height="642"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/03/image-1-1024x642.png"
+                                    alt="" class="wp-image-17889"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/03/image-1-1024x642.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-1-300x188.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-1-768x481.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-1-718x450.png 718w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-1.png 1419w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                            <p><br>5. Click on “<strong><mark style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">Add a
+                                        project</mark></strong>”</p>
+                            <figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024"
+                                    height="292"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/03/image-3-1024x292.png"
+                                    alt="" class="wp-image-17891"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/03/image-3-1024x292.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-3-300x86.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-3-768x219.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-3-1536x438.png 1536w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-3-2048x584.png 2048w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-3-930x265.png 930w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                            <p><br>6. Enter your project name then click “<strong><mark
+                                        style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">Continue</mark></strong>”
+                            </p>
+                            <figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024"
+                                    height="679"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/03/image-4-1024x679.png"
+                                    alt="" class="wp-image-17892"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/03/image-4-1024x679.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-4-300x199.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-4-768x509.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-4-679x450.png 679w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-4.png 1430w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                            <p><br>7. You don’t have to change in the “<strong><mark
+                                        style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">Google Analyticsfor your
+                                        Firebase project</mark></strong>” section and click “<strong><mark
+                                        style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">Create
+                                        project</mark></strong>”</p>
+                            <figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024"
+                                    height="654"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/03/image-5-1024x654.png"
+                                    alt="" class="wp-image-17893"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/03/image-5-1024x654.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-5-300x192.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-5-768x491.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-5-704x450.png 704w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-5.png 1415w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                            <p><br>9. The project creation might take a moment. After the project is created you will
+                                routed to the overview page</p>
+                            <figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024"
+                                    height="654"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/03/image-6-1024x654.png"
+                                    alt="" class="wp-image-17894"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/03/image-6-1024x654.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-6-300x192.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-6-768x490.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-6-705x450.png 705w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-6.png 1414w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                            <p><br>10. Click on the <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">android icon</mark> on top
+                                of the “<strong><mark style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">Add an app to get
+                                        started</mark></strong>”</p>
+                            <figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024"
+                                    height="653"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/03/image-7-1024x653.png"
+                                    alt="" class="wp-image-17895"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/03/image-7-1024x653.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-7-300x191.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-7-768x490.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-7-705x450.png 705w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-7.png 1412w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                            <p><br>11. Provide the required informations an click “<strong><mark
+                                        style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">Register
+                                        app</mark></strong>”</p>
+                            <figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024"
+                                    height="644"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/03/image-8-1024x644.png"
+                                    alt="" class="wp-image-17896"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/03/image-8-1024x644.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-8-300x189.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-8-768x483.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-8-716x450.png 716w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-8.png 1427w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                            <p><br>12. You don’t have to anything for the next steps. So just click “<strong><mark
+                                        style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">Next</mark></strong>”
+                                for next 2 steps and click “<strong><mark style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">Continue to the
+                                        console</mark></strong>” for the 4th/last step<br>13. You will be routed to
+                                project over-view again. In the top-left corner click the “<strong><mark
+                                        style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">Setting</mark></strong>”
+                                icon next to the “<strong><mark style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">Project
+                                        overview</mark></strong>” then click the “<strong><mark
+                                        style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">Project
+                                        settings</mark></strong>” option</p>
+                            <figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024"
+                                    height="483"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/03/image-9-1024x483.png"
+                                    alt="" class="wp-image-17897"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/03/image-9-1024x483.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-9-300x141.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-9-768x362.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-9-930x438.png 930w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-9.png 1415w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                            <p><br>14. Scroll at the bottom of the page. Enter any other SHA-1 keys if you need to.
+                                (<em><mark style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-pale-cyan-blue-color">Normally you will have one
+                                        debug SHA-1 and one release SHA-1, if you don’t add the debug SHA-1 then you
+                                        will find it troubling to work in debug mode.</mark></em>)</p>
+                            <figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024"
+                                    height="644"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/03/image-10-1024x644.png"
+                                    alt="" class="wp-image-17898"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/03/image-10-1024x644.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-10-300x189.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-10-768x483.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-10-715x450.png 715w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-10.png 1411w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                            <p><br>15. Click on the “<strong><mark style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-vivid-cyan-blue-color">google-services.json</mark></strong>”
+                                which will start downloading the file. (<strong><em><mark
+                                            style="background-color:rgba(0, 0, 0, 0)"
+                                            class="has-inline-color has-vivid-red-color">every time you change anything
+                                            here, you will have to download this file again</mark></em></strong>)</p>
+                            <figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="772"
+                                    height="412" src="https://docs.xgenious.com/wp-content/uploads/2024/03/image-11.png"
+                                    alt="" class="wp-image-17899"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/03/image-11.png 772w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-11-300x160.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-11-768x410.png 768w"
+                                    sizes="(max-width: 772px) 100vw, 772px"></figure>
+                            <p><br>16. Once the file downloaded, go to <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">project folder-&gt;
+                                    android-&gt; app</mark> folder and replace the existing “<mark
+                                    style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">google-services.json</mark>”
+                                with your downloaded file.<br>17. Now go click on “<mark
+                                    style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">Service accounts</mark>”
+                                tab.</p>
+                            <figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024"
+                                    height="375"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/03/image-31-1024x375.png"
+                                    alt="" class="wp-image-18835"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/03/image-31-1024x375.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-31-300x110.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-31-768x281.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-31-930x341.png 930w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-31.png 1420w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                            <p>18. Click on the “<mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">Generate new private
+                                    key</mark>“.</p>
+                            <figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024"
+                                    height="614"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/03/image-32-1024x614.png"
+                                    alt="" class="wp-image-18836"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/03/image-32-1024x614.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-32-300x180.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-32-768x460.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-32-751x450.png 751w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-32.png 1418w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                            <p>19. Click on <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">Generate key</mark> and a
+                                json file should be downloaded.</p>
+                            <figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024"
+                                    height="642"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/03/image-33-1024x642.png"
+                                    alt="" class="wp-image-18837"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/03/image-33-1024x642.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-33-300x188.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-33-768x481.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-33-718x450.png 718w, https://docs.xgenious.com/wp-content/uploads/2024/03/image-33.png 1422w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                            <p>20. Go to your website <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">admin panel</mark>-&gt;
+                                <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">Firebase Settings</mark>
+                                Upload the <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">json file</mark> you got and
+                                click <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">Submit</mark></p>
+                            <figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024"
+                                    height="479"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/10/image-8-1024x479.png"
+                                    alt="" class="wp-image-18897"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/10/image-8-1024x479.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-8-300x140.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-8-768x359.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-8-1536x718.png 1536w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-8-930x435.png 930w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-8.png 1901w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                            <p>You should be good to go now.</p>
+                        </div>
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline"> </h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header>
+                    </article>
+
+                    <article id="post-19343" class="post-19343 docs type-docs status-publish hentry" itemscope=""
+                        itemtype="http://schema.org/Article">
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline">Firebase setup for IOS</h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header><!-- .entry-header -->
+
+                        <div class="entry-content" itemprop="articleBody">
+                            <ol class="wp-block-list">
+                                <li>If you have created a firebase project for your Client app then you can use that
+                                    project as it is and follow the bellow steps. If have not create a project yet, then
+                                    follow this <a
+                                        href="https://docs.xgenious.com/docs/xilancer-freelancer-flutter-app/push-notification-setup/firebase-setup/">Document</a>
+                                    to create one .</li>
+                                <li> Click not the <mark style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">IOS+</mark> on top of
+                                    the “<strong><mark style="background-color:rgba(0, 0, 0, 0)"
+                                            class="has-inline-color has-luminous-vivid-amber-color">Add an app to get
+                                            started</mark></strong>”.<br></li>
+                            </ol>
+                            <figure class="wp-block-image size-large"><img decoding="async" width="1024" height="438"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/05/image-1024x438.png" alt=""
+                                    class="wp-image-18069"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/05/image-1024x438.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-300x128.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-768x328.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-1536x656.png 1536w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-930x397.png 930w, https://docs.xgenious.com/wp-content/uploads/2024/05/image.png 1645w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                            <p> 3. Provide the required informations an click “<strong><mark
+                                        style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">Register
+                                        app</mark></strong>”.</p>
+                            <figure class="wp-block-image size-full"><img decoding="async" width="927" height="821"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/05/image-1.png" alt=""
+                                    class="wp-image-18070"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/05/image-1.png 927w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-1-300x266.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-1-768x680.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-1-508x450.png 508w"
+                                    sizes="(max-width: 927px) 100vw, 927px"></figure>
+                            <ol class="wp-block-list">
+                                <li></li>
+                            </ol>
+                            <p>4. You don’t have to anything for the next steps. So just click “<strong><mark
+                                        style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">Next</mark></strong>”
+                                for next 2 steps and click “<strong><mark style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">Continue to the
+                                        console</mark></strong>” for the 4th/last step</p>
+                            <p>5. You will be routed to project over-view again. In the top-right corner click the
+                                “<strong><mark style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">Setting</mark></strong>”
+                                icon next to the “<strong><mark style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">Project
+                                        overview</mark></strong>” then click the “<strong><mark
+                                        style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">Project
+                                        settings</mark></strong>” option</p>
+                            <figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1024"
+                                    height="483" src="https://docs.xgenious.com/wp-content/uploads/2024/05/image-2.png"
+                                    alt="" class="wp-image-18071"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/05/image-2.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-2-300x142.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-2-768x362.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-2-930x439.png 930w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                            <p>6. Scroll down to the <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">Your apps</mark> section.
+                                Select your <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">IOS</mark> app. Click on
+                                <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">GoogleService-Info.plist</mark>
+                                to download the file.</p>
+                            <figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024"
+                                    height="544"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/05/image-5-1024x544.png"
+                                    alt="" class="wp-image-18076"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/05/image-5-1024x544.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-5-300x159.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-5-768x408.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-5-1536x816.png 1536w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-5-2048x1088.png 2048w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-5-847x450.png 847w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                            <p>7. Open <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">ios</mark> folder in the
+                                <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">xCode</mark> from your
+                                project. Right click on <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">Runner</mark> then click on
+                                <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">Add files to
+                                    “Runner”</mark>.</p>
+                            <figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="777"
+                                    height="769" src="https://docs.xgenious.com/wp-content/uploads/2024/05/image-6.png"
+                                    alt="" class="wp-image-18077"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/05/image-6.png 777w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-6-300x297.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-6-768x760.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-6-455x450.png 455w"
+                                    sizes="(max-width: 777px) 100vw, 777px"></figure>
+                            <p>8. Select the <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">GoogleService-Info.plist</mark>
+                                file and click on <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">add</mark>. <mark
+                                    style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-vivid-cyan-blue-color">Make sure that you have the
+                                    options marked as shown in the below screenshot</mark>. <mark
+                                    style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-pale-pink-color">If you already have</mark> <mark
+                                    style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">GoogleService-Info.plist</mark>
+                                <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-pale-pink-color">in your project, delete the old file
+                                    and then add the new</mark> <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">GoogleService-Info.plist</mark>.
+                            </p>
+                            <figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="796"
+                                    height="578" src="https://docs.xgenious.com/wp-content/uploads/2024/05/image-7.png"
+                                    alt="" class="wp-image-18078"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/05/image-7.png 796w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-7-300x218.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-7-768x558.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-7-620x450.png 620w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-7-370x270.png 370w"
+                                    sizes="(max-width: 796px) 100vw, 796px"></figure>
+                            <p>9. If you already enabled <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">firebase cloud
+                                    messaging</mark> while android setup then follow the next steps. Else you have to
+                                follow <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">Step 17 </mark>to <mark
+                                    style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">Step 21</mark> from this <a
+                                    href="https://docs.xgenious.com/docs/xilancer-freelancer-flutter-app/push-notification-setup/firebase-setup/">Document</a>.
+                            </p>
+                            <p>10. Upload your APNs authentication key to Firebase. If you don’t already have an APNs
+                                authentication key, make sure to create one in the&nbsp;<a
+                                    href="https://developer.apple.com/membercenter/index.action">Apple Developer Member
+                                    Center</a>.</p>
+                            <p>11. Inside your project in the <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">Firebase console</mark>,
+                                select the gear icon, select <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">Project Settings</mark>, and
+                                then select the <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">Cloud Messaging</mark> tab.
+                            </p>
+                            <p>12. In <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">APNs authentication
+                                    key</mark> under <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">iOS app
+                                    configuration</mark>, click the <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">Upload</mark> button.</p>
+                            <figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024"
+                                    height="545"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/05/image-8-1024x545.png"
+                                    alt="" class="wp-image-18079"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/05/image-8-1024x545.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-8-300x160.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-8-768x409.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-8-1536x818.png 1536w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-8-845x450.png 845w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-8.png 1642w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                            <p>13. Browse to the location where you saved your key, select it, and click Open. Add the
+                                key ID for the key (available in the Apple Developer Member Center) and click Upload.
+                            </p>
+                            <p>14. In xCode click on <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">Runner-&gt; Signing
+                                    capabilities-&gt; +capability</mark>. Add <mark
+                                    style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">Push Notification</mark> as
+                                capability.</p>
+                            <figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024"
+                                    height="675"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/05/image-9-1024x675.png"
+                                    alt="" class="wp-image-18080"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/05/image-9-1024x675.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-9-300x198.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-9-768x506.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-9-682x450.png 682w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-9.png 1142w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+
+                            <p>You can follow the documentation from <a
+                                    href="https://firebase.google.com/docs/cloud-messaging">Firebase</a> if these steps
+                                does not work for you. You can also reach to our support team.</p>
+                        </div>
+                    </article>
+
+                </div>
+                <div id="three" class="content fade">
+
+                    <article id="post-19331" class="post-19331 docs type-docs status-publish hentry" itemscope=""
+                        itemtype="http://schema.org/Article">
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline">Run project for android</h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header><!-- .entry-header -->
+
+                        <div class="entry-content" itemprop="articleBody">
+                            <p>Open vscode. You can install vscode from this link: <a
+                                    href="https://code.visualstudio.com/" target="_blank"
+                                    rel="noreferrer noopener">https://code.visualstudio.com/</a><br>Once installed, you
+                                need to install flutter plugin in vscode.<br>Click on extensions..<br></p>
+                            <figure class="wp-block-image size-full"><img decoding="async"
+                                    src="https://xgenious.com/wp-content/uploads/2022/05/image-47.webp" alt=""
+                                    class="wp-image-10883"></figure>
+                            <p>Search “flutter” and install.</p>
+                            <figure class="wp-block-image size-large"><img decoding="async"
+                                    src="https://xgenious.com/wp-content/uploads/2022/05/image-48-1024x397.webp" alt=""
+                                    class="wp-image-10885"></figure>
+                            <p>Once installed, restart vscode.</p>
+                            <p>Now, open the project in vscode. Go to: File &gt; Open Folder<br></p>
+                            <figure class="wp-block-image size-full"><img decoding="async"
+                                    src="https://xgenious.com/wp-content/uploads/2022/05/image-41.webp" alt=""
+                                    class="wp-image-10869"></figure>
+
+                            <p>Choose the project folder.<br></p>
+                            <figure class="wp-block-image size-full"><img decoding="async"
+                                    src="https://xgenious.com/wp-content/uploads/2022/05/image-43.webp" alt=""
+                                    class="wp-image-10873"></figure>
+
+                            <p>On the left bottom side of vscode you will see many options. Click on the part marked on
+                                the image below</p>
+                            <figure class="wp-block-image size-full"><img decoding="async"
+                                    src="https://xgenious.com/wp-content/uploads/2022/05/image-44.webp" alt=""
+                                    class="wp-image-10877"></figure>
+                            <p><br>Click on terminal<br></p>
+                            <figure class="wp-block-image size-full"><img decoding="async"
+                                    src="https://xgenious.com/wp-content/uploads/2022/05/image-45.webp" alt=""
+                                    class="wp-image-10879"></figure>
+
+                            <p>Type: flutter pub get and press Enter <br></p>
+                            <figure class="wp-block-image size-full"><img decoding="async"
+                                    src="https://xgenious.com/wp-content/uploads/2022/05/image-46.webp" alt=""
+                                    class="wp-image-10881"></figure>
+                            <p>Flutter will install the required packages.<br>Make sure, your phone is connected to your
+                                computer via USB and USB debugging in your phone is turned on. You can turn on the USB
+                                debugging option from your phone Settings &gt; Developer options. Once your phone is
+                                connected, you will see it on the right bottom side of Vscode.</p>
+                            <figure class="wp-block-image size-large"><img decoding="async"
+                                    src="https://xgenious.com/wp-content/uploads/2022/05/image-51-1024x578.webp" alt=""
+                                    class="wp-image-10891"></figure>
+                            <p><br>Once done, go to the lib &gt; main.dart<br></p>
+                            <figure class="wp-block-image size-full"><img decoding="async"
+                                    src="https://xgenious.com/wp-content/uploads/2022/05/image-49.webp" alt=""
+                                    class="wp-image-10887"></figure>
+                            <p><br>On the top right side you will see a run button. Click on it.</p>
+                            <p>Wait until the build process is finished. On first run it may take some time as flutter
+                                may try to install many files behind the scene. Once that’s done, you will see a popup
+                                in you phone. Click install.</p>
+                            <figure class="wp-block-image size-large"><img decoding="async"
+                                    src="https://xgenious.com/wp-content/uploads/2022/05/1653741545145-1024x963.webp"
+                                    alt="" class="wp-image-10895"></figure>
+                        </div><!-- .entry-content -->
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline"> </h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header>
+                    </article>
+
+                    <article id="post-19332" class="post-19332 docs type-docs status-publish hentry" itemscope=""
+                        itemtype="http://schema.org/Article">
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline">Run project for IOS</h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header><!-- .entry-header -->
+
+                        <div class="entry-content" itemprop="articleBody">
+                            <h2 class="wp-block-heading" id="requirements">Requirements<a class="anchorjs-link "
+                                    href="#requirements" aria-label="Anchor" data-anchorjs-icon="#"
+                                    style="padding-left: 0.375em;"></a></h2>
+                            <ul class="wp-block-list">
+                                <li>Mac OS</li>
+                                <li>Xcode</li>
+                                <li>Apple developer account</li>
+                            </ul>
+                            <p>You can install Xcode from App store.</p>
+                            <p>Open vscode. You can install vscode from this link: <a rel="noreferrer noopener"
+                                    href="https://code.visualstudio.com/"
+                                    target="_blank">https://code.visualstudio.com/</a><br>Once installed, you need to
+                                install flutter plugin in vscode.<br>Click on extensions.</p>
+                            <p>Search “flutter” and install.<br></p>
+                            <figure class="wp-block-image size-large"><img decoding="async"
+                                    src="https://xgenious.com/wp-content/uploads/2022/05/image-48-1024x397.webp" alt=""
+                                    class="wp-image-10885"></figure>
+
+                            <p>Once installed, restart vscode.</p>
+                            <p>Now, open the project in vscode. Go to: File &gt; Open Folder<br></p>
+                            <figure class="wp-block-image size-full"><img decoding="async"
+                                    src="https://xgenious.com/wp-content/uploads/2022/05/image-43.webp" alt=""
+                                    class="wp-image-10873"></figure>
+                            <p>Choose the project folder.</p>
+                            <p>On the left bottom side of vscode you will see many options. Click on the part marked on
+                                the image below<br></p>
+                            <figure class="wp-block-image size-full"><img decoding="async"
+                                    src="https://xgenious.com/wp-content/uploads/2022/05/image-44.webp" alt=""
+                                    class="wp-image-10877"></figure>
+                            <p><br>Click on terminal<br></p>
+                            <figure class="wp-block-image size-full"><img decoding="async"
+                                    src="https://xgenious.com/wp-content/uploads/2022/05/image-45.webp" alt=""
+                                    class="wp-image-10879"></figure>
+
+                            <p>Type: flutter pub get and press Enter<br>Flutter will install the required packages.</p>
+                            <p>Right click on the ios folder &gt; Open in Xcode.<br></p>
+                            <figure class="wp-block-image size-full"><img decoding="async"
+                                    src="https://xgenious.com/wp-content/uploads/2022/05/image-52.webp" alt=""
+                                    class="wp-image-10923"></figure>
+                            <p><br>Once Xcode is opened, click on the runner folder. Go to Signing &amp; Capabilities.
+                                Click on Team &gt; Add account. Sign in with your apple id.</p>
+                            <figure class="wp-block-image size-large"><img decoding="async"
+                                    src="https://xgenious.com/wp-content/uploads/2022/05/image-53-1024x485.webp" alt=""
+                                    class="wp-image-10925"></figure>
+                            <h2 class="wp-block-heading" id="open-simulator-and-build"><br>Open Simulator and build:<a
+                                    class="anchorjs-link " href="#open-simulator-and-build" aria-label="Anchor"
+                                    data-anchorjs-icon="#" style="padding-left: 0.375em;"></a></h2>
+                            <p>Inside vscode, press Command+Shift+P and choose: Launch Emulator.<br>Choose: IOS
+                                Simulator<br>Now, go to vscode terminal and run: flutter run<br>After the build process
+                                is done, Your app should be opened inside the emulator.</p>
+                            <p>To install it on real iOS device and distribute you have to deploy it on TestFlight or
+                                AppStore. For deployment, you can follow this link: <br><a
+                                    href="https://docs.flutter.dev/deployment/ios">https://docs.flutter.dev/deployment/ios</a>
+                            </p>
+                        </div><!-- .entry-content -->
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline"> </h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header>
+
+                    </article>
+
+
+
+                </div>
+                <div id="four" class="content fade">
+
+                    <article id="post-19334" class="post-19334 docs type-docs status-publish hentry" itemscope=""
+                        itemtype="http://schema.org/Article">
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline">Build and release for Android</h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header><!-- .entry-header -->
+
+                        <div class="entry-content" itemprop="articleBody">
+                            <p>Open your project in vscode. Open terminal and run</p>
+                            <pre class="wp-block-code"><code><strong>flutter build apk</strong></code></pre>
+                            <p>Build file location:&nbsp;<code><mark
+                                        class="has-inline-color has-luminous-vivid-amber-color">&lt;project&gt;/build/app/outputs/apk/release/app-release.apk</mark></code><br>You
+                                can now share this apk with anyone.</p>
+
+                            <p><br>To deploy your app on playstore, you can follow this link: <a
+                                    href="https://docs.flutter.dev/deployment/android" target="_blank"
+                                    rel="noreferrer noopener">https://docs.flutter.dev/deployment/android</a></p>
+                        </div><!-- .entry-content -->
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline"> </h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header>
+
+                    </article>
+
+                    <article id="post-19335" class="post-19335 docs type-docs status-publish hentry" itemscope=""
+                        itemtype="http://schema.org/Article">
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline">Build for IOS</h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header><!-- .entry-header -->
+
+                        <div class="entry-content" itemprop="articleBody">
+                            <p>Apple doesn’t allow to install and distribute app like android. To install it on your iOS
+                                device or distribute, you have to deploy it on TestFlight or AppStore. For deployment
+                                you can follow this link: <br><a
+                                    href="https://docs.flutter.dev/deployment/ios">https://docs.flutter.dev/deployment/ios</a>
+                            </p>
+                        </div><!-- .entry-content -->
+
+
+                    </article>
+
+
+                </div>
+                <div id="five" class="content fade">
+                    <article id="post-19338" class="post-19338 docs type-docs status-publish hentry" itemscope=""
+                        itemtype="http://schema.org/Article">
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline">Apple Sign-In setup</h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header><!-- .entry-header -->
+
+                        <div class="entry-content" itemprop="articleBody">
+                            <h2 class="wp-block-heading" id="only-works-for-v1-0-7-and-after">Only works for v1.0.7 and
+                                after<a class="anchorjs-link " href="#only-works-for-v1-0-7-and-after"
+                                    aria-label="Anchor" data-anchorjs-icon="#" style="padding-left: 0.375em;"></a></h2>
+
+                            <p>01. You will need to add apple sign in for your app in app store.</p>
+                            <p>02. Open <strong><mark style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">project/ios</mark></strong>
+                                folder in XCode.</p>
+                            <p>03. Click on “<strong><mark style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">Runner</mark></strong>“-&gt;
+                                “<strong><mark style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">Signing &amp;
+                                        Capabilities</mark></strong>“-&gt; “<strong><mark
+                                        style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">+
+                                        Capability</mark></strong>“. Select “<strong><mark
+                                        style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">Sign in with
+                                        Apple</mark></strong>” and enter.</p>
+                            <figure class="wp-block-image size-full"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/11/image-36.png" alt=""
+                                    class="wp-image-17435"></figure>
+                            <p>04. Go to https://developer.apple.com/account/resources/authkeys/list and click on plus
+                                icon.</p>
+                            <figure class="wp-block-image size-large"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/11/image-44-1024x267.png"
+                                    alt="" class="wp-image-17447"></figure>
+                            <p>05. Provide a name, check the <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color"><strong>Sign in with
+                                        apple</strong></mark> apple option then click “<mark
+                                    style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color"><strong>Configure</strong></mark>“.
+                                In “<code><mark style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color"><strong>Configure</strong></mark></code>”
+                                select your app id then click “<mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color"><strong>Save</strong></mark>“.
+                                Then Click “<mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color"><strong>Continue</strong></mark>”
+                                in the register a new key page.</p>
+                            <figure class="wp-block-image size-large"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/11/image-45-1024x622.png"
+                                    alt="" class="wp-image-17448"></figure>
+                            <figure class="wp-block-image size-large"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/11/image-46-1024x412.png"
+                                    alt="" class="wp-image-17449"></figure>
+                            <p>06. Click on the key you just created</p>
+                            <figure class="wp-block-image size-large"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/11/image-47-1024x294.png"
+                                    alt="" class="wp-image-17450"></figure>
+                            <p>07. We will need the <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color"><strong>key
+                                        id</strong></mark> later</p>
+                            <figure class="wp-block-image size-large"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/11/image-48-1024x408.png"
+                                    alt="" class="wp-image-17451"></figure>
+                            <p>08. Go to <strong><mark style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-pale-pink-color">https://jwt.io</mark></strong>
+                                provide the info according to below then copy the encoded key from the left side.</p>
+                            <pre class="wp-block-code"><code>In Header:
+                                    {
+                                    "alg": "HS256",
+                                    "typ": "JWT",
+                                    "kid": "Your Key ID"
+                                    }
+
+                                    In Payload:
+                                    {
+                                    "iss": "Your 10-character Team ID associated with your developer account",
+                                    "iat": 20231011345,
+                                    "exp": 31536000,
+                                    "aud": "https://appleid.apple.com",
+                                    "sub": "App ID"
+                                    }
+
+                                    in iat: your project creation date in UTC
+                                    in exp: Expiration date for this JWT in seconds. Exp: if its six months then
+                                    15777000 seconds</code></pre>
+                            <figure class="wp-block-image size-large"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/11/image-49-1024x632.png"
+                                    alt="" class="wp-image-17452"></figure>
+                            <p>09. Open <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-pale-pink-color"><strong>project/lib/customizations.dart</strong></mark>
+                                and provide the JWT in as the client secret.</p>
+                            <figure class="wp-block-image size-large"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/11/image-50-1024x273.png"
+                                    alt="" class="wp-image-17453"></figure>
+                            <p>10. You should be able to use Apple Sign-In now and on account deletion the user’s apple
+                                id should get revoked. </p>
+                        </div><!-- .entry-content -->
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline"> </h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header>
+
+                    </article>
+
+                    <article id="post-19339" class="post-19339 docs type-docs status-publish hentry" itemscope=""
+                        itemtype="http://schema.org/Article">
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline">Facebook Sign-In setup for Android</h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header><!-- .entry-header -->
+
+                        <div class="entry-content" itemprop="articleBody">
+                            <p><mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-pale-pink-color">Facebook setup sign-in setup can only
+                                    be setup after you released your app.</mark></p>
+                            <ol class="wp-block-list">
+                                <li>Go to&nbsp;<a
+                                        href="https://developers.facebook.com/docs/facebook-login/android/?locale=en"
+                                        target="_blank" rel="noreferrer noopener">Facebook Login for Android –
+                                        Quickstart</a></li>
+                                <li>Select an App or Create a New App</li>
+                            </ol>
+                            <figure class="wp-block-image size-full"><img decoding="async" width="653" height="132"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/05/image-10.png" alt=""
+                                    class="wp-image-18099"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/05/image-10.png 653w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-10-300x61.png 300w"
+                                    sizes="(max-width: 653px) 100vw, 653px"></figure>
+                            <p>3. Skip the step 2 (Download the Facebook App)</p>
+                            <p>4. Skip the step 3 (Integrate the Facebook SDK)</p>
+                            <p>5. Skip the step 3 (Your Resources and Manifest)</p>
+                            <p>6. Associate Your Package Name and Default Class with Your App</p>
+                            <figure class="wp-block-image size-full"><img decoding="async" width="789" height="403"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/05/image-11.png" alt=""
+                                    class="wp-image-18101"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/05/image-11.png 789w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-11-300x153.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-11-768x392.png 768w"
+                                    sizes="(max-width: 789px) 100vw, 789px"></figure>
+                            <p>7. Provide the Development and Release Key Hashes for Your App. Conver your app Sha-1
+                                keys to bas64 String and add them here.</p>
+                            <figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="783"
+                                    height="178" src="https://docs.xgenious.com/wp-content/uploads/2024/05/image-13.png"
+                                    alt="" class="wp-image-18103"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/05/image-13.png 783w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-13-300x68.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-13-768x175.png 768w"
+                                    sizes="(max-width: 783px) 100vw, 783px"></figure>
+                            <p>8. Skip the other steps as well.</p>
+                            <p>9. Go to the basic settings of your app.</p>
+                            <figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024"
+                                    height="560"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/05/image-14-1024x560.png"
+                                    alt="" class="wp-image-18104"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/05/image-14-1024x560.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-14-300x164.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-14-768x420.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-14-1536x840.png 1536w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-14-823x450.png 823w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-14.png 1637w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                            <p>10. Fill in the required infos. Copy the app Id and App secret. In your project, open
+                                this <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-vivid-cyan-blue-color">android/app/src/main/res/values/strings.xml</mark>
+                                file and replace the containing infos with your actual infos. </p>
+                            <figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="638"
+                                    height="203" src="https://docs.xgenious.com/wp-content/uploads/2024/05/image-15.png"
+                                    alt="" class="wp-image-18105"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/05/image-15.png 638w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-15-300x95.png 300w"
+                                    sizes="(max-width: 638px) 100vw, 638px"></figure>
+                        </div>
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline"> </h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header>
+                    </article>
+
+                    <article id="post-19340" class="post-19340 docs type-docs status-publish hentry" itemscope=""
+                        itemtype="http://schema.org/Article">
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline">Facebook Sign-In setup for IOS</h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header><!-- .entry-header -->
+
+                        <div class="entry-content" itemprop="articleBody">
+                            <ol class="wp-block-list">
+                                <li>Go to&nbsp;<strong><a href="https://developers.facebook.com/docs/facebook-login/ios"
+                                            target="_blank" rel="noreferrer noopener">Facebook Login for iOS –
+                                            Quickstart&nbsp;</a></strong>and select or create your app.</li>
+                            </ol>
+                            <figure class="wp-block-image size-full"><img decoding="async" width="646" height="139"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/05/image-16.png" alt=""
+                                    class="wp-image-18109"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/05/image-16.png 646w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-16-300x65.png 300w"
+                                    sizes="(max-width: 646px) 100vw, 646px"></figure>
+                            <p>2. Skip the step 2 (Set up Your Development Environment).</p>
+                            <p>3. &nbsp;the step 3 (Register and Configure Your App with Facebook) you need add
+                                your&nbsp;<code>Bundle Identifier</code></p>
+                            <figure class="wp-block-image size-full"><img decoding="async" width="807" height="305"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/05/image-17.png" alt=""
+                                    class="wp-image-18111"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/05/image-17.png 807w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-17-300x113.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/05/image-17-768x290.png 768w"
+                                    sizes="(max-width: 807px) 100vw, 807px"></figure>
+                            <p>4. In the Step 4 you need configure your&nbsp;<code>Info.plist</code>&nbsp;file
+                                inside&nbsp;<code>ios/Runner/Info.plist</code></p>
+                            <p>Add/Edit below Fields in your Info.plist file.</p>
+                            <pre class="wp-block-code"><code><code>&lt;key&gt;CFBundleURLTypes&lt;/key&gt;
+                                        .
+                                        .
+                                        .
+                                        .
+                                        &lt;array&gt;
+                                        &lt;dict&gt;
+                                        &lt;key&gt;CFBundleURLSchemes&lt;/key&gt;
+                                        &lt;array&gt;
+                                        &lt;string&gt;fb{your-app-id}&lt;/string&gt;
+                                        &lt;/array&gt;
+                                        &lt;/dict&gt;
+                                        &lt;/array&gt;
+                                        &lt;key&gt;FacebookAppID&lt;/key&gt;
+                                        &lt;string&gt;{your-app-id}&lt;/string&gt;
+                                        &lt;key&gt;FacebookClientToken&lt;/key&gt;
+                                        &lt;string&gt;CLIENT-TOKEN&lt;/string&gt;
+                                        &lt;key&gt;FacebookDisplayName&lt;/key&gt;
+                                        &lt;string&gt;{your-app-name}&lt;/string&gt;
+                                        &lt;key&gt;LSApplicationQueriesSchemes&lt;/key&gt;
+                                        &lt;array&gt;
+                                        &lt;string&gt;fbapi&lt;/string&gt;
+                                        &lt;string&gt;fb-messenger-share-api&lt;/string&gt;
+                                        &lt;/array&gt;</code>
+                                </code></pre>
+                            <blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+                                <p>If you have implement&nbsp;<code>another providers</code>&nbsp;(Like Google) in your
+                                    app you should merge values in Info.plist</p>
+                            </blockquote>
+                            <p>Check if you already
+                                have&nbsp;<code>CFBundleURLTypes</code>&nbsp;or&nbsp;<code>LSApplicationQueriesSchemes</code>&nbsp;keys
+                                in your Info.plist. If you have, you should merge their values, instead of adding a
+                                duplicate key.</p>
+                            <p>Example with Google and Facebook implemetation:</p>
+                            <pre class="wp-block-code"><code><code>&lt;key&gt;CFBundleURLTypes&lt;/key&gt;
+                                        &lt;array&gt;
+                                        &lt;dict&gt;
+                                        &lt;key&gt;CFBundleTypeRole&lt;/key&gt;
+                                        &lt;string&gt;Editor&lt;/string&gt;
+                                        &lt;key&gt;CFBundleURLSchemes&lt;/key&gt;
+                                        &lt;array&gt;
+                                        &lt;string&gt;fb{your-app-id}&lt;/string&gt;
+                                        &lt;string&gt;com.googleusercontent.apps.{your-app-specific-url}&lt;/string&gt;
+                                        &lt;/array&gt;
+                                        &lt;/dict&gt;
+                                        &lt;/array&gt;</code></code></pre>
+                        </div>
+
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline"> </h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header>
+                    </article>
+
+                    <article id="post-19337" class="post-19337 docs type-docs status-publish hentry" itemscope=""
+                        itemtype="http://schema.org/Article">
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline">Google sign-in</h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header><!-- .entry-header -->
+
+                        <div class="entry-content" itemprop="articleBody">
+                            <p><br>01. Search for “<strong><mark style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">google cloud
+                                        console</mark></strong>”</p>
+                            <figure class="wp-block-image"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/08/image-53-1024x477.png"
+                                    alt="" class="wp-image-17022"></figure>
+                            <p><br>02. Click the first result<br>03. Login to your account if needed<br>04. Click on the
+                                “<strong><mark style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">Console</mark></strong>”
+                                button on the top-right corner</p>
+                            <figure class="wp-block-image"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/08/image-54-1024x478.png"
+                                    alt="" class="wp-image-17023"></figure>
+                            <p><br>05. Select your project from the top-left corner dropdown</p>
+                            <figure class="wp-block-image"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/08/image-55-1024x478.png"
+                                    alt="" class="wp-image-17024"></figure>
+                            <p><br>06. Click the option icon and at the top-left corner</p>
+                            <figure class="wp-block-image"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/08/image-56-1024x479.png"
+                                    alt="" class="wp-image-17025"></figure>
+                            <p><br>07. Click the “<strong><mark style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">APIs and
+                                        services</mark></strong>” option</p>
+                            <figure class="wp-block-image"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/08/image-57-1024x479.png"
+                                    alt="" class="wp-image-17026"></figure>
+                            <p><br>08. Click on the “<strong><mark style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">OAuth consent
+                                        screen</mark></strong>” option from the left panel</p>
+                            <figure class="wp-block-image"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/08/image-58-1024x477.png"
+                                    alt="" class="wp-image-17027"></figure>
+                            <p><br>09. Chose “<strong><mark style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">External</mark></strong>”
+                                and click “Create”</p>
+                            <figure class="wp-block-image"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/08/image-59-1024x479.png"
+                                    alt="" class="wp-image-17028"></figure>
+                            <p><br>10. Provide the necessary informations and click “<strong><mark
+                                        style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">SAVE AND
+                                        CONTINUE</mark></strong>” for the next two steps and click “<strong><mark
+                                        style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">BACK TO
+                                        DASHBOARD</mark></strong>” for the last step</p>
+                            <figure class="wp-block-image"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/08/image-60.png" alt=""
+                                    class="wp-image-17029"></figure>
+                            <p>11. Now click on “<mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color"><strong>Credentials</strong></mark>“
+                            </p>
+                            <figure class="wp-block-image size-large"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/11/Screenshot-at-Nov-20-12-02-24-1024x505.png"
+                                    alt="" class="wp-image-17415"></figure>
+                            <p>12. Click on “<mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color"><strong>CREATE
+                                        CREDENTIALS</strong></mark>” then “<mark
+                                    style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color"><strong>OAuth client
+                                        ID</strong></mark>“</p>
+                            <figure class="wp-block-image size-large"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/11/Screenshot-at-Nov-20-12-03-16-1024x476.png"
+                                    alt="" class="wp-image-17416"></figure>
+                            <p>13. Select <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color"><strong>Android</strong></mark>
+                                from the dropdown option and provide the necessary info. Then click “<mark
+                                    style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color"><strong>CREATE</strong></mark>“
+                            </p>
+                            <figure class="wp-block-image size-large"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/11/image-35-1024x484.png"
+                                    alt="" class="wp-image-17417"></figure>
+                            <p>14. Sometimes creating credentials with release SHA-1 will not able to Sign-In in app
+                                debug mode. So Try building the app and then try Google Sign-in. If you are using <mark
+                                    style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color"><strong><em>App signing key
+                                            certificate</em></strong></mark> from google play store then also create a
+                                OAuth using Sha-1 key from Play store.</p>
+                            <figure class="wp-block-image size-large"><img decoding="async" width="1024" height="480"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/10/image-119-1024x480.png"
+                                    alt="" class="wp-image-19366"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/10/image-119-1024x480.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-119-300x141.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-119-768x360.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-119-1536x720.png 1536w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-119-930x436.png 930w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-119.png 1916w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                            <p>15. Next steps for IOS.</p>
+                            <p>16. Create another “<mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color"><strong>OAuth client
+                                        ID</strong></mark>“. This time Select “<strong><mark
+                                        style="background-color:rgba(0, 0, 0, 0)"
+                                        class="has-inline-color has-luminous-vivid-amber-color">IOS</mark></strong>” and
+                                provide the necessary info and Click “<mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color"><strong>CREATE</strong></mark>“.
+                            </p>
+                            <figure class="wp-block-image size-large"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/11/image-37-1024x439.png"
+                                    alt="" class="wp-image-17436"></figure>
+                            <p>17. In the Google cloud console, click on the <mark
+                                    style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color"><strong>OAuth
+                                        credential</strong></mark> you created for your ios app</p>
+                            <figure class="wp-block-image size-large"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/11/image-41-1024x425.png"
+                                    alt="" class="wp-image-17441"></figure>
+                            <p>18. Only copy this first section</p>
+                            <figure class="wp-block-image size-large is-resized"><img decoding="async"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2023/11/image-42-1024x422.png"
+                                    alt="" class="wp-image-17442" style="width:840px;height:auto"></figure>
+                            <p>19. Open <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-pale-pink-color">project/ios/Runner/Info.plist</mark> in
+                                any editor, Search for “<mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color">google-reversed-client-Id-for-SignIn</mark>”
+                                and replace with the copied id from <mark style="background-color:rgba(0, 0, 0, 0)"
+                                    class="has-inline-color has-luminous-vivid-amber-color"><strong>step
+                                        18</strong></mark></p>
+                            <figure class="wp-block-image size-large"><img decoding="async" width="1024" height="555"
+                                    src="https://docs.xgenious.com/wp-content/uploads/2024/10/image-120-1024x555.png"
+                                    alt="" class="wp-image-19367"
+                                    srcset="https://docs.xgenious.com/wp-content/uploads/2024/10/image-120-1024x555.png 1024w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-120-300x162.png 300w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-120-768x416.png 768w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-120-1536x832.png 1536w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-120-831x450.png 831w, https://docs.xgenious.com/wp-content/uploads/2024/10/image-120.png 1538w"
+                                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                            <p>24. Run your app and it should be working with Google Sign-In now.</p>
+                        </div>
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline"> </h1>
+                            <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                                title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                        </header>
+                    </article>
+
+
+
+                </div>
+                <div id="source" class="content fade">
+                    
+
+                    <header class="entry-header">
+                        <h1 class="entry-title" itemprop="headline"> </h1>
+                        <a href="#" class="wedocs-print-article wedocs-hide-print wedocs-hide-mobile"
+                            title="Print this article"><i class="wedocs-icon wedocs-icon-print"></i></a>
+                    </header>
+                </div>
+                <div id="support" class="content fade">
+                    <h1> Supports </h1>
+                    <p>Thank you for reading the documentaion. If you still have any question or any problem, please
+                        contact with us. We will give you best support. Thanks.</p>
+                    <a href="https://codecanyon.net/user/xgenious/portfolio">Xgenious</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>

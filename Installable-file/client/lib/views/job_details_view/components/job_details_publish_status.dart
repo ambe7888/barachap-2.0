@@ -1,0 +1,70 @@
+import 'package:flutter/material.dart';
+import 'package:prohandy_client/customizations/colors.dart';
+import 'package:prohandy_client/helper/extension/context_extension.dart';
+import 'package:prohandy_client/services/jobs/job_details_service.dart';
+import 'package:prohandy_client/utils/components/alerts.dart';
+import 'package:provider/provider.dart';
+
+import '../../../helper/local_keys.g.dart';
+
+class JobDetailsPublishStatus extends StatelessWidget {
+  final bool publishStatus;
+  const JobDetailsPublishStatus({super.key, required this.publishStatus});
+
+  @override
+  Widget build(BuildContext context) {
+    final jdProvider = Provider.of<JobDetailsService>(context, listen: false);
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      color: context.color.accentContrastColor,
+      child: ListTile(
+        contentPadding: EdgeInsets.zero,
+        minVerticalPadding: 0,
+        title: Text(
+          LocalKeys.jobPublished,
+          style: context.titleMedium?.bold,
+        ),
+        trailing: Transform.scale(
+          scale: .8,
+          child: Switch(
+            value: publishStatus,
+            onChanged:
+                (jdProvider.jobDetailsModel.isJobHired?.toString() == "0")
+                    ? (newValue) {
+                        Alerts().confirmationAlert(
+                            context: context,
+                            title: LocalKeys.areYouSure,
+                            buttonText: LocalKeys.changeO,
+                            buttonColor: primaryColor,
+                            onConfirm: () async {
+                              await jdProvider
+                                  .tryChangingJobPublishStatus()
+                                  .then((v) {
+                                if (v != true) return;
+                                context.pop;
+                              });
+                            });
+                      }
+                    : null,
+          ),
+        ),
+        onTap: (jdProvider.jobDetailsModel.isJobHired?.toString() == "0")
+            ? () {
+                Alerts().confirmationAlert(
+                    context: context,
+                    title: LocalKeys.areYouSure,
+                    buttonText: LocalKeys.changeO,
+                    buttonColor: primaryColor,
+                    onConfirm: () async {
+                      await jdProvider.tryChangingJobPublishStatus().then((v) {
+                        if (v != true) return;
+                        context.pop;
+                      });
+                    });
+              }
+            : null,
+      ),
+    );
+  }
+}
