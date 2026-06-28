@@ -76,7 +76,7 @@ class ResetPasswordView extends StatelessWidget {
                           return LocalKeys.enterValidEmailAddress;
                         },
                       ),
-                      12.toHeight,
+                      EmptySpaceHelper.emptyHeight(12),
                       Consumer<OtpService>(
                         builder: (context, otpProvider, child) {
                           return CustomButton(
