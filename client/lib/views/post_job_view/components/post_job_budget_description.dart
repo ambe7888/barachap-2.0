@@ -41,7 +41,7 @@ class PostJobBudgetDescription extends StatelessWidget {
                 keyboardType: TextInputType.number,
                 isRequired: true,
                 prefixIcon: SizedBox(
-                  width: 24,
+                  width: 54,
                   child: Center(
                     child: Text(
                       context.dProvider.currencySymbol,

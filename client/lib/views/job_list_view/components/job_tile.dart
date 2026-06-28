@@ -20,9 +20,23 @@ class JobTile extends StatelessWidget {
         context.toNamed(JobDetailsView.routeName, arguments: job.id);
       },
       child: Container(
-        margin: 25.paddingH,
-        padding: 16.paddingAll,
-        color: Colors.transparent,
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: context.color.accentContrastColor,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: context.color.primaryBorderColor.withOpacity(0.6),
+            width: 1,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.03),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -30,28 +44,27 @@ class JobTile extends StatelessWidget {
               jobId: job.id,
               jobStatus: job.status,
             ),
-            6.toHeight,
+            8.toHeight,
             Text(
               job.title ?? "---",
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: context.titleMedium?.bold,
             ),
-            6.toHeight,
-            Wrap(
-              spacing: 8,
-              crossAxisAlignment: WrapCrossAlignment.center,
+            12.toHeight,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 RichText(
                   text: TextSpan(
                       text: "${LocalKeys.budget}: ",
-                      style: context.titleSmall?.bold.copyWith(
+                      style: context.bodyMedium?.copyWith(
                         color: context.color.tertiaryContrastColo,
                       ),
                       children: [
                         TextSpan(
                           text: job.budget.cur,
-                          style: context.titleSmall?.bold.copyWith(
+                          style: context.titleMedium?.bold.copyWith(
                             color: primaryColor,
                           ),
                         )
@@ -60,13 +73,14 @@ class JobTile extends StatelessWidget {
                 if (job.jobOffersCount > 0)
                   SquircleContainer(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 4),
+                          horizontal: 10, vertical: 5),
                       borderColor: context.color.primaryBorderColor,
                       radius: 14,
                       child: Text(
                         "${job.jobOffersCount} ${LocalKeys.offers}",
                         style: context.bodySmall?.copyWith(
-                            color: context.color.secondaryContrastColor),
+                            color: context.color.secondaryContrastColor,
+                            fontWeight: FontWeight.w600),
                       ))
               ],
             )

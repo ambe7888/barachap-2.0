@@ -501,7 +501,7 @@ abstract class LocalKeys {
   static const String _noServiceFound = "No service found!";
   static const String _offerRejectedSuccessfully =
       "Offer rejected successfully";
-  static const String _hello = "Hello ðŸ‘‹";
+  static const String _hello = "Hello 👋";
   static const String _noServiceAddedYet = "No service added yet.";
   static const String _deleteJobConfirmation = "Confirm Job Deletion?";
   static const String _deleteJobDescription =

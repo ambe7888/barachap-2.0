@@ -34,7 +34,7 @@ class JobListView extends StatelessWidget {
     });
     return Consumer<ProfileInfoService>(builder: (context, pi, child) {
       return Scaffold(
-        backgroundColor: context.color.accentContrastColor,
+        backgroundColor: context.color.backgroundColor,
         appBar: AppBar(
           title: Text(LocalKeys.allJobs),
         ),
@@ -54,7 +54,7 @@ class JobListView extends StatelessWidget {
                     await jl.fetchJobList(refresh: true);
                   },
                   child: CustomFutureWidget(
-                    function: jl.shouldAutoFetch ? jl.fetchJobList() : null,
+                     function: jl.shouldAutoFetch ? jl.fetchJobList() : null,
                     shimmer: const JobListSkeleton(),
                     child: jl.jobListModel.jobs?.isEmpty ?? true
                         ? EmptyWidget(title: LocalKeys.noJobFound)
@@ -62,21 +62,14 @@ class JobListView extends StatelessWidget {
                             physics: const AlwaysScrollableScrollPhysics(),
                             controller: jlm.scrollController,
                             slivers: [
-                              SliverList.separated(
-                                itemBuilder: (context, index) {
-                                  final job = jl.jobListModel.jobs![index];
-                                  return JobTile(job: job);
-                                },
-                                separatorBuilder: (context, index) => Padding(
-                                  padding: 24.paddingH,
-                                  child: Divider(
-                                    height: 1,
-                                    thickness: 1,
-                                    color: context.color.mutedContrastColor,
-                                  ),
-                                ),
-                                itemCount: jl.jobListModel.jobs?.length ?? 0,
-                              ),
+                               SliverList.separated(
+                                 itemBuilder: (context, index) {
+                                   final job = jl.jobListModel.jobs![index];
+                                   return JobTile(job: job);
+                                 },
+                                 separatorBuilder: (context, index) => const SizedBox(),
+                                 itemCount: jl.jobListModel.jobs?.length ?? 0,
+                               ),
                               24.toHeight.toSliver,
                               if (jl.nextPage != null &&
                                   !jl.nexLoadingFailed) ...[
