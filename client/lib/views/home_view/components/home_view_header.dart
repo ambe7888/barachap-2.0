@@ -12,6 +12,7 @@ import 'package:prohandy_client/views/service_result_view/service_result_view.da
 import 'package:provider/provider.dart';
 
 import '../../../services/service/services_search_service.dart';
+import 'package:prohandy_client/helper/local_keys.g.dart';
 
 class HomeViewHeader extends StatelessWidget {
   const HomeViewHeader({super.key});
@@ -51,6 +52,10 @@ class HomeViewHeader extends StatelessWidget {
                   textInputAction: TextInputAction.search,
                   decoration: InputDecoration(
                     fillColor: context.color.accentContrastColor,
+                    hintText: LocalKeys.searchService,
+                    hintStyle: context.bodyMedium?.copyWith(
+                      color: context.color.mutedContrastColor,
+                    ),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(100),
                         borderSide: BorderSide(

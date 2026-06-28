@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:prohandy_client/helper/extension/string_extension.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:prohandy_client/helper/local_keys.g.dart';
+
 class IntroService with ChangeNotifier {
-  final introData = [
+  List<Map<String, dynamic>> get introData => [
     {
-      "title": "Welcome to Prohandy",
-      "description":
-          "Book expert handymen for any task—repairs, shifting, plumbing, and laundry. Experience reliable service and peace of mind.",
+      "title": LocalKeys.welcomeToProhandy,
+      "description": LocalKeys.bookExpertHandymen,
       "image": "assets/images/intro_1.png",
     },
     {
-      "title": "Book from Services",
-      "description":
-          "Book yours from a wide range of services listed by the professional handyman service providers & get your things done!",
+      "title": LocalKeys.bookFromServices,
+      "description": LocalKeys.bookYoursFromAWideRange,
       "image": "assets/images/intro_2.png",
     },
     {
-      "title": "Post Jobs",
-      "description":
-          "Didn’t find what you’re looking for? Have no worries! Post a job and hire best candidate from hundreds of handyman.",
+      "title": LocalKeys.postJobs,
+      "description": LocalKeys.didntFindWhatYoureLookingFor,
       "image": "assets/images/intro_3.png",
     },
   ];
