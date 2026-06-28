@@ -80,7 +80,7 @@
             padding: 10px 15px;
             display: inline-block;
         }
-        input#price, input#phone {
+        input#phone {
             padding: 5px 0 5px 76px;
         }
         input.effectBorder.checkBox__input {

@@ -120,31 +120,25 @@
         <div class="col-lg-4">
             <!-- Price -->
             <div class="col-lg-12 col-md-12 mt-5">
-                <div class="form__input__single position-relative">
-                    <label class="infoTitle position-absolute">{{ __('Price') }} <span class="text-danger">*</span></label>
-                    <div class="input-form input-form2">
-                        <input type="number" class="form__control radius-5" name="price" id="price" value="{{ $service->price }}" placeholder="{{__('0.00')}}">
-                    </div>
+                <div class="form__input__single">
+                    <label class="form__input__single__label">{{ __('Price') }} <span class="text-danger">*</span></label>
+                    <input type="number" class="form__control radius-5" name="price" id="price" value="{{ $service->price }}" placeholder="{{__('0.00')}}">
                 </div>
             </div>
 
             <!-- Discount Price -->
             <div class="col-lg-12 col-md-12 mt-4">
-                <div class="form__input__single position-relative">
-                    <label class="infoTitle">{{ __('Discount Price') }} <span class="text-danger">*</span></label>
-                    <div class="input-form input-form2">
-                        <input type="number" class="form__control radius-5" name="discount_price" id="discount_price" value="{{ $service->discount_price }}" placeholder="{{__('0.00')}}">
-                    </div>
+                <div class="form__input__single">
+                    <label class="form__input__single__label">{{ __('Discount Price') }} <span class="text-danger">*</span></label>
+                    <input type="number" class="form__control radius-5" name="discount_price" id="discount_price" value="{{ $service->discount_price }}" placeholder="{{__('0.00')}}">
                 </div>
             </div>
 
             <!-- Service Unit -->
             <div class="col-lg-12 col-md-12 mt-4">
-                <div class="form__input__single position-relative">
-                    <label class="infoTitle">{{ __('Unit') }}</label>
-                    <div class="input-form input-form2">
-                        <input type="text" class="form__control radius-5" name="unit" id="unit" value="{{ $service->unit }}" placeholder="{{ __('e.g., kg, gm, m, L,hr, km/h, m²') }}">
-                    </div>
+                <div class="form__input__single">
+                    <label class="form__input__single__label">{{ __('Unit') }}</label>
+                    <input type="text" class="form__control radius-5" name="unit" id="unit" value="{{ $service->unit }}" placeholder="{{ __('e.g., kg, gm, m, L,hr, km/h, m²') }}">
                 </div>
             </div>
 
