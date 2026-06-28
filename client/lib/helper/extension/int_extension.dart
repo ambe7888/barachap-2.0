@@ -28,7 +28,7 @@ extension CurrencyExtension on num {
       symbol:
           dProvider
               .currencySymbol, // We'll add currency symbol separately via .cur
-      decimalDigits: 2,
+      decimalDigits: 0,
     );
     return formatter.format(this).trim();
   }

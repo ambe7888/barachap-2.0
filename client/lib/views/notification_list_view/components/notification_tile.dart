@@ -74,7 +74,7 @@ class NotificationTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      notification.message ?? LocalKeys.na,
+                      notification.message?.tr() ?? LocalKeys.na,
                       style: context.titleMedium?.bold.copyWith(),
                     ),
                     4.toHeight,
