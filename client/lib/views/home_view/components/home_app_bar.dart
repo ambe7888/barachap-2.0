@@ -31,10 +31,12 @@ class HomeAppBar extends StatelessWidget {
                   ? context.color.secondaryContrastColor
                   : context.color.accentContrastColor;
               return AppBar(
-                leading: Image.asset(
-                  value > 100
-                      ? "assets/images/loading_image.png"
-                      : "assets/images/icon_white.png",
+                leading: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Image.asset(
+                    "assets/images/app_icon.png",
+                    fit: BoxFit.contain,
+                  ),
                 ),
                 systemOverlayStyle: ts.darkTheme
                     ? SystemUiOverlayStyle.light

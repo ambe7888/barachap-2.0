@@ -25,12 +25,17 @@ class SplashView extends StatelessWidget {
           child: Stack(
             alignment: Alignment.center,
             children: [
-              SizedBox(
+              Container(
+                color: Colors.white,
                 width: double.infinity,
                 height: double.infinity,
-                child: Image.asset(
-                  'assets/images/splash.png',
-                  fit: BoxFit.cover,
+                child: Center(
+                  child: Image.asset(
+                    'assets/images/splash.png',
+                    width: 180,
+                    height: 180,
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ),
               Consumer<DynamicsService>(builder: (context, lProvider, child) {

@@ -3191,3 +3191,7 @@ Stack trace:
 #64 C:\\xampp\\htdocs\\barachap\\index.php(69): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #65 {main}
 "} 
+[2026-06-28 21:24:45] production.ERROR: Class "App\Models\Page" not found {"exception":"[object] (Error(code: 0): Class \"App\\Models\\Page\" not found at C:\\xampp\\htdocs\\barachap\\core\\check_pages.php:7)
+[stacktrace]
+#0 {main}
+"} 
