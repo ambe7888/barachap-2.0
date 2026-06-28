@@ -1,0 +1,12 @@
+---
+deployment:
+  tasks:
+    # 1. Définir le chemin vers le dossier racine de ton hébergement (souvent public_html)
+    # Remplace 'ton_nom_utilisateur' par ton vrai nom d'utilisateur cPanel
+    - export DEPLOYPATH=/home/ton_nom_utilisateur/public_html/
+    
+    # 2. Copier tous les fichiers du dépôt vers le dossier de déploiement
+    - /bin/cp -R * $DEPLOYPATH
+    
+    # 3. (Optionnel) Vider le cache Laravel
+    # - /usr/local/bin/php $DEPLOYPATH/web/core/artisan optimize:clear
