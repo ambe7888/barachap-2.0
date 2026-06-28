@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if(!Schema::hasTable('services'))
+        if(Schema::hasTable('services'))
         {
             Schema::table('services', function (Blueprint $table) {
-                $table->string('staffs_id')->nullable();
-                $table->boolean('disable_staff')->default(0);
-
+                if (!Schema::hasColumn('services', 'staffs_id')) {
+                    $table->string('staffs_id')->nullable();
+                }
+                if (!Schema::hasColumn('services', 'disable_staff')) {
+                    $table->boolean('disable_staff')->default(0);
+                }
             });
         }
     }
