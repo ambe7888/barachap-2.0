@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:prohandy_client/models/color_model.dart';
 
-const Color primaryColor = Color(0xFF175CDE);
+const Color primaryColor = Color(0xFF1DBF73);
 Color get mutedPrimaryColor => primaryColor.withOpacity(.1);
 
 //Light theme colors
