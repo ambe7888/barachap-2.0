@@ -28,7 +28,7 @@
                     <div class="porduct_search">
                         <input type="text" class="form--control porduct_search__input radius-5 string_search"
                                name="string_search" id="string_search" placeholder="{{ __('Search order') }}">
-                        <button type="submit" class="porduct_search__icon"><i class="material-symbols-outlined">{{ __('search') }}</i> </button>
+                        <button type="submit" class="porduct_search__icon"><i class="material-symbols-outlined">search</i> </button>
                     </div>
                 </div>
             </div>

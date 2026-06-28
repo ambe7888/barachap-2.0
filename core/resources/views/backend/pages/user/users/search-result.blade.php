@@ -47,7 +47,8 @@
                     @endif
                 </td>
                 <td class="actions">
-                    <a class="cmnBtn btn_5 btn_bg_warning radius-5 user_details"
+                    <a class="cmnBtn btn_5 btn_bg_warning radius-5 btnIcon user_details"
+                       title="{{ __('Edit User') }}"
                        data-bs-toggle="modal"
                        data-bs-target="#userDetailsEditModal"
                        data-user_id="{{ $user->id }}"
@@ -60,20 +61,22 @@
                        data-state_id="{{ $user->state_id }}"
                        data-city="{{ optional($user->user_city)->city }}"
                        data-city_id="{{ $user->city_id }}">
-                        {{ __('Edit User') }}
+                        <i class="las la-pen"></i>
                     </a>
 
                     @can('user-verify-status')
-                       <a class="cmnBtn btn_5 btn_bg_primary radius-5 user_identity_details"
+                       <a class="cmnBtn btn_5 btn_bg_primary radius-5 btnIcon user_identity_details"
+                           title="{{ __('View Identity') }}"
                            data-bs-toggle="modal"
                            data-bs-target="#userIdentityModal"
                            data-user_id="{{ $user->id }}">
-                            {{ __('View Identity') }}
+                            <i class="las la-id-card"></i>
                         </a>
                         @endcan
 
                     @can('user-password')
                         <a class="cmnBtn btn_5 btn_bg_secondary radius-5 btnIcon user_password_update_modal"
+                           title="{{ __('Change Password') }}"
                            data-bs-toggle="modal"
                            data-bs-target="#userPasswordModal"
                            data-user_id_for_change_password="{{ $user->id }}">

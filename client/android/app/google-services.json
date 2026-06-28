@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:1035048558864:android:c2af1851edd5afb8e6c595",
         "android_client_info": {
-          "package_name": "com.xgenious.prohandy_client"
+          "package_name": "ci.barachap.client"
         }
       },
       "oauth_client": [],

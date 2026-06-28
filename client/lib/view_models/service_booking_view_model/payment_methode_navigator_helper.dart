@@ -21,7 +21,6 @@ import '../../services/payment/paytabs_payment.dart';
 import '../../services/payment/paytm_payment.dart';
 import '../../services/payment/razorpay_payment.dart';
 import '../../services/payment/squareup_payment.dart';
-import '../../services/payment/stripe_payment.dart';
 import '../../services/payment/toyyibpay_payment.dart';
 import '../../services/payment/zitopay_payment.dart';
 
@@ -83,18 +82,7 @@ Future startPayment(BuildContext context,
     );
     return;
   }
-  if (selectedGateway.name!.toLowerCase().contains('stripe')) {
-    print('here');
-    await StripePayment().makePayment(
-        context,
-        selectedGateway.credentials?.publicKey,
-        selectedGateway.credentials?.secretKey,
-        amount,
-        dProvider.currencyCode,
-        onSuccess,
-        onFailed);
-    return;
-  }
+
   if (selectedGateway.name!.toLowerCase().contains('razorpay')) {
     context.toPage(
       RazorpayPayment(

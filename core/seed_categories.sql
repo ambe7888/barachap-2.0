@@ -1,0 +1,17 @@
+INSERT INTO categories (id, name, slug, status, created_at, updated_at) VALUES 
+(1, 'Coiffure et beauté', 'coiffure-et-beaute', 1, NOW(), NOW()),
+(2, 'Menuiserie', 'menuiserie', 1, NOW(), NOW()),
+(3, 'Climatisation', 'climatisation', 1, NOW(), NOW()),
+(4, 'Electricité', 'electricite', 1, NOW(), NOW()),
+(5, 'Transport', 'transport', 1, NOW(), NOW()),
+(6, 'Lessive', 'lessive', 1, NOW(), NOW()),
+(7, 'Plomberie', 'plomberie', 1, NOW(), NOW()),
+(8, 'Peinture', 'peinture', 1, NOW(), NOW()),
+(9, 'Nettoyage', 'nettoyage', 1, NOW(), NOW()),
+(10, 'Jardinage', 'jardinage', 1, NOW(), NOW()),
+(11, 'Bricolage', 'bricolage', 1, NOW(), NOW()),
+(12, 'Déménagement', 'demenagement', 1, NOW(), NOW()),
+(13, 'Informatique', 'informatique', 1, NOW(), NOW()),
+(14, 'Mécanique', 'mecanique', 1, NOW(), NOW()),
+(15, 'Soutien scolaire', 'soutien-scolaire', 1, NOW(), NOW()),
+(16, 'Garde d''enfants', 'garde-d-enfants', 1, NOW(), NOW());
