@@ -39,6 +39,7 @@ class JobDetailsView extends StatelessWidget {
     final jobId = context.arguments;
     return Consumer<JobDetailsService>(builder: (context, jd, child) {
       return Scaffold(
+          backgroundColor: context.color.backgroundColor,
           appBar: AppBar(
             leading: const NavigationPopIcon(),
             title: Text(LocalKeys.jobDetails),

@@ -21,6 +21,7 @@ class PostJobView extends StatelessWidget {
   Widget build(BuildContext context) {
     final pjm = PostJobViewModel.instance;
     return Scaffold(
+      backgroundColor: context.color.backgroundColor,
       appBar: AppBar(
         leading: NavigationPopIcon(
           onTap: () {

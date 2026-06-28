@@ -58,7 +58,7 @@ class ServiceResultView extends StatelessWidget {
           })
         ],
       ),
-      backgroundColor: context.color.accentContrastColor,
+      backgroundColor: context.color.backgroundColor,
       body: CustomRefreshIndicator(
         onRefresh: () async {
           await ssProvider.fetchHomeFeaturedServices(refreshing: true);
@@ -91,10 +91,7 @@ class ServiceResultView extends StatelessWidget {
                       final service = ss.searchResultModel.allServices[index];
                       return ServiceTile(service: service);
                     },
-                    separatorBuilder: (context, index) => Divider(
-                      color: context.color.primaryBorderColor,
-                      height: 2,
-                    ).hp20,
+                    separatorBuilder: (context, index) => const SizedBox(),
                     itemCount: ss.searchResultModel.allServices.length,
                   ),
                 if (ss.nextPage != null &&

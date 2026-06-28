@@ -30,14 +30,30 @@ class ServiceTile extends StatelessWidget {
         });
       },
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: context.color.accentContrastColor,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: context.color.primaryBorderColor.withOpacity(0.6),
+            width: 1,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.02),
+              blurRadius: 8,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomNetworkImage(
-              height: 64,
-              width: 64,
-              radius: 10,
+              height: 72,
+              width: 72,
+              radius: 8,
               fit: BoxFit.cover,
               imageUrl: service.image,
             ),

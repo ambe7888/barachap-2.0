@@ -17,10 +17,25 @@ class JobDetailsGallery extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       padding: const EdgeInsets.symmetric(vertical: 16),
-      color: context.color.accentContrastColor,
+      decoration: BoxDecoration(
+        color: context.color.accentContrastColor,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: context.color.primaryBorderColor.withOpacity(0.6),
+          width: 1,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.02),
+            blurRadius: 8,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
       child: SingleChildScrollView(
-        padding: 24.paddingH,
+        padding: 16.paddingH,
         scrollDirection: Axis.horizontal,
         child: Wrap(
           spacing: 12,

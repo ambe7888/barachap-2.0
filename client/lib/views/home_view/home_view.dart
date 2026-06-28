@@ -17,6 +17,7 @@ import 'package:provider/provider.dart';
 import '../../services/home_services/home_featured_services_service.dart';
 import '../../services/home_services/landing_offer_service.dart';
 import 'components/home_categories.dart';
+import 'components/home_category_services_list.dart';
 import 'components/home_featured_services.dart';
 import 'components/home_job_post_banner.dart';
 import 'components/home_providers.dart';
@@ -66,14 +67,13 @@ class HomeView extends StatelessWidget {
                     [
                       8.toHeight,
                       const HomeCategories(),
-                      const HomeFeaturedServices(),
-                      8.toHeight,
                       const HomeSlider(),
                       8.toHeight,
-                      const HomeProviders(),
-                      const HomePopularServices(),
+                      const HomeFeaturedServices(),
                       8.toHeight,
                       const HomeJobPostBanner(),
+                      8.toHeight,
+                      const HomeCategoryServicesScrolls(),
                       8.toHeight,
                     ],
                   ))
@@ -86,3 +86,24 @@ class HomeView extends StatelessWidget {
     );
   }
 }
+
+class HomeCategoryServicesScrolls extends StatelessWidget {
+  const HomeCategoryServicesScrolls({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<HomeCategoryService>(
+      builder: (context, hc, child) {
+        if (hc.categoryList == null || hc.categoryList!.isEmpty) {
+          return const SizedBox();
+        }
+        return Column(
+          children: hc.categoryList!.map((cat) {
+            return HomeCategoryServicesList(category: cat);
+          }).toList(),
+        );
+      },
+    );
+  }
+}
+

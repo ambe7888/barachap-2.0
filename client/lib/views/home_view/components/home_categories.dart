@@ -47,7 +47,7 @@ class HomeCategories extends StatelessWidget {
                   children: hc.categoryList!.map((cat) {
                     return GestureDetector(
                       onTap: () {
-                        context.toPage(ServiceByCategoryView(catId: cat.id));
+                        context.toPage(ServiceByCategoryView(catId: cat.id, catName: cat.name));
                       },
                       child: CategoryCard(
                         category: cat,

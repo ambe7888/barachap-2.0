@@ -34,7 +34,7 @@ class ServiceByCategoryView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: const NavigationPopIcon(),
-        title: Text(LocalKeys.back),
+        title: Text(catName ?? LocalKeys.back),
         actions: [
           Consumer<ServiceByCategoryService>(builder: (context, ss, child) {
             if (ss.serviceByCategoryModel.allServices.isEmpty) {
@@ -60,7 +60,7 @@ class ServiceByCategoryView extends StatelessWidget {
           })
         ],
       ),
-      backgroundColor: context.color.accentContrastColor,
+      backgroundColor: context.color.backgroundColor,
       body: CustomRefreshIndicator(
         onRefresh: () async {
           await ssProvider.fetchServices(refreshing: true, catId: catId);
@@ -90,10 +90,7 @@ class ServiceByCategoryView extends StatelessWidget {
                           sc.serviceByCategoryModel.allServices[index];
                       return ServiceTile(service: service);
                     },
-                    separatorBuilder: (context, index) => Divider(
-                      color: context.color.primaryBorderColor,
-                      height: 2,
-                    ).hp20,
+                    separatorBuilder: (context, index) => const SizedBox(),
                     itemCount: sc.serviceByCategoryModel.allServices.length,
                   ),
                   if (sc.nextPage != null && !sc.nexLoadingFailed)

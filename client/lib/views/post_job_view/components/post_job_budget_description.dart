@@ -16,9 +16,23 @@ class PostJobBudgetDescription extends StatelessWidget {
     final pjm = PostJobViewModel.instance;
     return SingleChildScrollView(
       child: Container(
-        margin: const EdgeInsets.only(top: 16),
-        padding: 24.paddingAll,
-        color: context.color.accentContrastColor,
+        margin: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: context.color.accentContrastColor,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(
+            color: context.color.primaryBorderColor.withOpacity(0.6),
+            width: 1,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.02),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
         child: Form(
           key: pjm.budgetFormKey,
           child: Column(
