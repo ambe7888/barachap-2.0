@@ -44,6 +44,7 @@ class PhoneField extends StatelessWidget {
             maxLength: phoneLength(value),
             decoration: InputDecoration(
               hintText: hintText,
+              counterText: '',
               prefixIcon: ValueListenableBuilder(
                 valueListenable: phone,
                 builder: (context, value, child) => GestureDetector(
@@ -178,8 +179,8 @@ class PhoneField extends StatelessWidget {
                         ValueListenableBuilder(
                           valueListenable: phone,
                           builder: (context, value, child) => Text(
-                              "${value?.flag.toString() ?? "🇧🇩"} +" +
-                                  (phone.value?.dialCode ?? "880")),
+                              "${value?.flag.toString() ?? "🇨🇮"} +" +
+                                  (phone.value?.dialCode ?? "225")),
                         ),
                         Icon(
                           Icons.keyboard_arrow_down_rounded,
@@ -239,15 +240,20 @@ class PhoneField extends StatelessWidget {
   }
 
   loadCountries() async {
+    if (countryList.isNotEmpty) return;
     var data = await rootBundle.loadString("assets/files/phones.json");
     List tempList = json.decode(data);
     for (var element in tempList) {
-      countryList.add(Phone(
+      final p = Phone(
           name: element['label'],
           code: element["code"],
           dialCode: element['phone'],
           flag: element['flag'],
-          phoneLength: element['phoneLength']));
+          phoneLength: element['phoneLength']);
+      countryList.add(p);
+      if (phone.value == null && element['code'] == 'CI') {
+        phone.value = p;
+      }
     }
   }
 }

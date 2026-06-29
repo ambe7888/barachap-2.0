@@ -41,7 +41,7 @@
     { "code": "CF", "label": "Central African Republic", "phone": "236", "phoneLength": 8, "flag": "🇨🇫"},
     { "code": "CG", "label": "Congo, Republic of the", "phone": "242", "phoneLength": 9, "flag": "🇨🇬"},
     { "code": "CH", "label": "Switzerland", "phone": "41", "phoneLength": 9, "flag": "🇨🇭"},
-    { "code": "CI", "label": "Cote d'Ivoire", "phone": "225", "phoneLength": 8, "flag": "🇨🇮"},
+    { "code": "CI", "label": "Cote d'Ivoire", "phone": "225", "phoneLength": 10, "flag": "🇨🇮"},
     { "code": "CK", "label": "Cook Islands", "phone": "682", "phoneLength": 5, "flag": "🇨🇰"},
     { "code": "CL", "label": "Chile", "phone": "56", "phoneLength": 9, "flag": "🇨🇱"},
     { "code": "CM", "label": "Cameroon", "phone": "237", "phoneLength": 9, "flag": "🇨🇲"},
