@@ -31,7 +31,7 @@ trait OtpGlobalTrait
 
         if ($client['gateway'] === 'whatsapp') {
             try {
-                $waNumber = ltrim($receiverNumber, '+');
+                $waNumber = preg_replace('/[^0-9]/', '', $receiverNumber);
                 $waToken = $client['client']['token'] ?? '';
                 $waPhoneId = $client['client']['phone_id'] ?? '';
                 $waTemplate = $client['client']['template'] ?? 'otp_template';
@@ -66,11 +66,12 @@ trait OtpGlobalTrait
                     return true;
                 }
                 
-                \Illuminate\Support\Facades\Log::error('WhatsApp API Error: ' . $response->body());
-                return false;
+                $errorMsg = $response->body();
+                \Illuminate\Support\Facades\Log::error('WhatsApp API Error: ' . $errorMsg);
+                throw new \Exception('Meta API: ' . $errorMsg);
             } catch (\Exception $e) {
                 \Illuminate\Support\Facades\Log::error('WhatsApp API Exception: ' . $e->getMessage());
-                return false;
+                throw $e;
             }
         }
 

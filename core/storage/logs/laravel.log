@@ -3237,3 +3237,79 @@ Stack trace:
 [stacktrace]
 #0 {main}
 "} 
+[2026-06-29 20:51:47] production.ERROR: SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée (Connection: mysql, SQL: select * from `sms_gateways` where `name` = whatsapp limit 1) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 2002): SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée (Connection: mysql, SQL: select * from `sms_gateways` where `name` = whatsapp limit 1) at C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:829)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(783): Illuminate\\Database\\Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#1 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(414): Illuminate\\Database\\Connection->run('select * from `...', Array, Object(Closure))
+#2 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(2913): Illuminate\\Database\\Connection->select('select * from `...', Array, true)
+#3 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(2902): Illuminate\\Database\\Query\\Builder->runSelect()
+#4 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3456): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#5 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(2901): Illuminate\\Database\\Query\\Builder->onceWithColumns(Array, Object(Closure))
+#6 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(739): Illuminate\\Database\\Query\\Builder->get(Array)
+#7 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(723): Illuminate\\Database\\Eloquent\\Builder->getModels(Array)
+#8 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Concerns\\BuildsQueries.php(333): Illuminate\\Database\\Eloquent\\Builder->get(Array)
+#9 C:\\xampp\\htdocs\\barachap\\core\\test_db.php(7): Illuminate\\Database\\Eloquent\\Builder->first()
+#10 {main}
+
+[previous exception] [object] (PDOException(code: 2002): SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée at C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php:65)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(65): PDO->__construct('mysql:host=loca...', 'root', Object(SensitiveParameterValue), Array)
+#1 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(44): Illuminate\\Database\\Connectors\\Connector->createPdoConnection('mysql:host=loca...', 'root', '', Array)
+#2 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\MySqlConnector.php(24): Illuminate\\Database\\Connectors\\Connector->createConnection('mysql:host=loca...', Array, Array)
+#3 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\ConnectionFactory.php(184): Illuminate\\Database\\Connectors\\MySqlConnector->connect(Array)
+#4 [internal function]: Illuminate\\Database\\Connectors\\ConnectionFactory->Illuminate\\Database\\Connectors\\{closure}()
+#5 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(1339): call_user_func(Object(Closure))
+#6 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(1375): Illuminate\\Database\\Connection->getPdo()
+#7 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(528): Illuminate\\Database\\Connection->getReadPdo()
+#8 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(423): Illuminate\\Database\\Connection->getPdoForSelect(true)
+#9 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(816): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('select * from `...', Array)
+#10 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(783): Illuminate\\Database\\Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#11 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(414): Illuminate\\Database\\Connection->run('select * from `...', Array, Object(Closure))
+#12 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(2913): Illuminate\\Database\\Connection->select('select * from `...', Array, true)
+#13 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(2902): Illuminate\\Database\\Query\\Builder->runSelect()
+#14 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3456): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#15 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(2901): Illuminate\\Database\\Query\\Builder->onceWithColumns(Array, Object(Closure))
+#16 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(739): Illuminate\\Database\\Query\\Builder->get(Array)
+#17 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(723): Illuminate\\Database\\Eloquent\\Builder->getModels(Array)
+#18 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Concerns\\BuildsQueries.php(333): Illuminate\\Database\\Eloquent\\Builder->get(Array)
+#19 C:\\xampp\\htdocs\\barachap\\core\\test_db.php(7): Illuminate\\Database\\Eloquent\\Builder->first()
+#20 {main}
+"} 
+[2026-06-29 20:53:28] production.ERROR: SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée (Connection: mysql, SQL: select * from `sms_gateways` where `status` = 1 limit 1) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 2002): SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée (Connection: mysql, SQL: select * from `sms_gateways` where `status` = 1 limit 1) at C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:829)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(783): Illuminate\\Database\\Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#1 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(414): Illuminate\\Database\\Connection->run('select * from `...', Array, Object(Closure))
+#2 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(2913): Illuminate\\Database\\Connection->select('select * from `...', Array, true)
+#3 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(2902): Illuminate\\Database\\Query\\Builder->runSelect()
+#4 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3456): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#5 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(2901): Illuminate\\Database\\Query\\Builder->onceWithColumns(Array, Object(Closure))
+#6 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(739): Illuminate\\Database\\Query\\Builder->get(Array)
+#7 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(723): Illuminate\\Database\\Eloquent\\Builder->getModels(Array)
+#8 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Concerns\\BuildsQueries.php(333): Illuminate\\Database\\Eloquent\\Builder->get(Array)
+#9 C:\\xampp\\htdocs\\barachap\\core\\check_gateway.php(7): Illuminate\\Database\\Eloquent\\Builder->first()
+#10 {main}
+
+[previous exception] [object] (PDOException(code: 2002): SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée at C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php:65)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(65): PDO->__construct('mysql:host=loca...', 'root', Object(SensitiveParameterValue), Array)
+#1 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(44): Illuminate\\Database\\Connectors\\Connector->createPdoConnection('mysql:host=loca...', 'root', '', Array)
+#2 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\MySqlConnector.php(24): Illuminate\\Database\\Connectors\\Connector->createConnection('mysql:host=loca...', Array, Array)
+#3 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\ConnectionFactory.php(184): Illuminate\\Database\\Connectors\\MySqlConnector->connect(Array)
+#4 [internal function]: Illuminate\\Database\\Connectors\\ConnectionFactory->Illuminate\\Database\\Connectors\\{closure}()
+#5 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(1339): call_user_func(Object(Closure))
+#6 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(1375): Illuminate\\Database\\Connection->getPdo()
+#7 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(528): Illuminate\\Database\\Connection->getReadPdo()
+#8 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(423): Illuminate\\Database\\Connection->getPdoForSelect(true)
+#9 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(816): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('select * from `...', Array)
+#10 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(783): Illuminate\\Database\\Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#11 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(414): Illuminate\\Database\\Connection->run('select * from `...', Array, Object(Closure))
+#12 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(2913): Illuminate\\Database\\Connection->select('select * from `...', Array, true)
+#13 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(2902): Illuminate\\Database\\Query\\Builder->runSelect()
+#14 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3456): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#15 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(2901): Illuminate\\Database\\Query\\Builder->onceWithColumns(Array, Object(Closure))
+#16 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(739): Illuminate\\Database\\Query\\Builder->get(Array)
+#17 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(723): Illuminate\\Database\\Eloquent\\Builder->getModels(Array)
+#18 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Concerns\\BuildsQueries.php(333): Illuminate\\Database\\Eloquent\\Builder->get(Array)
+#19 C:\\xampp\\htdocs\\barachap\\core\\check_gateway.php(7): Illuminate\\Database\\Eloquent\\Builder->first()
+#20 {main}
+"} 

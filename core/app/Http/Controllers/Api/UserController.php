@@ -329,9 +329,11 @@ class UserController extends Controller
                         'status'  => 'success',
                     ]);
                 } else {
+                    $test_client = $this->config();
+                    $dbg = 'GW: ' . ($test_client['gateway'] ?? 'null') . ' | Token: ' . substr($test_client['client']['token'] ?? 'NONE', 0, 5);
                     // If the OTP wasn't sent successfully, return an error response
                     return response()->json([
-                        'message' => __('Failed to send OTP. Please try again later.'),
+                        'message' => 'Debug -> ' . $dbg,
                         'status'  => 'error',
                     ], 500);
                 }
@@ -340,7 +342,7 @@ class UserController extends Controller
                 \Log::error('OTP Send Error: ' . $e->getMessage() . ' Trace: ' . $e->getTraceAsString());
                 // Handle any other general exceptions
                 return response()->json([
-                    'message' => __('An unexpected error occurred. Please try again later.'),
+                    'message' => __('An unexpected error occurred.') . ' Details: ' . $e->getMessage(),
                     'status' => 'error',
                 ], 500);
             }
