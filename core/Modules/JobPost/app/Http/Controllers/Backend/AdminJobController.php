@@ -103,7 +103,7 @@ class AdminJobController extends Controller
     public function change_status($id)
     {
         $job = JobPost::with('job_creator', 'client')->find($id);
-        $job->status === 1 ? $status = 0 : $status = 1;
+        $job->status == 1 ? $status = 0 : $status = 1;
 
         $job->update([
             'status'=>$status,

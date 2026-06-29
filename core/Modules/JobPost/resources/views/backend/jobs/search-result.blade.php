@@ -37,7 +37,7 @@
                 {{ $job->published_at ? \Carbon\Carbon::parse($job->published_at)->format('F j, Y') : __('No date yet') }}
             </td>
             <td>
-                @if($job->is_published === 1)
+                @if($job->is_published == 1)
                     <span class="alert alert-success">{{__('Published')}}</span>
                 @else
                     <span class="alert alert-warning">{{__('Unpublished')}}</span>

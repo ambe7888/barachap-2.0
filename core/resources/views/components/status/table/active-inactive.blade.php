@@ -25,10 +25,10 @@
     }
 </style>
 
-@if($status === 1)
+@if($status == 1)
     <span class="alert alert-success">{{__('Active')}}</span>
-@elseif($status === 0)
+@elseif($status == 0)
     <span class="alert alert-warning" >{{__('Inactive')}}</span>
-@elseif($status === 2)
+@elseif($status == 2)
     <span class="alert alert-danger" >{{__('Rejected')}}</span>
 @endif
