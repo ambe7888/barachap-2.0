@@ -37,7 +37,7 @@ class SmsSettingsController extends Controller
         abort_if($request->method() == 'GET', 404);
 
         $request->validate([
-            'sms_gateway_name' => 'required|in:nexmo,twilio,msg91',
+            'sms_gateway_name' => 'required|in:nexmo,twilio,msg91,whatsapp',
             'user_otp_expire_time' => 'required|numeric',
             'nexmo_api_key' => 'required_if:sms_gateway_name,nexmo',
             'nexmo_api_secret' => 'required_if:sms_gateway_name,nexmo',
@@ -49,6 +49,9 @@ class SmsSettingsController extends Controller
             'msg91_notify_admin_register_template_id' => 'nullable',
             'msg91_notify_user_order_template_id' => 'nullable',
             'msg91_notify_admin_order_template_id' => 'nullable',
+            'whatsapp_cloud_token' => 'required_if:sms_gateway_name,whatsapp',
+            'whatsapp_phone_number_id' => 'required_if:sms_gateway_name,whatsapp',
+            'whatsapp_otp_template_name' => 'required_if:sms_gateway_name,whatsapp',
         ]);
 
         $fields = [];
@@ -84,8 +87,13 @@ class SmsSettingsController extends Controller
 
         SmsGateway::where('name', '!=', $validated['option_name'])->update(['status' => false]);
 
-        $sms_gateway = SmsGateway::where('name', $validated['option_name'])->first();
-        $sms_gateway?->update([
+        $sms_gateway = SmsGateway::firstOrCreate([
+            'name' => $validated['option_name']
+        ], [
+            'status' => false
+        ]);
+
+        $sms_gateway->update([
             'status' => !$sms_gateway->status
         ]);
 
