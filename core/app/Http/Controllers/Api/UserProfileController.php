@@ -80,6 +80,7 @@ class UserProfileController extends Controller
                 'last_name' => 'required|max:191',
                 'file' => 'nullable|image',
                 'date_of_birth' => 'nullable|date',
+                'phone' => 'nullable|string|max:191',
             ]);
         }else{
             // Validate the request data
@@ -107,12 +108,17 @@ class UserProfileController extends Controller
 
             // Update user after login
             if ($request->update_type == 'after_login'){
-                User::where('id', $user_id)->update([
+                $update_data = [
                     'first_name' => $request->input('first_name'),
                     'last_name' => $request->input('last_name'),
                     'date_of_birth' => $request->input('date_of_birth'),
                     'image' => $last_image_id ?? $old_image,
-                ]);
+                ];
+                if ($request->filled('phone')) {
+                    $update_data['phone'] = $request->input('phone');
+                    $update_data['otp_verified'] = 1;
+                }
+                User::where('id', $user_id)->update($update_data);
 
                 // Update or create user social info
                 if (!empty($request->apple_id) || !empty($request->google_id) || !empty($request->facebook_id)) {

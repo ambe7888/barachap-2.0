@@ -16,6 +16,7 @@ dependencies:
   figma_squircle_updated: ^1.0.1
   file_picker: ^8.0.3
   firebase_messaging: ^15.1.5
+  firebase_auth: ^5.0.0
   flutter:
     sdk: flutter
   flutter_animate: ^4.5.0

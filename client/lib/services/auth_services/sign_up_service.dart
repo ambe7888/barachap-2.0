@@ -50,6 +50,7 @@ class SignUpService with ChangeNotifier {
       'update_type': 'after_login',
       'first_name': sum.fNameController.text,
       'last_name': sum.lNameController.text,
+      if (sum.phoneController.text.isNotEmpty) 'phone': sum.phoneController.text,
     };
     var headers = {
       'Accept': 'application/json',

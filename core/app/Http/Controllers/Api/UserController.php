@@ -231,6 +231,21 @@ class UserController extends Controller
 
     public function changePhoneNumber(Request $request)
     {
+        if ($request->input('firebase_verified') == 1) {
+            $user = auth('sanctum')->user();
+            if (!$user) {
+                return response()->json([
+                    'message' => __('User Not Found.'),
+                ], 400);
+            }
+            $user->update([
+                'otp_verified' => 1,
+                'phone' => $request->input('phone'),
+            ]);
+            return response()->json([
+                'message' => __('Phone Number Changed Successfully.'),
+            ]);
+        }
 
         try {
             $validated = $request->validate([

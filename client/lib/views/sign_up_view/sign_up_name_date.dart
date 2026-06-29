@@ -61,18 +61,126 @@ class SignUpNameDate extends StatelessWidget {
                 return null;
               },
             ),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                  onPressed: () {
-                    if (!(sum.piFormKey.currentState!.validate())) return;
-
-                    context.toPage(const UploadProfileImageView());
-                  },
-                  child: Text(
-                    LocalKeys.continueO,
-                  )),
-            )
+            ValueListenableBuilder<bool>(
+              valueListenable: sum.isPhoneVerified,
+              builder: (context, verified, child) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    FieldWithLabel(
+                      label: LocalKeys.phone,
+                      hintText: "+33612345678",
+                      controller: sum.phoneController,
+                      isRequired: true,
+                      readOnly: verified,
+                      validator: (value) {
+                        if ((value ?? "").isEmpty) {
+                          return "Veuillez entrer un numéro de téléphone";
+                        }
+                        return null;
+                      },
+                    ),
+                    if (!verified) ...[
+                      ValueListenableBuilder<bool>(
+                        valueListenable: sum.otpSent,
+                        builder: (context, sent, child) {
+                          if (!sent) {
+                            return ValueListenableBuilder<bool>(
+                              valueListenable: sum.otpLoading,
+                              builder: (context, loading, child) {
+                                return SizedBox(
+                                  width: double.infinity,
+                                  child: OutlinedButton(
+                                    onPressed: loading ? null : () => sum.sendOtpToPhone(context),
+                                    child: loading
+                                        ? const SizedBox(
+                                            height: 20,
+                                            width: 20,
+                                            child: CircularProgressIndicator(strokeWidth: 2),
+                                          )
+                                        : const Text("Envoyer le code par SMS"),
+                                  ),
+                                );
+                              },
+                            );
+                          } else {
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                12.toHeight,
+                                FieldWithLabel(
+                                  label: "Code de validation",
+                                  hintText: "Entrez le code à 6 chiffres",
+                                  controller: sum.otpController,
+                                  isRequired: true,
+                                ),
+                                8.toHeight,
+                                ValueListenableBuilder<bool>(
+                                  valueListenable: sum.otpLoading,
+                                  builder: (context, loading, child) {
+                                    return Row(
+                                      children: [
+                                        Expanded(
+                                          child: ElevatedButton(
+                                            onPressed: loading ? null : () => sum.verifyPhoneOtp(context),
+                                            child: loading
+                                                ? const SizedBox(
+                                                    height: 20,
+                                                    width: 20,
+                                                    child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                                                  )
+                                                : const Text("Confirmer le code"),
+                                          ),
+                                        ),
+                                        12.toWidth,
+                                        OutlinedButton(
+                                          onPressed: loading ? null : () => sum.sendOtpToPhone(context),
+                                          child: const Text("Renvoyer"),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                ),
+                              ],
+                            );
+                          }
+                        },
+                      ),
+                    ] else ...[
+                      Row(
+                        children: [
+                          const Icon(Icons.check_circle, color: Colors.green),
+                          8.toWidth,
+                          const Text(
+                            "Numéro vérifié avec succès",
+                            style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ],
+                    16.toHeight,
+                  ],
+                );
+              },
+            ),
+            ValueListenableBuilder<bool>(
+              valueListenable: sum.isPhoneVerified,
+              builder: (context, verified, child) {
+                return SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                      onPressed: !verified
+                          ? null
+                          : () {
+                              if (!(sum.piFormKey.currentState!.validate())) return;
+                              context.toPage(const UploadProfileImageView());
+                            },
+                      child: Text(
+                        LocalKeys.continueO,
+                      )),
+                );
+              },
+            ),
           ],
         ).hp20,
       )),

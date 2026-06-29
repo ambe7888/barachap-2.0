@@ -29,6 +29,7 @@ class FieldWithLabel extends StatelessWidget {
   final int? maxLines;
   final Widget? prefixIcon;
   final void Function(PointerDownEvent)? onTapOutside;
+  final bool? readOnly;
   const FieldWithLabel(
       {super.key,
       required this.label,
@@ -50,7 +51,8 @@ class FieldWithLabel extends StatelessWidget {
       this.maxLines,
       this.minLines,
       this.controller,
-      this.onTapOutside});
+      this.onTapOutside,
+      this.readOnly});
 
   setInitialValue(value) {
     if (value == null || value.isEmpty) {
@@ -69,6 +71,7 @@ class FieldWithLabel extends StatelessWidget {
         if (label != null)
           FieldLabel(label: label!, isRequired: isRequired ?? false),
         TextFormField(
+          readOnly: readOnly ?? false,
           keyboardType: keyboardType,
           textInputAction: textInputAction ??
               (minLines != null
