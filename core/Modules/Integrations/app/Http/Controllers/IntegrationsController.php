@@ -139,13 +139,13 @@ class IntegrationsController extends Controller
         update_static_option('google_callback_url',$req->google_callback_url);
 
         setEnvValue([
-            'GOOGLE_ADSENSE_PUBLISHER_ID' => $request->google_adsense_publisher_id,
-            'GOOGLE_ADSENSE_CUSTOMER_ID' => $request->google_adsense_customer_id,
-            'FACEBOOK_CLIENT_ID' => $request->facebook_client_id,
-            'FACEBOOK_CLIENT_SECRET' => $request->facebook_client_secret,
+            'GOOGLE_ADSENSE_PUBLISHER_ID' => $req->google_adsense_publisher_id,
+            'GOOGLE_ADSENSE_CUSTOMER_ID' => $req->google_adsense_customer_id,
+            'FACEBOOK_CLIENT_ID' => $req->facebook_client_id,
+            'FACEBOOK_CLIENT_SECRET' => $req->facebook_client_secret,
             'FACEBOOK_CALLBACK_URL' => route('facebook.callback'),
-            'GOOGLE_CLIENT_ID' => $request->google_client_id,
-            'GOOGLE_CLIENT_SECRET' => $request->google_client_secret,
+            'GOOGLE_CLIENT_ID' => $req->google_client_id,
+            'GOOGLE_CLIENT_SECRET' => $req->google_client_secret,
             'GOOGLE_CALLBACK_URL' => route('google.callback'),
         ]);
     }

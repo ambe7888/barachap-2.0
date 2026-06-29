@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "1035048558864",
-    "project_id": "prohandy-xgenious",
-    "storage_bucket": "prohandy-xgenious.appspot.com"
+    "project_number": "166692814675",
+    "project_id": "barapush-ecdb8",
+    "storage_bucket": "barapush-ecdb8.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1035048558864:android:c2af1851edd5afb8e6c595",
+        "mobilesdk_app_id": "1:166692814675:android:9a121bafed8cec7401eba6",
         "android_client_info": {
           "package_name": "ci.barachap.client"
         }
@@ -15,26 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBQLipF-WE-LxjWvblcjmimFesMsE7-urc"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:1035048558864:android:78558e21c2a98311e6c595",
-        "android_client_info": {
-          "package_name": "com.xgenious.prohandy_provider"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBQLipF-WE-LxjWvblcjmimFesMsE7-urc"
+          "current_key": "AIzaSyDDtWT2z63w36_J5jtj70kmdMVaGA7nOCQ"
         }
       ],
       "services": {
