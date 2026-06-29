@@ -62,45 +62,35 @@ class PhoneManageService with ChangeNotifier {
     loadingSendOTP = true;
     notifyListeners();
     try {
-      final completer = Completer<bool>();
-      await FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: this.phone!,
-        verificationCompleted: (PhoneAuthCredential credential) async {
-          await FirebaseAuth.instance.signInWithCredential(credential);
-          loadingSendOTP = false;
-          notifyListeners();
-          if (!completer.isCompleted) completer.complete(true);
-        },
-        verificationFailed: (FirebaseAuthException e) {
-          loadingSendOTP = false;
-          notifyListeners();
-          "Erreur de vérification: ${e.message}".showToast();
-          if (!completer.isCompleted) completer.complete(false);
-        },
-        codeSent: (String verificationId, int? resendToken) {
-          firebaseVerificationId = verificationId;
-          canSend = false;
-          timer = Timer(const Duration(seconds: 120), () {
-            canSend = true;
-            notifyListeners();
-          });
-          loadingSendOTP = false;
-          notifyListeners();
-          "Code envoyé par SMS !".showToast();
-          if (!completer.isCompleted) completer.complete(true);
-        },
-        codeAutoRetrievalTimeout: (String verificationId) {
-          firebaseVerificationId = verificationId;
-        },
-        timeout: const Duration(seconds: 120),
+      final data = {
+        'phone': this.phone,
+      };
+      final responseData = await NetworkApiServices().postApi(
+        data,
+        AppUrls.changePhoneUrl,
+        LocalKeys.changePhone,
+        headers: acceptJsonAuthHeader,
       );
-      return completer.future;
+      if (responseData != null) {
+        canSend = false;
+        timer = Timer(const Duration(seconds: 120), () {
+          canSend = true;
+          notifyListeners();
+        });
+        loadingSendOTP = false;
+        notifyListeners();
+        "Code envoyé !".showToast();
+        return true;
+      }
     } catch (e) {
       loadingSendOTP = false;
       notifyListeners();
-      "Erreur d'envoi du SMS".showToast();
+      "Erreur d'envoi du code".showToast();
       return false;
     }
+    loadingSendOTP = false;
+    notifyListeners();
+    return false;
   }
 
   Future tryPhoneVerify({
@@ -131,22 +121,13 @@ class PhoneManageService with ChangeNotifier {
   Future tryPhoneChange({
     required String otp,
   }) async {
-    if (firebaseVerificationId == null) {
-      "Une erreur s'est produite. Veuillez renvoyer le code.".showToast();
-      return false;
-    }
     phoneVerifyLoading = true;
     notifyListeners();
     try {
-      final credential = PhoneAuthProvider.credential(
-        verificationId: firebaseVerificationId!,
-        smsCode: otp,
-      );
-      await FirebaseAuth.instance.signInWithCredential(credential);
-
       final data = {
         'phone': phone,
-        'firebase_verified': '1',
+        'otp_verify_status': '1',
+        'otp': otp,
       };
       final responseData = await NetworkApiServices().postApi(
           data, AppUrls.changePhoneUrl, LocalKeys.changePhone,
@@ -156,8 +137,6 @@ class PhoneManageService with ChangeNotifier {
         phoneVerifyLoading = false;
         notifyListeners();
         return true;
-      } else if (responseData != null && responseData.containsKey("message")) {
-        responseData["message"]?.toString().showToast();
       }
     } catch (e) {
       "Code incorrect ou expiré. Veuillez réessayer.".showToast();

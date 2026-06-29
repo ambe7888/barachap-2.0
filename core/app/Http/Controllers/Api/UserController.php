@@ -283,7 +283,7 @@ class UserController extends Controller
             if (empty($userOtp)) {
                 return response()->json([
                     'message' => __('The OTP code you have entered is not correct'),
-                ]);
+                ], 400);
             }
 
             $user = User::select('id', 'first_name', 'last_name', 'type', 'email', 'phone', 'username','otp_verified')
@@ -311,7 +311,7 @@ class UserController extends Controller
             } else {
                 return response()->json([
                     'message' => __('The OTP code is expired. Apply for new OTP code'),
-                ]);
+                ], 400);
             }
 
             // generate new otp
