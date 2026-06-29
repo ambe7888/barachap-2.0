@@ -151,6 +151,7 @@ class MenuTiles extends StatelessWidget {
                 MenuTile(
                   title: LocalKeys.deleteAccount,
                   svg: SvgAssets.trash,
+                  opacity: 0.5,
                   onPress: () {
                     DeleteAccountViewModel.dispose;
                     context.toPage(const DeleteAccountView());
@@ -160,6 +161,8 @@ class MenuTiles extends StatelessWidget {
                 MenuTile(
                   title: LocalKeys.signOut,
                   svg: SvgAssets.logout,
+                  titleColor: Colors.red,
+                  iconColor: Colors.red,
                   onPress: () {
                     Alerts().confirmationAlert(
                       context: context,
@@ -186,6 +189,8 @@ class MenuTiles extends StatelessWidget {
                 MenuTile(
                   title: LocalKeys.signIn,
                   svg: SvgAssets.user,
+                  titleColor: Theme.of(context).primaryColor,
+                  iconColor: Theme.of(context).primaryColor,
                   onPress: () {
                     SignInViewModel.dispose;
                     SignInViewModel.instance.initSavedInfo();

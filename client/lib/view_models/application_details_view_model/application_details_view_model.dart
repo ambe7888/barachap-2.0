@@ -14,11 +14,7 @@ class OfferDetailsViewModel {
   }
 
   num getCalculatedTax(budget) {
-    if (taxType == "fixed") {
-      return tax;
-    }
-    num ct = (tax / 100) * budget;
-    return ct;
+    return 0;
   }
 
   OfferDetailsViewModel._init();

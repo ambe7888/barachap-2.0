@@ -39,6 +39,10 @@
             height: 50px;
             /*max-width: 300px;*/
         }
+        .logo_wrapper img {
+            max-height: 50px;
+            width: auto;
+        }
         .invoice-info{
             display: inline-block;
             width: 28%;
@@ -131,7 +135,7 @@
         </div>
         <div class="invoice-info">
             <div><h3>{{ get_static_option('invoice_title') ?? __('INVOICE') }}</h3></div>
-            <div><strong>Invoice #</strong> {{ $order_details->invoice_number }}</div>
+            <div><strong>{{ __('Invoice #') }}</strong> {{ $order_details->invoice_number }}</div>
         </div>
     </div>
 
@@ -205,7 +209,7 @@
     </div>
 
     <div class="section">
-        <h3>Order Items Summary</h3>
+        <h3>{{ __('Order Items Summary') }}</h3>
         <table>
             <thead>
             <tr>

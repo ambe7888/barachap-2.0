@@ -41,25 +41,9 @@ class JobHireSummaryCostInfo extends StatelessWidget {
                   title: LocalKeys.offered,
                   value: (odProvider.offerDetailsService.message?.budget ?? 0)
                       .cur),
-              12.toHeight,
-              InfoTile(
-                  title: LocalKeys.vat,
-                  value: adm
-                      .getCalculatedTax(
-                          (odProvider.offerDetailsService.message?.budget ?? 0))
-                      .cur),
-              Divider(
-                color: context.color.primaryBorderColor,
-                height: 32,
-              ),
               InfoTile(
                   title: LocalKeys.total,
-                  value:
-                      ((odProvider.offerDetailsService.message?.budget ?? 0) +
-                              adm.getCalculatedTax((odProvider!
-                                      .offerDetailsService.message?.budget ??
-                                  0)))
-                          .cur),
+                  value: (odProvider.offerDetailsService.message?.budget ?? 0).cur),
             ],
           ),
         ),

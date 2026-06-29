@@ -62,9 +62,25 @@ class NotificationTile extends StatelessWidget {
                 badgeStyle: badges.BadgeStyle(
                   badgeColor: context.color.primaryWarningColor,
                 ),
-                child: SvgAssets.notificationBell.toSVGSized(
-                  24,
-                  color: context.color.tertiaryContrastColo,
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: context.color.mutedContrastColor,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(
+                    notification.type == "job"
+                        ? Icons.work_outline
+                        : (notification.type == "order"
+                            ? Icons.receipt_long_outlined
+                            : (notification.type == "offer"
+                                ? Icons.local_offer_outlined
+                                : (notification.type == "ticket"
+                                    ? Icons.support_agent_outlined
+                                    : Icons.notifications_none_outlined))),
+                    size: 20,
+                    color: context.color.primaryContrastColor,
+                  ),
                 ),
               ),
               16.toWidth,
@@ -74,7 +90,7 @@ class NotificationTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      notification.message?.tr() ?? LocalKeys.na,
+                      translateNotification(notification.message),
                       style: context.titleMedium?.bold.copyWith(),
                     ),
                     4.toHeight,
@@ -93,5 +109,56 @@ class NotificationTile extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String translateNotification(String? msg) {
+    if (msg == null) return "N/A";
+    
+    String text = msg.toLowerCase();
+    
+    if (text.contains("new support ticket")) {
+      return "Nouveau ticket de support";
+    }
+    if (text.contains("ticket updates available")) {
+      return "Mises à jour de ticket disponibles";
+    }
+    if (text.contains("job activated")) {
+      return "Demande activée" + (msg.contains("ID#") ? " ID# ${msg.split("ID#").last}" : "");
+    }
+    if (text.contains("job inactive")) {
+      return "Demande désactivée" + (msg.contains("ID#") ? " ID# ${msg.split("ID#").last}" : "");
+    }
+    if (text.contains("job published")) {
+      return "Demande publiée" + (msg.contains("ID#") ? " ID# ${msg.split("ID#").last}" : "");
+    }
+    if (text.contains("job unpublished")) {
+      return "Demande dépubliée" + (msg.contains("ID#") ? " ID# ${msg.split("ID#").last}" : "");
+    }
+    if (text.contains("service activated")) {
+      return "Service activé";
+    }
+    if (text.contains("service inactive")) {
+      return "Service désactivé";
+    }
+    if (text.contains("account unsuspended")) {
+      return "Compte réactivé";
+    }
+    if (text.contains("account suspended")) {
+      return "Compte suspendu";
+    }
+    if (text.contains("a new order has been placed")) {
+      return "Une nouvelle commande a été passée";
+    }
+    if (text.contains("order status changed")) {
+      return "Le statut de la commande a changé";
+    }
+    if (text.contains("order payment status complete")) {
+      return "Statut du paiement de la commande : Complété";
+    }
+    if (text.contains("new offer")) {
+      return "Nouvelle offre reçue";
+    }
+    
+    return msg.tr();
   }
 }

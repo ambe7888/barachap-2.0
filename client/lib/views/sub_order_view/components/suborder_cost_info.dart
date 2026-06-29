@@ -33,13 +33,11 @@ class SuborderCostInfo extends StatelessWidget {
             height: 32,
           ),
           InfoTile(title: LocalKeys.subtotal, value: subOrder.subTotal.cur),
-          12.toHeight,
-          InfoTile(title: LocalKeys.vat, value: subOrder.tax.cur),
           Divider(
             color: context.color.primaryBorderColor,
             height: 32,
           ),
-          InfoTile(title: LocalKeys.total, value: subOrder.total.cur),
+          InfoTile(title: LocalKeys.total, value: (subOrder.total - (subOrder.tax ?? 0)).cur),
         ],
       ),
     );

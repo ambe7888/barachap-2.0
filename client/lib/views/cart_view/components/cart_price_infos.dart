@@ -27,20 +27,9 @@ class CartPriceInfos extends StatelessWidget {
                   16.toHeight,
                 ],
               ),
-              InfoTile(title: LocalKeys.subtotal, value: cs.subTotal.cur),
-              Row(
-                children: [
-                  12.toHeight,
-                ],
-              ),
-              InfoTile(title: LocalKeys.vat, value: cs.totalTax.cur),
-              Divider(
-                color: context.color.primaryBorderColor,
-                height: 32,
-              ),
               InfoTile(
                   title: LocalKeys.total,
-                  value: (cs.subTotal + cs.totalTax).cur),
+                  value: cs.subTotal.cur),
               Row(
                 children: [
                   16.toHeight,

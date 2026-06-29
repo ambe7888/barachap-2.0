@@ -49,15 +49,13 @@ class BookingSummeryCostInfo extends StatelessWidget {
               const BookingSummeryAddons(),
               InfoTile(
                   title: LocalKeys.subtotal, value: (addonTotal + service).cur),
-              12.toHeight,
-              InfoTile(title: LocalKeys.vat, value: svm.getCalculatedTax.cur),
               Divider(
                 color: context.color.primaryBorderColor,
                 height: 32,
               ),
               InfoTile(
                 title: LocalKeys.total,
-                value: (addonTotal + service + svm.getCalculatedTax).cur,
+                value: (addonTotal + service).cur,
                 fontSize: 18,
               ),
             ],

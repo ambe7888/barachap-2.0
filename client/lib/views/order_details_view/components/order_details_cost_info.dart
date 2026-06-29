@@ -26,8 +26,6 @@ class OrderDetailsCostInfo extends StatelessWidget {
               InfoTile(
                   title: LocalKeys.subtotal, value: orderDetails.subTotal.cur),
               12.toHeight,
-              InfoTile(title: LocalKeys.vat, value: orderDetails.tax.cur),
-              12.toHeight,
               InfoTile(
                   title: LocalKeys.discount,
                   value: "- ${orderDetails.couponAmount.cur}"),
@@ -37,7 +35,7 @@ class OrderDetailsCostInfo extends StatelessWidget {
               ),
               InfoTile(
                 title: LocalKeys.total,
-                value: orderDetails.total.cur,
+                value: (orderDetails.total - (orderDetails.tax ?? 0)).cur,
                 fontSize: 18,
               ),
             ],

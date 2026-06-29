@@ -55,24 +55,7 @@ class ServiceBookingViewModel {
   }
 
   num get getCalculatedTax {
-    if (taxType == "fixed") {
-      return tax;
-    }
-
-    final service =
-        ((selectedService.value?.discountPrice ?? 0) > 0
-            ? selectedService.value!.discountPrice!
-            : (selectedService.value?.price ?? 0));
-    num addonTotal = 0;
-    final adds =
-        addons.value.values
-            .map((addon) => addon["price"] * addon["quantity"])
-            .toList();
-    for (var t in adds) {
-      addonTotal += t;
-    }
-    num ct = (tax / 100) * (addonTotal + service);
-    return ct;
+    return 0;
   }
 
   num getCouponAmount(BuildContext context) {
