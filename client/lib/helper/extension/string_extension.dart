@@ -111,6 +111,9 @@ extension CurrencyDynamicExtension on String {
 
 extension TranslateExtension on String {
   String tr() {
+    if (this == "COD" || this == "cod" || toLowerCase() == "cash_on_delivery") {
+      return "Payer à la fin du service";
+    }
     return asProvider.getString(this);
   }
 }

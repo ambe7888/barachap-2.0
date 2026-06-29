@@ -95,10 +95,17 @@ class NotificationTile extends StatelessWidget {
                     ),
                     4.toHeight,
                     Text(
-                      timeago.format(
-                        notification.createdAt ?? DateTime.now(),
-                        locale: context.dProvider.languageSlug,
-                      ),
+                      () {
+                        timeago.setLocaleMessages('fr', timeago.FrMessages());
+                        String slug = context.dProvider.languageSlug ?? 'fr';
+                        if (slug.startsWith('fr')) {
+                          slug = 'fr';
+                        }
+                        return timeago.format(
+                          notification.createdAt ?? DateTime.now(),
+                          locale: slug,
+                        );
+                      }(),
                       style: context.titleSmall?.copyWith(),
                     ),
                   ],

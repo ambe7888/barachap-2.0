@@ -49,8 +49,10 @@ class HomeSlider extends StatelessWidget {
                           final slider = hs.sliderList![index];
                           return GestureDetector(
                             onTap: () {
+                              debugPrint("Slider clicked: identity=${slider.identity}, type=${slider.type}");
                               if (slider.identity == null) return;
-                              switch (slider.type) {
+                              final type = slider.type?.toLowerCase() ?? "";
+                              switch (type) {
                                 case "category":
                                   context.toPage(ServiceByCategoryView(
                                     catId: slider.identity,
@@ -71,6 +73,7 @@ class HomeSlider extends StatelessWidget {
                                   });
                                   break;
                                 default:
+                                  debugPrint("Unknown slider type: $type");
                               }
                             },
                             child: Padding(

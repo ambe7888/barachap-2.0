@@ -3195,3 +3195,45 @@ Stack trace:
 [stacktrace]
 #0 {main}
 "} 
+[2026-06-29 09:02:32] production.ERROR: Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'prohandy_db.sliders' doesn't exist in C:\xampp\htdocs\barachap\core\vendor\laravel\framework\src\Illuminate\Database\Connection.php:423
+Stack trace:
+#0 C:\xampp\htdocs\barachap\core\vendor\laravel\framework\src\Illuminate\Database\Connection.php(423): PDO->prepare('select * from p...')
+#1 C:\xampp\htdocs\barachap\core\vendor\laravel\framework\src\Illuminate\Database\Connection.php(816): Illuminate\Database\Connection->Illuminate\Database\{closure}('select * from p...', Array)
+#2 C:\xampp\htdocs\barachap\core\vendor\laravel\framework\src\Illuminate\Database\Connection.php(783): Illuminate\Database\Connection->runQueryCallback('select * from p...', Array, Object(Closure))
+#3 C:\xampp\htdocs\barachap\core\vendor\laravel\framework\src\Illuminate\Database\Connection.php(414): Illuminate\Database\Connection->run('select * from p...', Array, Object(Closure))
+#4 C:\xampp\htdocs\barachap\core\vendor\laravel\framework\src\Illuminate\Database\DatabaseManager.php(509): Illuminate\Database\Connection->select('select * from p...')
+#5 C:\xampp\htdocs\barachap\core\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php(355): Illuminate\Database\DatabaseManager->__call('select', Array)
+#6 Command line code(1): Illuminate\Support\Facades\Facade::__callStatic('select', Array)
+#7 {main}
+
+Next Illuminate\Database\QueryException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'prohandy_db.sliders' doesn't exist (Connection: mysql, SQL: select * from prohandy_db.sliders) in C:\xampp\htdocs\barachap\core\vendor\laravel\framework\src\Illuminate\Database\Connection.php:829
+Stack trace:
+#0 C:\xampp\htdocs\barachap\core\vendor\laravel\framework\src\Illuminate\Database\Connection.php(783): Illuminate\Database\Connection->runQueryCallback('select * from p...', Array, Object(Closure))
+#1 C:\xampp\htdocs\barachap\core\vendor\laravel\framework\src\Illuminate\Database\Connection.php(414): Illuminate\Database\Connection->run('select * from p...', Array, Object(Closure))
+#2 C:\xampp\htdocs\barachap\core\vendor\laravel\framework\src\Illuminate\Database\DatabaseManager.php(509): Illuminate\Database\Connection->select('select * from p...')
+#3 C:\xampp\htdocs\barachap\core\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php(355): Illuminate\Database\DatabaseManager->__call('select', Array)
+#4 Command line code(1): Illuminate\Support\Facades\Facade::__callStatic('select', Array)
+#5 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'prohandy_db.sliders' doesn't exist in C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:423
+Stack trace:
+#0 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(423): PDO->prepare('select * from p...')
+#1 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(816): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('select * from p...', Array)
+#2 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(783): Illuminate\\Database\\Connection->runQueryCallback('select * from p...', Array, Object(Closure))
+#3 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(414): Illuminate\\Database\\Connection->run('select * from p...', Array, Object(Closure))
+#4 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\DatabaseManager.php(509): Illuminate\\Database\\Connection->select('select * from p...')
+#5 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(355): Illuminate\\Database\\DatabaseManager->__call('select', Array)
+#6 Command line code(1): Illuminate\\Support\\Facades\\Facade::__callStatic('select', Array)
+#7 {main}
+
+Next Illuminate\\Database\\QueryException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'prohandy_db.sliders' doesn't exist (Connection: mysql, SQL: select * from prohandy_db.sliders) in C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:829
+Stack trace:
+#0 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(783): Illuminate\\Database\\Connection->runQueryCallback('select * from p...', Array, Object(Closure))
+#1 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(414): Illuminate\\Database\\Connection->run('select * from p...', Array, Object(Closure))
+#2 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\DatabaseManager.php(509): Illuminate\\Database\\Connection->select('select * from p...')
+#3 C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(355): Illuminate\\Database\\DatabaseManager->__call('select', Array)
+#4 Command line code(1): Illuminate\\Support\\Facades\\Facade::__callStatic('select', Array)
+#5 {main}
+  thrown at C:\\xampp\\htdocs\\barachap\\core\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:829)
+[stacktrace]
+#0 {main}
+"} 
