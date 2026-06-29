@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prohandy_client/helper/extension/context_extension.dart';
+import 'package:prohandy_client/helper/phone_field.dart';
 import 'package:provider/provider.dart';
 
 import '../../services/auth_services/phone_manage_service.dart';
@@ -10,6 +11,7 @@ import './../../views/change_phone_view/change_phone_otp_view.dart';
 class ChangeEmailPhoneViewModel {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
+  final ValueNotifier<Phone?> phone = ValueNotifier(null);
 
   final ValueNotifier<bool> isLoading = ValueNotifier(false);
 
@@ -53,11 +55,17 @@ class ChangeEmailPhoneViewModel {
   }
 
   void tryChangingPhone(BuildContext context) async {
+    final localPhone = phoneController.text.trim();
+    if (localPhone.isEmpty) {
+      return;
+    }
     isLoading.value = true;
     try {
+      final dialCode = phone.value?.dialCode ?? "225";
+      final fullPhone = "+$dialCode$localPhone";
       final otpResult =
           await Provider.of<PhoneManageService>(context, listen: false)
-              .trySendingOtpToNewPhone(phone: phoneController.text);
+              .trySendingOtpToNewPhone(phone: fullPhone);
       if (otpResult == true) {
         await Navigator.push(
             context,

@@ -10,6 +10,7 @@ import '../../../helper/local_keys.g.dart';
 import '../../../utils/components/custom_button.dart';
 import '../../../view_models/intro_view_model/intro_view_model.dart';
 import '../../../view_models/landding_view_model/landding_view_model.dart';
+import '../welcome_option_view.dart';
 import 'dot_indicator.dart';
 
 class IntroBase extends StatelessWidget {
@@ -48,7 +49,10 @@ class IntroBase extends StatelessWidget {
                           context,
                           listen: false,
                         ).seeIntroValue();
-                        LandingViewModel.instance.navigateToLanding(context);
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => const WelcomeOptionView()),
+                        );
                         return;
                       },
                       child: Text(
@@ -69,7 +73,10 @@ class IntroBase extends StatelessWidget {
                             context,
                             listen: false,
                           ).seeIntroValue();
-                          LandingViewModel.instance.navigateToLanding(context);
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => const WelcomeOptionView()),
+                          );
                           return;
                         }
                         im.textController.nextPage(

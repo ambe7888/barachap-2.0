@@ -65,32 +65,47 @@ class PhoneManageService with ChangeNotifier {
       final data = {
         'phone': this.phone,
       };
+      final tokenStr = getToken;
+      final headers = {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $tokenStr'
+      };
+
       final responseData = await NetworkApiServices().postApi(
         data,
         AppUrls.changePhoneUrl,
         LocalKeys.changePhone,
-        headers: acceptJsonAuthHeader,
+        headers: headers
       );
+
       if (responseData != null) {
-        canSend = false;
-        timer = Timer(const Duration(seconds: 120), () {
-          canSend = true;
+        if (responseData['status'] == 'success' || responseData['message'] != null) {
+          canSend = false;
+          timer = Timer(const Duration(seconds: 120), () {
+            canSend = true;
+            notifyListeners();
+          });
+          loadingSendOTP = false;
           notifyListeners();
-        });
+          "Code envoyé sur WhatsApp !".showToast();
+          return true;
+        } else {
+           loadingSendOTP = false;
+           notifyListeners();
+           "Erreur d'envoi du code".showToast();
+           return false;
+        }
+      } else {
         loadingSendOTP = false;
         notifyListeners();
-        "Code envoyé !".showToast();
-        return true;
+        return false;
       }
     } catch (e) {
       loadingSendOTP = false;
       notifyListeners();
-      "Erreur d'envoi du code".showToast();
+      "Erreur d'envoi du message WhatsApp".showToast();
       return false;
     }
-    loadingSendOTP = false;
-    notifyListeners();
-    return false;
   }
 
   Future tryPhoneVerify({
@@ -129,14 +144,25 @@ class PhoneManageService with ChangeNotifier {
         'otp_verify_status': '1',
         'otp': otp,
       };
+      final tokenStr = getToken;
+      final headers = {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $tokenStr'
+      };
+
       final responseData = await NetworkApiServices().postApi(
           data, AppUrls.changePhoneUrl, LocalKeys.changePhone,
-          headers: acceptJsonAuthHeader);
-      if (responseData != null) {
+          headers: headers);
+          
+      if (responseData != null && responseData['message'] == 'Phone Number Changed Successfully.') {
         LocalKeys.changedPhoneSuccessfully.showToast();
         phoneVerifyLoading = false;
         notifyListeners();
         return true;
+      } else if (responseData != null && responseData.containsKey("message")) {
+        responseData["message"]?.toString().showToast();
+      } else {
+        "Code incorrect ou expiré. Veuillez réessayer.".showToast();
       }
     } catch (e) {
       "Code incorrect ou expiré. Veuillez réessayer.".showToast();

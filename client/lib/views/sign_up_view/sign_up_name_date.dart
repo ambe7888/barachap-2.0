@@ -6,6 +6,7 @@ import 'package:prohandy_client/helper/local_keys.g.dart';
 import 'package:prohandy_client/utils/components/field_with_label.dart';
 import 'package:prohandy_client/utils/components/navigation_pop_icon.dart';
 import 'package:prohandy_client/view_models/sign_up_view_model/sign_up_view_model.dart';
+import 'package:prohandy_client/helper/phone_field.dart';
 
 import 'upload_profile_image_view.dart';
 
@@ -67,19 +68,22 @@ class SignUpNameDate extends StatelessWidget {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    FieldWithLabel(
-                      label: LocalKeys.phone,
-                      hintText: "+33612345678",
-                      controller: sum.phoneController,
-                      isRequired: true,
-                      readOnly: verified,
-                      validator: (value) {
-                        if ((value ?? "").isEmpty) {
-                          return "Veuillez entrer un numéro de téléphone";
-                        }
-                        return null;
-                      },
-                    ),
+                    if (verified)
+                      FieldWithLabel(
+                        label: LocalKeys.phone,
+                        hintText: "",
+                        controller: sum.phoneController,
+                        isRequired: true,
+                        readOnly: true,
+                      )
+                    else
+                      PhoneField(
+                        phone: sum.phone,
+                        controller: sum.phoneController,
+                        label: LocalKeys.phone,
+                        hintText: "Ex: 0102030405",
+                        isRequired: true,
+                      ),
                     if (!verified) ...[
                       ValueListenableBuilder<bool>(
                         valueListenable: sum.otpSent,

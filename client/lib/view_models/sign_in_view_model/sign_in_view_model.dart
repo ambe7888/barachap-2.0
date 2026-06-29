@@ -14,6 +14,7 @@ import '../../services/profile_services/profile_info_service.dart';
 import '../../services/push_notification_service.dart';
 import '../../views/reset_password/enter_otp_view.dart';
 import '../../views/sign_up_view/sign_up_name_date.dart';
+import '../landding_view_model/landding_view_model.dart';
 
 class SignInViewModel {
   final TextEditingController emailController = TextEditingController();
@@ -111,7 +112,7 @@ class SignInViewModel {
         await PushNotificationService().updateDeviceToken(forceUpdate: true);
         await piProvider.fetchProfileInfo();
         loading.value = false;
-        context.popFalse;
+        LandingViewModel.instance.navigateToLanding(context);
       } else if (value == false) {
         final result =
             await Provider.of<EmailManageService>(context, listen: false)

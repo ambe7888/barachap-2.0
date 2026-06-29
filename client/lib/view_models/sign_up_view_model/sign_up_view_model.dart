@@ -8,8 +8,11 @@ import 'package:prohandy_client/helper/extension/string_extension.dart';
 import 'package:prohandy_client/services/auth_services/sign_up_service.dart';
 import 'package:provider/provider.dart';
 
+import '../../data/network/network_api_services.dart';
+
 import '../../app_static_values.dart';
 import '../../helper/local_keys.g.dart';
+import '../../helper/phone_field.dart';
 import '../../services/auth_services/email_otp_service.dart';
 import '../../services/profile_services/profile_info_service.dart';
 import '../../utils/components/alerts.dart';
@@ -26,6 +29,7 @@ class SignUpViewModel {
   final TextEditingController lNameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController otpController = TextEditingController();
+  final ValueNotifier<Phone?> phone = ValueNotifier(null);
   String? firebaseVerificationId;
   final ValueNotifier<bool> isPhoneVerified = ValueNotifier(false);
   final ValueNotifier<bool> otpSent = ValueNotifier(false);
@@ -186,62 +190,96 @@ class SignUpViewModel {
   }
 
   Future<void> sendOtpToPhone(BuildContext context) async {
-    final phone = phoneController.text.trim();
-    if (phone.isEmpty) {
+    final localPhone = phoneController.text.trim();
+    if (localPhone.isEmpty) {
       "Veuillez entrer un numéro de téléphone".showToast();
       return;
     }
+    final dialCode = phone.value?.dialCode ?? '225';
+    final fullPhone = "+$dialCode$localPhone";
+
     otpLoading.value = true;
     try {
-      await FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: phone,
-        verificationCompleted: (PhoneAuthCredential credential) async {
-          await FirebaseAuth.instance.signInWithCredential(credential);
-          isPhoneVerified.value = true;
-          otpSent.value = false;
-          otpLoading.value = false;
-          "Numéro de téléphone vérifié avec succès !".showToast();
-        },
-        verificationFailed: (FirebaseAuthException e) {
-          otpLoading.value = false;
-          debugPrint("Firebase verification failed: ${e.message}");
-          "Erreur de vérification: ${e.message}".showToast();
-        },
-        codeSent: (String verificationId, int? resendToken) {
-          firebaseVerificationId = verificationId;
+      final data = {
+        'phone': fullPhone,
+      };
+      final tokenStr = Provider.of<SignUpService>(context, listen: false).token;
+      final headers = {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $tokenStr'
+      };
+
+      final responseData = await NetworkApiServices().postApi(
+        data,
+        AppUrls.changePhoneUrl,
+        LocalKeys.signUp,
+        headers: headers
+      );
+
+      if (responseData != null) {
+        if (responseData['status'] == 'success' || responseData['message'] != null) {
           otpSent.value = true;
           otpLoading.value = false;
-          "Code de validation envoyé par SMS !".showToast();
-        },
-        codeAutoRetrievalTimeout: (String verificationId) {
-          firebaseVerificationId = verificationId;
-        },
-        timeout: const Duration(seconds: 60),
-      );
+          phoneController.text = fullPhone;
+          "Code envoyé sur WhatsApp !".showToast();
+        } else {
+           otpLoading.value = false;
+           "Erreur d'envoi du code".showToast();
+        }
+      } else {
+        otpLoading.value = false;
+      }
     } catch (e) {
       otpLoading.value = false;
-      "Une erreur est survenue lors de l'envoi du SMS".showToast();
+      "Une erreur est survenue lors de l'envoi du message WhatsApp".showToast();
     }
   }
 
   Future<void> verifyPhoneOtp(BuildContext context) async {
     final code = otpController.text.trim();
-    if (code.isEmpty || firebaseVerificationId == null) {
+    if (code.isEmpty) {
       "Veuillez entrer le code de validation".showToast();
       return;
     }
+    final localPhone = phoneController.text.trim();
+    final dialCode = phone.value?.dialCode ?? '225';
+    final fullPhone = localPhone.startsWith("+") ? localPhone : "+$dialCode$localPhone";
+
     otpLoading.value = true;
     try {
-      final credential = PhoneAuthProvider.credential(
-        verificationId: firebaseVerificationId!,
-        smsCode: code,
+      final data = {
+        'phone': fullPhone,
+        'otp_verify_status': '1',
+        'otp': code,
+      };
+      final tokenStr = Provider.of<SignUpService>(context, listen: false).token;
+      final headers = {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $tokenStr'
+      };
+
+      final responseData = await NetworkApiServices().postApi(
+        data,
+        AppUrls.changePhoneUrl,
+        LocalKeys.signUp,
+        headers: headers
       );
-      await FirebaseAuth.instance.signInWithCredential(credential);
-      isPhoneVerified.value = true;
-      otpSent.value = false;
-      otpLoading.value = false;
-      otpController.clear();
-      "Numéro de téléphone vérifié avec succès !".showToast();
+
+      if (responseData != null && responseData['message'] == 'Phone Number Changed Successfully.') {
+        isPhoneVerified.value = true;
+        otpSent.value = false;
+        otpLoading.value = false;
+        otpController.clear();
+        
+        phoneController.text = fullPhone;
+        "Numéro de téléphone vérifié avec succès !".showToast();
+      } else if (responseData != null && responseData.containsKey("message")) {
+        otpLoading.value = false;
+        responseData["message"]?.toString().showToast();
+      } else {
+        otpLoading.value = false;
+        "Code incorrect ou expiré. Veuillez réessayer.".showToast();
+      }
     } catch (e) {
       otpLoading.value = false;
       "Code incorrect ou expiré. Veuillez réessayer.".showToast();

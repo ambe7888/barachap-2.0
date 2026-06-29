@@ -25,6 +25,48 @@ trait OtpGlobalTrait
     {
 
         [$receiverNumber, $message] = $data;
+        $otpCode = count($data) === 3 ? $data[2] : null;
+
+        $waToken = env('WHATSAPP_CLOUD_TOKEN');
+        $waPhoneId = env('WHATSAPP_PHONE_NUMBER_ID');
+        $waTemplate = env('WHATSAPP_OTP_TEMPLATE_NAME', 'otp_template');
+
+        if (!empty($waToken) && !empty($waPhoneId)) {
+            try {
+                $waNumber = ltrim($receiverNumber, '+');
+                $response = Http::withToken($waToken)->post("https://graph.facebook.com/v17.0/{$waPhoneId}/messages", [
+                    'messaging_product' => 'whatsapp',
+                    'to' => $waNumber,
+                    'type' => 'template',
+                    'template' => [
+                        'name' => $waTemplate,
+                        'language' => ['code' => 'fr'],
+                        'components' => [
+                            [
+                                'type' => 'body',
+                                'parameters' => [
+                                    [
+                                        'type' => 'text',
+                                        'text' => $otpCode ?? $message
+                                    ]
+                                ]
+                            ]
+                        ]
+                    ]
+                ]);
+
+                if ($response->successful()) {
+                    return true;
+                }
+                
+                \Illuminate\Support\Facades\Log::error('WhatsApp API Error: ' . $response->body());
+                return false;
+            } catch (\Exception $e) {
+                \Illuminate\Support\Facades\Log::error('WhatsApp API Exception: ' . $e->getMessage());
+                return false;
+            }
+        }
+
         $client = $this->config();
 
         if($client['gateway'] === 'nexmo'){
