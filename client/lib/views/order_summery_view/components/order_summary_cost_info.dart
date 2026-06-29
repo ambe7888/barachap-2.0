@@ -41,11 +41,13 @@ class OrderSummaryCostInfo extends StatelessWidget {
           ),
           InfoTile(
             title: LocalKeys.paymentGateway,
-            value: orderDetails.paymentGateway
-                    ?.replaceAll("_", " ")
-                    .capitalize
-                    .tr() ??
-                "---",
+            value: ["cash_on_delivery", "cod"].contains(orderDetails.paymentGateway)
+                ? "Payer à la fin du service"
+                : (orderDetails.paymentGateway
+                        ?.replaceAll("_", " ")
+                        .capitalize
+                        .tr() ??
+                    "---"),
           ),
           12.toHeight,
           InfoTile(

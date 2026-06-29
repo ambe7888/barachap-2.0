@@ -31,7 +31,9 @@ class RefundDetailsBasicInfo extends StatelessWidget {
           if (refundDetails.gatewayName != null)
             InfoTile(
               title: LocalKeys.paymentGateway,
-              value: refundDetails.gatewayName.toString(),
+              value: ["cash_on_delivery", "cod"].contains(refundDetails.gatewayName?.toLowerCase())
+                  ? "Payer à la fin du service"
+                  : refundDetails.gatewayName.toString(),
             ),
           InfoTile(
             title: LocalKeys.refundAmount,
