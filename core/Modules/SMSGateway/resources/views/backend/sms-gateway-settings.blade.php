@@ -5,135 +5,138 @@
 @section('style')
     <style>
         .plugin-grid {
-            display: flex;
-            flex-wrap: wrap;
-            /*justify-content: space-between;*/
-            /*padding: 1em;*/
-            gap: 1em;  /* space between grid items */
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
         }
 
         .plugin-card {
-            width: calc((100% - 2em) / 3);  /* for a three column layout */
-            box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2);
-            /*padding: 1em;*/
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            border: 1px solid rgba(226, 232, 240, 0.8);
             text-align: center;
+            display: flex;
+            flex-direction: column;
         }
+        
+        .plugin-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-color: rgba(203, 213, 225, 1);
+        }
+
         .plugin-card .thumb-bg-color {
-            background: #5433FF;  /* fallback for old browsers */
-            padding: 40px;
+            background: #5433FF;
+            padding: 32px 20px;
             color: #fff;
+            position: relative;
+            z-index: 1;
+        }
+
+        .plugin-card .thumb-bg-color::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: -1;
+        }
+
+        .plugin-card .thumb-bg-color.nexmo {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
         }
 
         .plugin-card .thumb-bg-color.twilio {
-            background: #ED213A;  /* fallback for old browsers */
-            background: -webkit-linear-gradient(to right, #93291E, #ED213A);  /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(to right, #93291E, #ED213A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: linear-gradient(135deg, #ef4444, #dc2626);
         }
+
         .plugin-card .thumb-bg-color.msg91 {
-            background: #1488CC;  /* fallback for old browsers */
-            background: -webkit-linear-gradient(to right, #2B32B2, #1488CC);  /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(to right, #2B32B2, #1488CC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+
+        .plugin-card .thumb-bg-color.whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
         }
 
         .plugin-card .thumb-bg-color strong {
-            font-size: 20px;
-            line-height: 26px;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.025em;
         }
 
-        .plugin-card .thumb-bg-color strong .version {
-            font-size: 14px;
-            line-height: 18px;
-            background-color: #fff;
-            padding: 5px 10px;
-            display: inline-block;
-            color: #333;
-            border-radius: 3px;
-            margin-top: 15px;
-        }
-
-        .plugin-title {
-            font-size: 16px;
-            font-weight: 500;
-            background-color: #03A9F4;
-            box-shadow: 0 0 30px 0 rgba(0,0,0,0.2);
-            display: inline-block;
-            padding: 12px 30px;
-            border-radius: 25px;
-            color: #fff;
-            position: relative;
-            margin-top: -20px;
-        }
-        .plugin-title.externalplugin {
-            background-color: #3F51B5;
-        }
         .plugin-meta {
-            font-size: 0.9em;
-            color: #666;
-            padding: 20px;
-        }
-        .padding-30{
-            padding: 30px;
-        }
-        .plugin-card .thumb-bg-color.externalplugin {
-            background-color: #FF9800;
+            font-size: 0.875rem;
+            color: #475569;
+            padding: 24px 20px;
+            flex-grow: 1;
         }
 
-        .plugin-card .plugin-meta {
-            min-height: 50px;
+        .plugin-meta a {
+            color: #2563eb;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s;
         }
+
+        .plugin-meta a:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+
         .plugin-card .btn-group-wrap {
-            margin-bottom: 30px;
+            padding: 0 20px 24px;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 12px;
         }
+
         .plugin-card .btn-group-wrap a {
-            display: inline-block;
-            padding: 8px 25px;
-            background-color: #4b4e5b;
-            border-radius: 25px;
-            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            background-color: #f1f5f9;
+            border-radius: 8px;
+            color: #334155;
             text-decoration: none;
-            font-size: 12px;
-            transition: all 300ms;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: 1px solid #e2e8f0;
         }
 
-        .plugin-card .btn-group-wrap a.pl_delete {
-            background-color: #e13a3a;
-        }
-        .plugin-card .btn-group-wrap a:hover{
-            opacity: .8;
-        }
-        /* For large screens and above */
-        @media (min-width: 900px) {
-            .plugin-card {
-                width: calc((100% - 3em) / 3);  /* three columns for large screens */
-            }
+        .plugin-card .btn-group-wrap a.pl_active_deactive {
+            background-color: #f1f5f9;
+            color: #64748b;
         }
 
-        /* For medium screens and above */
-        @media (max-width: 600px) {
-            .plugin-card {
-                width: calc((100% - 2em) / 2);  /* two columns for medium screens */
-            }
-            .plugin-card .btn-group-wrap {
-                gap: 5px;
-            }
-            .plugin-card .btn-group-wrap a {
-                padding: 7px 15px;
-            }
-            .plugin-title {
-                font-size: 12px;
-                line-height: 16px;
-            }
+        .plugin-card .btn-group-wrap a.pl_active_deactive.bg-success {
+            background-color: #ecfdf5 !important;
+            color: #059669 !important;
+            border-color: #10b981 !important;
+        }
+
+        .plugin-card .btn-group-wrap a.pl_settings {
+            background-color: #ffffff;
+            color: #0f172a;
+            border-color: #cbd5e1;
+        }
+
+        .plugin-card .btn-group-wrap a:hover {
+            opacity: 1;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .plugin-card .btn-group-wrap a.pl_settings:hover {
+            background-color: #f8fafc;
+            border-color: #94a3b8;
         }
         @media (max-width: 500px) {
-            .plugin-card {
-                width: calc((100% - 2em) / 1);  /* two columns for medium screens */
-            }
-            .plugin-title {
-                font-size: 16px;
-                line-height: 20px;
+            .plugin-grid {
+                grid-template-columns: 1fr;
             }
         }
         .iti{
@@ -219,6 +222,7 @@
     @include('smsgateway::backend.modal.nexmo_modal')
     @include('smsgateway::backend.modal.twilio_modal')
     @include('smsgateway::backend.modal.msg91_modal')
+    @include('smsgateway::backend.modal.whatsapp_modal')
 
     <!-- sms settings -->
     <div class="modal fade" id="settings_option_modal">

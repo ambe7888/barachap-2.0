@@ -13,7 +13,8 @@ class OtpTraitService
         return [
             'nexmo' => __('Nexmo'),
             'twilio' => __('Twilio'),
-            'msg91' => __('MSG91')
+            'msg91' => __('MSG91'),
+            'whatsapp' => __('WhatsApp Meta API'),
         ];
     }
 
