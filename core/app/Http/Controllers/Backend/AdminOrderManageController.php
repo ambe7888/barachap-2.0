@@ -156,6 +156,9 @@ class AdminOrderManageController extends Controller
         $client_email = optional($order->client)->email;
         // update
         $order->update(['status' => $status]);
+        SubOrder::where('order_id', $order_id)->update([
+            'status' => $status
+        ]);
 
         // if order status change mail send to client and provider
         try {

@@ -56,13 +56,18 @@ class OrderListTile extends StatelessWidget {
             ),
             4.toHeight,
             Text(
+              order.title ?? "---",
+              style: context.titleMedium?.bold,
+            ),
+            6.toHeight,
+            Text(
               order.createdAt == null
                   ? "---"
                   : DateFormat(
-                    "EEE, dd MMM yyyy",
-                    dProvider.languageSlug,
-                  ).format(order.createdAt ?? DateTime.now()),
-              style: context.titleSmall?.bold,
+                      "EEE, dd MMM yyyy",
+                      dProvider.languageSlug,
+                    ).format(order.createdAt ?? DateTime.now()),
+              style: context.bodySmall?.copyWith(color: context.color.secondaryContrastColor),
             ),
             8.toHeight,
             Wrap(

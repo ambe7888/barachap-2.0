@@ -17,10 +17,20 @@ class OrderListForClientResource extends JsonResource
     public function toArray(Request $request): array
     {
         $type = $this->subOrders->firstWhere('service_id') ? 'service' : ($this->subOrders->firstWhere('job_post_id') ? 'job' : 'unknown');
+        $subOrder = $this->subOrders->first();
+        $title = '';
+        if ($subOrder) {
+            if ($subOrder->service_id) {
+                $title = optional($subOrder->service)->title ?? '';
+            } elseif ($subOrder->job_post_id) {
+                $title = optional($subOrder->job)->title ?? '';
+            }
+        }
 
         return [
             'id' => $this->id,
             'user_id' => $this->user_id,
+            'title' => $title,
             'sub_total' => $this->sub_total,
             'tax' => $this->tax,
             'total' => $this->total,

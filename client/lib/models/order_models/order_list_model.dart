@@ -38,6 +38,7 @@ class OrderListModel {
 class Order {
   final dynamic id;
   final dynamic userId;
+  final String? title;
   final num subTotal;
   final num tax;
   final num total;
@@ -55,6 +56,7 @@ class Order {
   Order({
     this.id,
     this.userId,
+    this.title,
     required this.subTotal,
     required this.tax,
     required this.total,
@@ -73,6 +75,7 @@ class Order {
   factory Order.fromJson(Map<String, dynamic> json) => Order(
         id: json["id"],
         userId: json["user_id"],
+        title: json["title"]?.toString(),
         subTotal: json["sub_total"].toString().tryToParse,
         tax: json["tax"].toString().tryToParse,
         total: json["total"].toString().tryToParse,

@@ -47,6 +47,7 @@ class HiringPaymentChooseViewModel {
   }
 
   void tryHiringProvider(BuildContext context) async {
+    if (isLoading.value) return;
     final po = Provider.of<HireProviderFromOfferService>(
       context,
       listen: false,

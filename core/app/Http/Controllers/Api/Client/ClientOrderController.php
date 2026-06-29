@@ -46,7 +46,7 @@ class ClientOrderController extends Controller
         $status = $request->input('status');
         $order_type = $request->input('order_type');
         $client_id = Auth::guard('sanctum')->user()->id;
-        $query = Order::with('subOrders.subOrderAddons', 'subOrders.subOrderLocations', 'subOrders.staff')
+        $query = Order::with('subOrders.subOrderAddons', 'subOrders.subOrderLocations', 'subOrders.staff', 'subOrders.service', 'subOrders.job')
                         ->where('user_id', $client_id);
 
         if ($status !== null) {

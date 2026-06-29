@@ -22,6 +22,7 @@ class JobListsPublicResource extends JsonResource
             'title' => $this->title,
             'slug' => $this->slug,
             'budget' => $this->budget,
+            'view' => $this->view,
             'created_at' => $this->created_at,
             'job_location' => $this->job_location ? new JobLocationPublicResource($this->job_location) : null,
         ];

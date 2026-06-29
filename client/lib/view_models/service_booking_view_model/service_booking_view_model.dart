@@ -253,6 +253,7 @@ class ServiceBookingViewModel {
   }
 
   void tryPlacingCartOrder(BuildContext context) async {
+    if (isLoading.value) return;
     final po = Provider.of<PlaceOrderService>(context, listen: false);
     final cs = Provider.of<CartService>(context, listen: false);
 

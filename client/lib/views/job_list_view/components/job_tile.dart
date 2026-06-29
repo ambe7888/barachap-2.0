@@ -55,20 +55,37 @@ class JobTile extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                RichText(
-                  text: TextSpan(
-                      text: "${LocalKeys.budget}: ",
-                      style: context.bodyMedium?.copyWith(
-                        color: context.color.tertiaryContrastColo,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: job.budget.cur,
-                          style: context.titleMedium?.bold.copyWith(
-                            color: primaryColor,
+                Row(
+                  children: [
+                    RichText(
+                      text: TextSpan(
+                          text: "${LocalKeys.budget}: ",
+                          style: context.bodyMedium?.copyWith(
+                            color: context.color.tertiaryContrastColo,
                           ),
-                        )
-                      ]),
+                          children: [
+                            TextSpan(
+                              text: job.budget.cur,
+                              style: context.titleMedium?.bold.copyWith(
+                                color: primaryColor,
+                              ),
+                            )
+                          ]),
+                    ),
+                    12.toWidth,
+                    Icon(
+                      Icons.remove_red_eye_outlined,
+                      size: 16,
+                      color: context.color.secondaryContrastColor,
+                    ),
+                    4.toWidth,
+                    Text(
+                      "${job.view ?? 0}",
+                      style: context.bodySmall?.copyWith(
+                        color: context.color.secondaryContrastColor,
+                      ),
+                    ),
+                  ],
                 ),
                 if (job.jobOffersCount > 0)
                   SquircleContainer(
