@@ -245,6 +245,13 @@
             border-radius: 50%;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
+
+        .slider.onff:after, 
+        .switch input:checked + .slider.onff:after,
+        .switch input:not(:checked) + .slider.onff:after {
+            content: none !important;
+            display: none !important;
+        }
         
         input:checked + .slider.onff {
             background-color: #10b981; 
@@ -399,6 +406,11 @@
 
         .iti{
             width: 100%;
+        }
+
+        .iti input[type="tel"], 
+        .iti input[type="text"] {
+            padding-left: 90px !important;
         }
     </style>
 @endsection
