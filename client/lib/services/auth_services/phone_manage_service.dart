@@ -29,7 +29,7 @@ class PhoneManageService with ChangeNotifier {
     final responseData = await NetworkApiServices().postApi(
       data,
       AppUrls.sentOtpToPhoneUrl,
-      LocalKeys.signUp,
+      LocalKeys.signIn,
     );
 
     if (responseData != null) {
