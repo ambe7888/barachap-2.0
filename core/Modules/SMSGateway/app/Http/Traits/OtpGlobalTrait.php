@@ -57,6 +57,17 @@ trait OtpGlobalTrait
                                         'text' => $otpCode ?? $message
                                     ]
                                 ]
+                            ],
+                            [
+                                'type' => 'button',
+                                'sub_type' => 'url',
+                                'index' => '0',
+                                'parameters' => [
+                                    [
+                                        'type' => 'text',
+                                        'text' => $otpCode ?? $message
+                                    ]
+                                ]
                             ]
                         ]
                     ]
