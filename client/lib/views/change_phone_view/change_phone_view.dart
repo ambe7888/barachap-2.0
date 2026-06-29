@@ -27,50 +27,95 @@ class ChangePhoneView extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
             color: context.color.accentContrastColor,
             child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: SizedBox(
-                      height: 160,
-                      child: "verification".toAImage(fit: BoxFit.contain),
-                    ),
-                  ),
-                  24.toHeight,
-                  Center(
-                    child: Text(
-                      "Saisissez votre nouveau numéro de téléphone pour recevoir un code de validation OTP par SMS.",
-                      style: context.bodyMedium,
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  24.toHeight,
-                  PhoneField(
-                    phone: cep.phone,
-                    controller: cep.phoneController,
-                    label: LocalKeys.phone,
-                    hintText: "0102030405",
-                  )
-                ],
+              child: ValueListenableBuilder<bool>(
+                valueListenable: cep.isPhoneVerified,
+                builder: (context, isVerified, child) {
+                  if (isVerified) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Center(
+                          child: SizedBox(
+                            height: 100,
+                            child: const Icon(Icons.check_circle, color: Colors.green, size: 80),
+                          ),
+                        ),
+                        24.toHeight,
+                        Center(
+                          child: Text(
+                            "Numéro vérifié avec succès",
+                            style: context.titleLarge?.copyWith(color: Colors.green, fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        24.toHeight,
+                        PhoneField(
+                          phone: cep.phone,
+                          controller: cep.phoneController,
+                          label: LocalKeys.phone,
+                          hintText: "0102030405",
+                          isSuccess: true,
+                        )
+                      ],
+                    );
+                  }
+                  
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Center(
+                        child: SizedBox(
+                          height: 160,
+                          child: "verification".toAImage(fit: BoxFit.contain),
+                        ),
+                      ),
+                      24.toHeight,
+                      Center(
+                        child: Text(
+                          "Saisissez votre nouveau numéro de téléphone pour recevoir un code de validation OTP par WhatsApp.",
+                          style: context.bodyMedium,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      24.toHeight,
+                      PhoneField(
+                        phone: cep.phone,
+                        controller: cep.phoneController,
+                        label: LocalKeys.phone,
+                        hintText: "0102030405",
+                        isSuccess: false,
+                      )
+                    ],
+                  );
+                }
               ),
-            )),
-      ),
-      bottomNavigationBar: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-        decoration: BoxDecoration(
-            color: context.color.accentContrastColor,
-            border: Border(
-                top: BorderSide(color: context.color.primaryBorderColor))),
-        child: ValueListenableBuilder(
-          valueListenable: cep.isLoading,
-          builder: (context, value, child) => CustomButton(
-            onPressed: () {
-              cep.tryChangingPhone(context);
-            },
-            btText: LocalKeys.sendVerificationCode,
-            isLoading: value,
-          ),
+            ),
         ),
+      ),
+      bottomNavigationBar: ValueListenableBuilder<bool>(
+        valueListenable: cep.isPhoneVerified,
+        builder: (context, isVerified, child) {
+          if (isVerified) {
+            return const SizedBox.shrink();
+          }
+          return Container(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+            decoration: BoxDecoration(
+                color: context.color.accentContrastColor,
+                border: Border(
+                    top: BorderSide(color: context.color.primaryBorderColor))),
+            child: ValueListenableBuilder(
+              valueListenable: cep.isLoading,
+              builder: (context, value, child) => CustomButton(
+                onPressed: () {
+                  cep.tryChangingPhone(context);
+                },
+                btText: LocalKeys.sendVerificationCode,
+                isLoading: value,
+              ),
+            ),
+          );
+        }
       ),
     );
   }

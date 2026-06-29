@@ -12,6 +12,8 @@ class ChangeEmailPhoneViewModel {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final ValueNotifier<Phone?> phone = ValueNotifier(null);
+  final ValueNotifier<bool> isEmailVerified = ValueNotifier(false);
+  final ValueNotifier<bool> isPhoneVerified = ValueNotifier(false);
 
   final ValueNotifier<bool> isLoading = ValueNotifier(false);
 
@@ -44,6 +46,7 @@ class ChangeEmailPhoneViewModel {
               builder: (context) => ChangeEmailOtpView(null),
             ));
         if (verifyResult == true) {
+          isEmailVerified.value = true;
           context.pop;
         }
       }
@@ -67,11 +70,14 @@ class ChangeEmailPhoneViewModel {
           await Provider.of<PhoneManageService>(context, listen: false)
               .trySendingOtpToNewPhone(phone: fullPhone);
       if (otpResult == true) {
-        await Navigator.push(
+        final verifyResult = await Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => ChangePhoneOtpView(),
             ));
+        if (verifyResult == true) {
+          isPhoneVerified.value = true;
+        }
       }
     } catch (e) {
       debugPrint(e.toString());

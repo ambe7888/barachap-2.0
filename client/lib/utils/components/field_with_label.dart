@@ -30,6 +30,7 @@ class FieldWithLabel extends StatelessWidget {
   final Widget? prefixIcon;
   final void Function(PointerDownEvent)? onTapOutside;
   final bool? readOnly;
+  final bool isSuccess;
   const FieldWithLabel(
       {super.key,
       required this.label,
@@ -52,6 +53,7 @@ class FieldWithLabel extends StatelessWidget {
       this.minLines,
       this.controller,
       this.onTapOutside,
+      this.isSuccess = false,
       this.readOnly});
 
   setInitialValue(value) {
@@ -71,7 +73,8 @@ class FieldWithLabel extends StatelessWidget {
         if (label != null)
           FieldLabel(label: label!, isRequired: isRequired ?? false),
         TextFormField(
-          readOnly: readOnly ?? false,
+          readOnly: (readOnly ?? false) || isSuccess,
+          style: isSuccess ? context.titleSmall?.copyWith(color: Colors.green, fontWeight: FontWeight.bold) : context.titleSmall,
           keyboardType: keyboardType,
           textInputAction: textInputAction ??
               (minLines != null
@@ -82,9 +85,10 @@ class FieldWithLabel extends StatelessWidget {
           autofillHints: autofillHints,
           minLines: minLines,
           maxLines: maxLines,
-          style: context.titleSmall,
           decoration: InputDecoration(
               hintText: hintText,
+              enabledBorder: isSuccess ? OutlineInputBorder(borderSide: const BorderSide(color: Colors.green, width: 2), borderRadius: BorderRadius.circular(8)) : null,
+              focusedBorder: isSuccess ? OutlineInputBorder(borderSide: const BorderSide(color: Colors.green, width: 2), borderRadius: BorderRadius.circular(8)) : null,
               prefixIcon: svgPrefix != null || prefixIcon != null
                   ? Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12),

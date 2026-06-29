@@ -3,6 +3,8 @@ import 'package:prohandy_client/helper/extension/context_extension.dart';
 import 'package:prohandy_client/helper/extension/int_extension.dart';
 import 'package:prohandy_client/helper/local_keys.g.dart';
 import 'package:prohandy_client/utils/components/custom_button.dart';
+import 'package:prohandy_client/helper/extension/string_extension.dart';
+import 'package:prohandy_client/helper/phone_field.dart';
 import 'package:prohandy_client/utils/components/field_with_label.dart';
 import 'package:prohandy_client/utils/components/navigation_pop_icon.dart';
 import 'package:prohandy_client/view_models/sign_in_with_otp_view_model/sign_in_with_otp_view_model.dart';
@@ -25,25 +27,29 @@ class SignInWithOtpView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                LocalKeys.otpSignIn,
-                style: context.titleLarge?.bold,
+              Center(
+                child: SizedBox(
+                  height: 160,
+                  child: "verification".toAImage(fit: BoxFit.contain),
+                ),
               ),
-              32.toHeight,
-              FieldWithLabel(
-                label: LocalKeys.phone,
-                hintText: "+8801938000000",
-                isRequired: true,
-                keyboardType: TextInputType.number,
+              24.toHeight,
+              Center(
+                child: Text(
+                  "Saisissez votre numéro de téléphone pour recevoir un code de validation OTP par WhatsApp.",
+                  style: context.bodyMedium,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              24.toHeight,
+              PhoneField(
+                phone: sio.phone,
                 controller: sio.phoneController,
-                validator: (value) {
-                  if (value.toString().length < 5) {
-                    return LocalKeys.enterAValidPhoneNumber;
-                  }
-                  return null;
-                },
+                label: LocalKeys.phone,
+                hintText: "0102030405",
+                isSuccess: false,
               ),
-              12.toHeight,
+              24.toHeight,
               ValueListenableBuilder(
                 valueListenable: sio.isLoading,
                 builder: (context, value, child) => CustomButton(

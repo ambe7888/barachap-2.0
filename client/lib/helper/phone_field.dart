@@ -15,6 +15,7 @@ class PhoneField extends StatelessWidget {
   final searchHintText;
   final lengthErrorText;
   final bool isRequired;
+  final bool isSuccess;
   PhoneField(
       {required this.phone,
       required this.controller,
@@ -23,6 +24,7 @@ class PhoneField extends StatelessWidget {
       this.searchHintText,
       this.lengthErrorText = '',
       this.isRequired = false,
+      this.isSuccess = false,
       super.key});
 
   List<Phone> countryList = [];
@@ -39,16 +41,21 @@ class PhoneField extends StatelessWidget {
           valueListenable: phone,
           builder: (context, value, child) => TextFormField(
             controller: controller,
+            readOnly: isSuccess,
+            style: isSuccess ? const TextStyle(color: Colors.green, fontWeight: FontWeight.bold) : null,
             autovalidateMode: AutovalidateMode.always,
             keyboardType: TextInputType.number,
             maxLength: phoneLength(value),
             decoration: InputDecoration(
               hintText: hintText,
               counterText: '',
+              enabledBorder: isSuccess ? OutlineInputBorder(borderSide: const BorderSide(color: Colors.green, width: 2), borderRadius: BorderRadius.circular(8)) : null,
+              focusedBorder: isSuccess ? OutlineInputBorder(borderSide: const BorderSide(color: Colors.green, width: 2), borderRadius: BorderRadius.circular(8)) : null,
               prefixIcon: ValueListenableBuilder(
                 valueListenable: phone,
                 builder: (context, value, child) => GestureDetector(
                   onTap: () async {
+                    if (isSuccess) return;
                     searchedCountry.value = '';
                     showModalBottomSheet(
                       context: context,
@@ -164,13 +171,13 @@ class PhoneField extends StatelessWidget {
                       border: Border(
                           left: context.dProvider.textDirectionRight
                               ? BorderSide(
-                                  color: context.color.primaryBorderColor,
+                                  color: isSuccess ? Colors.green : context.color.primaryBorderColor,
                                   width: 2)
                               : BorderSide.none,
                           right: context.dProvider.textDirectionRight
                               ? BorderSide.none
                               : BorderSide(
-                                  color: context.color.primaryBorderColor,
+                                  color: isSuccess ? Colors.green : context.color.primaryBorderColor,
                                   width: 2)),
                     ),
                     child: Row(
@@ -180,12 +187,13 @@ class PhoneField extends StatelessWidget {
                           valueListenable: phone,
                           builder: (context, value, child) => Text(
                               "${value?.flag.toString() ?? "🇨🇮"} +" +
-                                  (phone.value?.dialCode ?? "225")),
+                                  (phone.value?.dialCode ?? "225"), style: isSuccess ? const TextStyle(color: Colors.green, fontWeight: FontWeight.bold) : null),
                         ),
-                        Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: context.color.secondaryContrastColor,
-                        )
+                        if (!isSuccess)
+                          Icon(
+                            Icons.keyboard_arrow_down_rounded,
+                            color: context.color.secondaryContrastColor,
+                          )
                       ],
                     ),
                   ),

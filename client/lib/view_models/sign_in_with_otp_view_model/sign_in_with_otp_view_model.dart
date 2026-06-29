@@ -32,9 +32,11 @@ class SignInWithOtpViewModel {
     if (formKey.currentState!.validate() != true) return;
     isLoading.value = true;
     try {
+      final dialCode = phone.value?.dialCode ?? "225";
+      final fullPhone = "+$dialCode${phoneController.text}";
       final otpResult =
           await Provider.of<PhoneManageService>(context, listen: false)
-              .tryOtpToPhone(phone: phoneController.text);
+              .tryOtpToPhone(phone: fullPhone);
       if (otpResult == true) {
         final vResult = await Navigator.push(
             context,

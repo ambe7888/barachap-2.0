@@ -1598,7 +1598,7 @@
     "Connection timeout": "Délai de connexion dépassé",
     "Your payment will be terminated.": "Votre paiement va être interrompu.",
     "Invalid developer keys": "Clés de développeur invalides",
-    "Payment Gateways": "Passerelles de paiement",
+    "Payment Gateways": "Methode de paiement",
     "Card Number": "Numéro de carte",
     "Invalid card number": "Numéro de carte invalide",
     "CVV\/CVC": "CVV\/CVC",

@@ -5,187 +5,155 @@
 @section('style')
     <style>
         .plugin-grid {
-            display: flex;
-            flex-wrap: wrap;
-            /*justify-content: space-between;*/
-            /*padding: 1em;*/
-            gap: 1em; /* space between grid items */
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
         }
 
         .plugin-card {
-            width: calc((100% - 2em) / 3); /* for a three column layout */
-            box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
-            /*padding: 1em;*/
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-align: center;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.02);
+            position: relative;
+        }
+
+        .plugin-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
         }
 
         .plugin-card .thumb-bg-color {
-            background-color: #5d666e;
-            padding: 40px;
-            color: #fff;
-        }
-
-        .plugin-card .thumb-bg-color strong {
-            font-size: 20px;
-            line-height: 26px;
-        }
-
-        .plugin-card .thumb-bg-color strong .version {
-            font-size: 14px;
-            line-height: 18px;
-            background-color: #fff;
-            padding: 5px 10px;
-            display: inline-block;
-            color: #333;
-            border-radius: 3px;
-            margin-top: 15px;
-        }
-
-        .plugin-title {
-            font-size: 16px;
-            font-weight: 500;
-            background-color: #03A9F4;
-            box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.2);
-            display: inline-block;
-            padding: 12px 30px;
-            border-radius: 25px;
+            padding: 40px 20px;
             color: #fff;
             position: relative;
-            margin-top: -20px;
+            z-index: 1;
         }
-
-        .plugin-title.externalplugin {
-            background-color: #3F51B5;
-        }
-
-        .plugin-meta {
-            font-size: 0.9em;
-            color: #666;
-            padding: 20px;
-        }
-
-        .padding-30 {
-            padding: 30px;
-        }
-
-        .plugin-card .thumb-bg-color.externalplugin {
-            background-color: #FF9800;
-        }
-
-        .thumb-bg-color.whatsapp svg,
-        .thumb-bg-color.messenger svg{
-            max-width: 60px;
-        }
-
+        
+        /* Modern Gradients for Brands */
         .plugin-card .thumb-bg-color.google_analytics, .plugin-card .thumb-bg-color.captcha {
-            background-color: #F9AB00;
+            background: linear-gradient(135deg, #FFB75E 0%, #ED8F03 100%);
         }
         .plugin-card .thumb-bg-color.google_tags {
-            background-color: #4285f4;
+            background: linear-gradient(135deg, #66a6ff 0%, #397bee 100%);
         }
         .plugin-card .thumb-bg-color.facebook_pixels {
-            background-color: #397bee;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
         }
         .plugin-card .thumb-bg-color.addroll {
-            background-color: #06aeef;
+            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
         }
         .plugin-card .thumb-bg-color.whatsapp {
-            background-color: #2cb317;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
         }
         .plugin-card .thumb-bg-color.twakto {
-            background-color: #00b447;
+            background: linear-gradient(135deg, #00b447 0%, #008735 100%);
         }
-
         .plugin-card .thumb-bg-color.crisp {
-            background-color: #1a72f5;
+            background: linear-gradient(135deg, #1a72f5 0%, #0d5dd1 100%);
         }
-
         .plugin-card .thumb-bg-color.tidio {
-            background-color: #0567ff;
+            background: linear-gradient(135deg, #0567ff 0%, #034fce 100%);
         }
-
         .plugin-card .thumb-bg-color.messenger {
-            background-color: #A334FA;
+            background: linear-gradient(135deg, #A334FA 0%, #7B12DF 100%);
         }
-
         .plugin-card .thumb-bg-color.instagram {
             background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
         }
-
         .plugin-card .thumb-bg-color.google_adsense {
-            background: linear-gradient(45deg, #148f57 0%, #288d4a 25%, #438db0 50%, #7894b2 75%, #4ebe94 100%);
+            background: linear-gradient(135deg, #148f57 0%, #4ebe94 100%);
         }
 
-        .plugin-card .plugin-meta {
-            min-height: 50px;
+        .plugin-card .thumb-bg-color strong {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        }
+
+        .plugin-meta {
+            font-size: 15px;
+            color: #6B7280;
+            padding: 30px 24px;
+            margin: 0;
+            flex-grow: 1;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .padding-30 {
+            padding: 40px;
+            border-radius: 24px;
+            background: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid #F3F4F6;
         }
 
         .plugin-card .btn-group-wrap {
             margin-bottom: 30px;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
+            padding: 0 24px;
         }
 
         .plugin-card .btn-group-wrap a {
-            display: inline-block;
-            padding: 8px 25px;
-            background-color: #4b4e5b;
-            border-radius: 25px;
-            color: #fff;
+            flex: 1;
+            padding: 12px 20px;
+            background-color: #F3F4F6;
+            border-radius: 50px;
+            color: #374151;
+            font-weight: 700;
             text-decoration: none;
-            font-size: 12px;
-            transition: all 300ms;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .plugin-card .btn-group-wrap a.pl_active_deactive {
+            background-color: #111827;
+            color: #ffffff;
+        }
+        .plugin-card .btn-group-wrap a.pl_active_deactive:hover {
+            background-color: #374151;
+            box-shadow: 0 6px 15px rgba(17, 24, 39, 0.25);
+            transform: translateY(-3px);
         }
 
         .plugin-card .btn-group-wrap a.pl_delete {
-            background-color: #e13a3a;
+            background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+            color: #ffffff;
         }
-
-        .plugin-card .btn-group-wrap a:hover {
-            opacity: .8;
+        .plugin-card .btn-group-wrap a.pl_delete:hover {
+            box-shadow: 0 6px 15px rgba(239, 68, 68, 0.3);
+            transform: translateY(-3px);
         }
-
-        .plugin-card .icon-wrap {
-            margin-bottom: 15px;
+        
+        .header-wrap {
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid #F3F4F6;
+            text-align: center;
         }
-
-        /* For large screens and above */
-        @media (min-width: 900px) {
-            .plugin-card {
-                width: calc((100% - 3em) / 3); /* three columns for large screens */
-            }
+        .header-wrap h4 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #111827;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
         }
-
-        /* For medium screens and above */
-        @media (max-width: 600px) {
-            .plugin-card {
-                width: calc((100% - 2em) / 2); /* two columns for medium screens */
-            }
-
-            .plugin-card .btn-group-wrap {
-                gap: 5px;
-            }
-
-            .plugin-card .btn-group-wrap a {
-                padding: 7px 15px;
-            }
-
-            .plugin-title {
-                font-size: 12px;
-                line-height: 16px;
-            }
-        }
-
-        @media (max-width: 500px) {
-            .plugin-card {
-                width: calc((100% - 2em) / 1); /* two columns for medium screens */
-            }
-
-            .plugin-title {
-                font-size: 16px;
-                line-height: 20px;
-            }
+        .header-wrap p {
+            font-size: 18px;
+            color: #6B7280;
+            font-weight: 500;
         }
 
     </style>
