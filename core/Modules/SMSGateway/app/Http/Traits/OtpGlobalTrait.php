@@ -27,13 +27,20 @@ trait OtpGlobalTrait
         [$receiverNumber, $message] = $data;
         $otpCode = count($data) === 3 ? $data[2] : null;
 
-        $waToken = env('WHATSAPP_CLOUD_TOKEN');
-        $waPhoneId = env('WHATSAPP_PHONE_NUMBER_ID');
-        $waTemplate = env('WHATSAPP_OTP_TEMPLATE_NAME', 'otp_template');
+        $client = $this->config();
 
-        if (!empty($waToken) && !empty($waPhoneId)) {
+        if ($client['gateway'] === 'whatsapp') {
             try {
                 $waNumber = ltrim($receiverNumber, '+');
+                $waToken = $client['client']['token'] ?? '';
+                $waPhoneId = $client['client']['phone_id'] ?? '';
+                $waTemplate = $client['client']['template'] ?? 'otp_template';
+
+                if (empty($waToken) || empty($waPhoneId)) {
+                    \Illuminate\Support\Facades\Log::error('WhatsApp API Error: Token or Phone ID is missing in gateway settings.');
+                    return false;
+                }
+
                 $response = Http::withToken($waToken)->post("https://graph.facebook.com/v17.0/{$waPhoneId}/messages", [
                     'messaging_product' => 'whatsapp',
                     'to' => $waNumber,
@@ -66,8 +73,6 @@ trait OtpGlobalTrait
                 return false;
             }
         }
-
-        $client = $this->config();
 
         if($client['gateway'] === 'nexmo'){
             $nexmo_from = get_static_option('site_title');
@@ -203,6 +208,15 @@ trait OtpGlobalTrait
                 if ($sms_gateway->name == 'twilio') {
                     $credentials = $this->twilioConfig($sms_gateway);
                     $client = new Client(...$credentials);
+                }
+
+                if ($sms_gateway->name == 'whatsapp') {
+                    $credentials = json_decode($sms_gateway->credentials);
+                    $client = [
+                        'token' => $credentials->whatsapp_cloud_token ?? '',
+                        'phone_id' => $credentials->whatsapp_phone_number_id ?? '',
+                        'template' => $credentials->whatsapp_otp_template_name ?? 'otp_template',
+                    ];
                 }
             }, 1000);
         } catch (Exception $e) {

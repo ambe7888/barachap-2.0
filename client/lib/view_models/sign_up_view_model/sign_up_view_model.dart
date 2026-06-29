@@ -11,6 +11,7 @@ import 'package:provider/provider.dart';
 import '../../data/network/network_api_services.dart';
 
 import '../../app_static_values.dart';
+import '../../helper/app_urls.dart';
 import '../../helper/local_keys.g.dart';
 import '../../helper/phone_field.dart';
 import '../../services/auth_services/email_otp_service.dart';

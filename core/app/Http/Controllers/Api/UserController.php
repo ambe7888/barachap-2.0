@@ -337,6 +337,7 @@ class UserController extends Controller
                 }
 
             }catch (\Exception $e) {
+                \Log::error('OTP Send Error: ' . $e->getMessage() . ' Trace: ' . $e->getTraceAsString());
                 // Handle any other general exceptions
                 return response()->json([
                     'message' => __('An unexpected error occurred. Please try again later.'),
