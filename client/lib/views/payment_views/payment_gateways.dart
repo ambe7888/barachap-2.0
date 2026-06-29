@@ -61,95 +61,97 @@ class PaymentGateways extends StatelessWidget {
                       Wrap(
                         spacing: 8,
                         runSpacing: 12,
+                        alignment: WrapAlignment.center,
                         children: pg.gatewayList
                             .map((e) => GestureDetector(
                                   onTap: () {
                                     gatewayNotifier.value = e;
                                     debugPrint(e.toJson().toString());
                                   },
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      SquircleContainer(
-                                        radius: 10,
-                                        borderColor: value?.name == e.name
-                                            ? primaryColor
-                                            : context.color.primaryBorderColor,
-                                        padding: const EdgeInsets.all(6),
-                                        child: ClipRRect(
-                                          child: e.image.toString().endsWith(".svg")
-                                              ? SvgPicture.network(
-                                                  e.image.toString())
-                                              : (e.name == "cash_on_delivery"
-                                                  ? SquircleContainer(
-                                                      height: 42,
-                                                      width: (context.width / 4.3) -
-                                                          12,
-                                                      radius: 10,
-                                                      child: Image.asset(
-                                                        "assets/images/cod.png",
-                                                      ),
-                                                    )
-                                                  : CustomNetworkImage(
-                                                      height: 42,
-                                                      width: (context.width / 4.3) -
-                                                          12,
-                                                      radius: 10,
-                                                      imageUrl: e.image.toString(),
-                                                      errorWidget: Column(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          SvgAssets.gallery
-                                                              .toSVGSized(18),
-                                                        ],
-                                                      ),
-                                                    )),
-                                        ),
-                                      ),
-                                      4.toHeight,
-                                      SizedBox(
-                                        width: (context.width / 4.3) - 12,
-                                        child: Text(
-                                          e.name == "cash_on_delivery"
-                                              ? "Payer à la fin"
-                                              : (e.name == "manual_payment"
-                                                  ? "Manuel"
-                                                  : e.name.toString().replaceAll("_", " ").capitalizeWords),
-                                          style: context.bodySmall?.copyWith(
-                                            fontSize: 9,
-                                            fontWeight: value?.name == e.name
-                                                ? FontWeight.bold
-                                                : FontWeight.normal,
+                                  child: e.name == "cash_on_delivery"
+                                      ? SquircleContainer(
+                                          width: context.width - 48,
+                                          radius: 12,
+                                          borderColor: value?.name == e.name
+                                              ? primaryColor
+                                              : context.color.primaryBorderColor,
+                                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Icon(
+                                                Icons.handshake_outlined,
+                                                color: value?.name == e.name
+                                                    ? primaryColor
+                                                    : context.color.primaryContrastColor,
+                                              ),
+                                              12.toWidth,
+                                              Text(
+                                                "Payer à la fin du service",
+                                                style: context.bodyMedium?.copyWith(
+                                                  fontWeight: FontWeight.w600,
+                                                  color: value?.name == e.name
+                                                      ? primaryColor
+                                                      : context.color.primaryContrastColor,
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                          textAlign: TextAlign.center,
-                                          maxLines: 2,
-                                          overflow: TextOverflow.ellipsis,
+                                        )
+                                      : Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            SquircleContainer(
+                                              radius: 10,
+                                              borderColor: value?.name == e.name
+                                                  ? primaryColor
+                                                  : context.color.primaryBorderColor,
+                                              padding: const EdgeInsets.all(6),
+                                              child: ClipRRect(
+                                                child: e.image.toString().endsWith(".svg")
+                                                    ? SvgPicture.network(
+                                                        e.image.toString())
+                                                    : CustomNetworkImage(
+                                                        height: 42,
+                                                        width: (context.width / 4.3) -
+                                                            12,
+                                                        radius: 10,
+                                                        imageUrl: e.image.toString(),
+                                                        errorWidget: Column(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            SvgAssets.gallery
+                                                                .toSVGSized(18),
+                                                          ],
+                                                        ),
+                                                      ),
+                                              ),
+                                            ),
+                                            4.toHeight,
+                                            SizedBox(
+                                              width: (context.width / 4.3) - 12,
+                                              child: Text(
+                                                e.name == "manual_payment"
+                                                    ? "Manuel"
+                                                    : e.name.toString().replaceAll("_", " ").capitalizeWords,
+                                                style: context.bodySmall?.copyWith(
+                                                  fontSize: 9,
+                                                  fontWeight: value?.name == e.name
+                                                      ? FontWeight.bold
+                                                      : FontWeight.normal,
+                                                ),
+                                                textAlign: TextAlign.center,
+                                                maxLines: 2,
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                      ),
-                                    ],
-                                  ),
                                 ))
                             .toList(),
                       ),
-                      if (gatewayNotifier.value?.name == "cash_on_delivery") ...[
-                        12.toHeight,
-                        SquircleContainer(
-                          width: double.infinity,
-                          padding: 12.paddingAll,
-                          color: context.color.mutedContrastColor,
-                          radius: 16,
-                          child: Text(
-                            "Payer à la fin du service",
-                            textAlign: TextAlign.center,
-                            style: context.bodyMedium?.copyWith(
-                              fontWeight: FontWeight.w600,
-                              color: context.color.primaryContrastColor,
-                            ),
-                          ),
-                        ),
-                      ],
                       if (gatewayNotifier.value?.name == "manual_payment") ...[
                         if (gatewayNotifier
                                 .value?.credentials?.description?.isNotEmpty ??
