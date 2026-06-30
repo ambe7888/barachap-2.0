@@ -9,7 +9,7 @@ class IntroService with ChangeNotifier {
     {
       "title": LocalKeys.welcomeToProhandy,
       "description": LocalKeys.bookExpertHandymen,
-      "image": "assets/images/intro_1_v2.png",
+      "image": "assets/images/intro_1.png",
     },
     {
       "title": LocalKeys.bookFromServices,

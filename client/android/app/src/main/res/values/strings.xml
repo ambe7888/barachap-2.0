@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <string name="app_name">Prohandy</string>
+    <string name="app_name">BaraChap</string>
     <string name="facebook_app_id">377979475391849</string>
     <string name="fb_login_protocol_scheme">fb377979475391849</string>
     <string name="facebook_client_token">a17f92dc6f2cb5809bd162c094d8aa9f</string>
