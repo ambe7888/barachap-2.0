@@ -246,7 +246,29 @@ class GeneralSettingsController extends Controller
     }
 
     public function updateVersionCheck(Request $request){
-        $result = XgApiClient::checkForUpdate(get_static_option("site_license_key"),get_static_option("site_script_version"));
+        $licenseKey = trim((string) get_static_option("site_license_key"));
+        $licenseStatus = trim((string) get_static_option("item_license_status"));
+        $verifiedKey = trim((string) get_static_option("license_verified_key"));
+        $hasLocalLicense = ($licenseStatus === 'verified' || !empty($licenseKey) || !empty($verifiedKey));
+
+        try {
+            $result = XgApiClient::checkForUpdate($licenseKey, get_static_option("site_script_version"));
+        } catch (\Throwable $e) {
+            if ($hasLocalLicense) {
+                return response()->json([
+                    "msg" => __('Your license is already active. Update check is temporarily unavailable.'),
+                    "type" => "success",
+                    "markup" => "<div class='text-warning'>".__('Your license is already active. Update check is temporarily unavailable.')."</div>"
+                ]);
+            }
+
+            return response()->json([
+                "msg" => __('Unable to verify the update service at the moment. Please try again later.'),
+                "type" => "danger",
+                "markup" => "<p class='text-danger'>".__('Unable to verify the update service at the moment. Please try again later.')."</p>"
+            ]);
+        }
+
         if (isset($result["success"]) && $result["success"]){
             $productUid = $result['data']['product_uid'] ?? null;
             $clientVersion = $result['data']['client_version'] ?? null;
@@ -299,7 +321,15 @@ class GeneralSettingsController extends Controller
             return response()->json(["msg" => $result["message"],"type" => "success","markup" => $output ]);
         }
 
-        return response()->json(["msg" => $result["message"],"type" => "danger","markup" => "<p class='text-danger'>".$result["message"]."</p>" ]);
+        if ($hasLocalLicense) {
+            return response()->json([
+                "msg" => __('Your license is already active. No update information is available right now.'),
+                "type" => "success",
+                "markup" => "<div class='text-warning'>".__('Your license is already active. No update information is available right now.')."</div>"
+            ]);
+        }
+
+        return response()->json(["msg" => $result["message"] ?? __('Unable to verify the update service at the moment.'),"type" => "danger","markup" => "<p class='text-danger'>".($result["message"] ?? __('Unable to verify the update service at the moment.'))."</p>" ]);
 
     }
 
