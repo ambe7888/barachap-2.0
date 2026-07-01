@@ -1806,5 +1806,17 @@
     "Once approved, use this template from your backend to message users beyond 24 hours of last interaction.": "Une fois approuvé, utilisez ce modèle depuis votre backend pour envoyer des messages aux utilisateurs au-delà de 24 heures.",
     "-This token is required during Webhook Verification when setting up your WhatsApp Business API on Meta Developer Portal. Meta will compare this with what your app returns.": "- Ce jeton est requis lors de la vérification du Webhook lors de la configuration de votre API WhatsApp Business sur le portail des développeurs Meta.",
     "-This is the unique identifier for the phone number connected to your WhatsApp Business Account. You can find it in your Meta Business Manager under your WhatsApp assets.": "- Il s'agit de l'identifiant unique du numéro de téléphone connecté à votre compte WhatsApp Business.",
-    "-This is the permanent access token generated from your Meta Developer app. It allows your system to continuously send and receive messages without the token expiring.": "- Il s'agit du jeton d'accès permanent généré depuis votre application Meta Developer. Il permet à votre système d'envoyer et de recevoir des messages en continu."
+    "-This is the permanent access token generated from your Meta Developer app. It allows your system to continuously send and receive messages without the token expiring.": "- Il s'agit du jeton d'accès permanent généré depuis votre application Meta Developer. Il permet à votre système d'envoyer et de recevoir des messages en continu.",
+    "You have a new order": "Vous avez reçu une nouvelle commande ! Ouvrez l'application pour plus de détails.",
+    "You have successfully placed an order #": "Votre commande a été passée avec succès 🎉. Pour plus de détails, ouvrez votre application. Commande N°",
+    "You have a new order #": "Vous avez reçu une nouvelle commande ! Ouvrez l'application pour consulter les détails. Commande N°",
+    "Your order #:order_id is now :new_status.": "Votre commande N°:order_id est désormais au statut : :new_status.",
+    "Order #:order_id is now :new_status.": "La commande N°:order_id est désormais au statut : :new_status.",
+    "You have successfully canceled service #": "Vous avez annulé avec succès le service ",
+    "  for order #": " pour la commande N°",
+    " for order #": " pour la commande N°",
+    "You have a new order cancellation #": "Annulation d'une commande. Commande N°",
+    "You have successfully canceled services #": "Vous avez annulé avec succès les services ",
+    "You have already reviewed this service.": "Vous avez déjà évalué ce service.",
+    "You have already reviewed this user.": "Vous avez déjà évalué cet utilisateur."
 }
