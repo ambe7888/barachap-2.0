@@ -7,13 +7,13 @@ $response = $kernel->handle(
 );
 
 $messages = [
-    'order_complete' => 'Votre commande est confirmée. Merci de nous faire confiance.',
+    'order_complete' => 'Votre réservation est confirmée. Merci de nous faire confiance.',
     'help_message' => 'Bonjour, comment pouvons-nous vous aider aujourd\'hui ?',
     'search_service' => 'Veuillez entrer le nom du service que vous recherchez.',
     'not_available_slots' => 'Désolé, aucun créneau n\'est disponible.',
     'service_not_found' => 'Désolé, nous n\'avons pas trouvé ce service.',
-    'cancel_confirmation' => 'Votre commande a bien été annulée.',
-    'not_found_recent_order' => 'Aucune commande récente n\'a été trouvée.',
+    'cancel_confirmation' => 'Votre réservation a bien été annulée.',
+    'not_found_recent_order' => 'Aucune réservation récente n\'a été trouvée.',
     'ask_user_location' => 'Veuillez nous indiquer votre adresse.',
     'ask_service_select' => 'Veuillez sélectionner un service.',
     'ask_addon_select' => 'Souhaitez-vous des options supplémentaires ?',
@@ -32,12 +32,12 @@ foreach ($messages as $key => $message) {
 
 $buttonTexts = [
     'service_search' => 'Chercher un service',
-    'view_recent_orders' => 'Mes commandes',
+    'view_recent_orders' => 'Mes réservations',
     'talk_to_support' => 'Parler au support',
     'select_service' => 'Choisir ce service',
     'included_excluded' => 'Inclus / Exclus',
     'show_faqs' => 'Voir les FAQs',
-    'order_now' => 'Commander',
+    'order_now' => 'Réserver',
     'select_addons' => 'Options en plus',
     'select_addons_quantity' => 'Choisir la quantité',
     'select_staff' => 'Choisir le staff',
@@ -45,8 +45,8 @@ $buttonTexts = [
     'select_slot' => 'Choisir un créneau',
     'order_service_details' => 'Détails du service',
     'order_other_details' => 'Autres détails',
-    'confirm_order' => 'Confirmer commande',
-    'cancel_order' => 'Annuler la commande',
+    'confirm_order' => 'Confirmer réservation',
+    'cancel_order' => 'Annuler réservation',
     'agree_to_cancel_order' => 'Oui, annuler',
     'disagree_to_cancel_order' => 'Non, retour',
 ];
