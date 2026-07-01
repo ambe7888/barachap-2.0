@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require __DIR__.'/core/vendor/autoload.php';
 $app = require_once __DIR__.'/core/bootstrap/app.php';
 $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
@@ -7,12 +7,12 @@ $response = $kernel->handle(
 );
 
 $messages = [
-    'order_complete' => 'Votre réservation est confirmée. Merci de nous faire confiance.',
+    'order_complete' => 'Votre demande de service est confirmée ✅. Merci de nous faire confiance.',
     'help_message' => 'Bonjour, comment pouvons-nous vous aider aujourd\'hui ?',
     'search_service' => 'Veuillez entrer le nom du service que vous recherchez.',
     'not_available_slots' => 'Désolé, aucun créneau n\'est disponible.',
     'service_not_found' => 'Désolé, nous n\'avons pas trouvé ce service.',
-    'cancel_confirmation' => 'Votre réservation a bien été annulée.',
+    'cancel_confirmation' => 'Votre demande de service a bien été annulée.',
     'not_found_recent_order' => 'Aucune réservation récente n\'a été trouvée.',
     'ask_user_location' => 'Veuillez nous indiquer votre adresse.',
     'ask_service_select' => 'Veuillez sélectionner un service.',
@@ -32,7 +32,7 @@ foreach ($messages as $key => $message) {
 
 $buttonTexts = [
     'service_search' => 'Chercher un service',
-    'view_recent_orders' => 'Mes réservations',
+    'view_recent_orders' => 'Mes demandes de service',
     'talk_to_support' => 'Parler au support',
     'select_service' => 'Choisir ce service',
     'included_excluded' => 'Inclus / Exclus',
@@ -45,8 +45,8 @@ $buttonTexts = [
     'select_slot' => 'Choisir un créneau',
     'order_service_details' => 'Détails du service',
     'order_other_details' => 'Autres détails',
-    'confirm_order' => 'Confirmer réservation',
-    'cancel_order' => 'Annuler réservation',
+    'confirm_order' => 'Confirmer ma demande',
+    'cancel_order' => 'Annuler ma demande',
     'agree_to_cancel_order' => 'Oui, annuler',
     'disagree_to_cancel_order' => 'Non, retour',
 ];
