@@ -1,8 +1,10 @@
 <?php
 require __DIR__.'/core/vendor/autoload.php';
 $app = require_once __DIR__.'/core/bootstrap/app.php';
-$kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
-$kernel->bootstrap();
+$kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
+$response = $kernel->handle(
+    $request = Illuminate\Http\Request::capture()
+);
 
 $messages = [
     'order_complete' => 'Votre commande est confirmée. Merci de nous faire confiance.',
@@ -23,7 +25,7 @@ $messages = [
 ];
 
 foreach ($messages as $key => $message) {
-    if (!get_whatsapp_option("whatsapp_message_$key")) {
+    if (empty(get_whatsapp_option("whatsapp_message_$key"))) {
         update_whatsapp_option("whatsapp_message_$key", $message);
     }
 }
@@ -50,9 +52,14 @@ $buttonTexts = [
 ];
 
 foreach ($buttonTexts as $key => $text) {
-    if (!get_whatsapp_option("whatsapp_button_text_$key")) {
+    if (empty(get_whatsapp_option("whatsapp_button_text_$key"))) {
         update_whatsapp_option("whatsapp_button_text_$key", $text);
     }
 }
 
-echo "Default messages added successfully!\n";
+\Illuminate\Support\Facades\Artisan::call('cache:clear');
+\Illuminate\Support\Facades\Artisan::call('view:clear');
+
+echo "<h1>Mise à jour réussie !</h1>";
+echo "<p>Les messages WhatsApp par défaut ont été insérés en base de données et le cache a été vidé.</p>";
+echo "<p>Veuillez supprimer ce fichier <strong>update_whatsapp_db.php</strong> de votre serveur pour des raisons de sécurité.</p>";
