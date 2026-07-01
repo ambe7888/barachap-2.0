@@ -152,16 +152,14 @@ function update_static_option($key, $value)
             'option_name' => $key,
             'option_value' => $value
         ]);
-        return true;
     } else {
         StaticOption::where('option_name', $key)->update([
             'option_name' => $key,
             'option_value' => $value
         ]);
-        \Illuminate\Support\Facades\Cache::forget($key);
-        return true;
     }
-    return false;
+    \Illuminate\Support\Facades\Cache::forget($key);
+    return true;
 }
 
 function update_whatsapp_option($key, $value)
@@ -173,16 +171,14 @@ function update_whatsapp_option($key, $value)
                'option_name' => $key,
                'option_value' => $value
            ]);
-           return true;
        } else {
            \Modules\WhatsAppBookingSystem\app\Models\WhatsAppDetails::where('option_name', $key)->update([
                'option_name' => $key,
                'option_value' => $value
            ]);
-           \Illuminate\Support\Facades\Cache::forget($key);
-           return true;
        }
-       return false;
+       \Illuminate\Support\Facades\Cache::forget($key);
+       return true;
    }
 }
 function delete_static_option($key)

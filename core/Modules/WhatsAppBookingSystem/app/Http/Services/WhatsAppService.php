@@ -55,10 +55,10 @@ class WhatsAppService
             ];
         }
 
-        $text=get_whatsapp_option('whatsapp_message_ask_service_select', 'Please choose a service:');
+        $text=get_whatsapp_option('whatsapp_message_ask_service_select', 'Veuillez sélectionner un service:');
         $text=__($text);
 
-        $button= get_whatsapp_option('whatsapp_button_text_select_service', 'Select Service');
+        $button= get_whatsapp_option('whatsapp_button_text_select_service', 'Choisir ce service');
         $button=__($button);
 
         $payload = [
@@ -89,13 +89,13 @@ class WhatsAppService
         $text .= "Title: {$service['title']}\n";
         $text .= "Price: {$service['price']}\n";
 
-        $included_excluded=get_whatsapp_option('whatsapp_button_text_included_excluded', 'Included-Excluded');
+        $included_excluded=get_whatsapp_option('whatsapp_button_text_included_excluded', 'Inclus / Exclus');
         $included_excluded=__($included_excluded);
 
-        $show_faqs=get_whatsapp_option('whatsapp_button_text_show_faqs', 'Show FAQs');
+        $show_faqs=get_whatsapp_option('whatsapp_button_text_show_faqs', 'Voir les FAQs');
         $show_faqs=__($show_faqs);
 
-        $order_now=get_whatsapp_option('whatsapp_button_text_order_now', 'Order Now');
+        $order_now=get_whatsapp_option('whatsapp_button_text_order_now', 'Commander');
         $order_now=__($order_now);
 
         // WhatsApp interactive message with Order button
@@ -162,13 +162,13 @@ class WhatsAppService
             $text=__($text);
         }
 
-        $included_excluded=get_whatsapp_option('whatsapp_button_text_included_excluded', 'Included-Excluded');
+        $included_excluded=get_whatsapp_option('whatsapp_button_text_included_excluded', 'Inclus / Exclus');
         $included_excluded=__($included_excluded);
 
-        $show_faqs=get_whatsapp_option('whatsapp_button_text_show_faqs', 'Show FAQs');
+        $show_faqs=get_whatsapp_option('whatsapp_button_text_show_faqs', 'Voir les FAQs');
         $show_faqs=__($show_faqs);
 
-        $order_now=get_whatsapp_option('whatsapp_button_text_order_now', 'Order Now');
+        $order_now=get_whatsapp_option('whatsapp_button_text_order_now', 'Commander');
         $order_now=__($order_now);
 
         // WhatsApp interactive message with Order button
@@ -231,13 +231,13 @@ class WhatsAppService
             $text=__($text);
         }
 
-        $included_excluded=get_whatsapp_option('whatsapp_button_text_included_excluded', 'Included-Excluded');
+        $included_excluded=get_whatsapp_option('whatsapp_button_text_included_excluded', 'Inclus / Exclus');
         $included_excluded=__($included_excluded);
 
-        $show_faqs=get_whatsapp_option('whatsapp_button_text_show_faqs', 'Show FAQs');
+        $show_faqs=get_whatsapp_option('whatsapp_button_text_show_faqs', 'Voir les FAQs');
         $show_faqs=__($show_faqs);
 
-        $order_now=get_whatsapp_option('whatsapp_button_text_order_now', 'Order Now');
+        $order_now=get_whatsapp_option('whatsapp_button_text_order_now', 'Commander');
         $order_now=__($order_now);
 
         // WhatsApp interactive message with Order button
@@ -300,10 +300,10 @@ class WhatsAppService
             'description' => 'Skip addon selection'
         ];
 
-        $text=get_whatsapp_option('whatsapp_message_ask_addon_select', 'Please choose a addon:');
+        $text=get_whatsapp_option('whatsapp_message_ask_addon_select', 'Souhaitez-vous des options supplémentaires ?');
         $text=__($text);
 
-        $button= get_whatsapp_option('whatsapp_button_text_select_addons', 'Select Addons');
+        $button= get_whatsapp_option('whatsapp_button_text_select_addons', 'Options en plus');
         $button=__($button);
 
         $payload = [
@@ -345,10 +345,10 @@ class WhatsAppService
             'title' => 'Continue to Next step',
             'description' => 'Skip staff selection'
         ];
-        $text=get_whatsapp_option('whatsapp_message_ask_select_staff', 'Please choose a staff:');
+        $text=get_whatsapp_option('whatsapp_message_ask_select_staff', 'Veuillez sélectionner un professionnel:');
         $text=__($text);
 
-        $button= get_whatsapp_option('whatsapp_button_text_select_staff', 'Select Staff');
+        $button= get_whatsapp_option('whatsapp_button_text_select_staff', 'Choisir le staff');
         $button=__($button);
 
         $payload = [
@@ -394,10 +394,10 @@ class WhatsAppService
                 ];
             }, $slots, array_keys($slots));
 
-            $text=get_whatsapp_option('whatsapp_message_ask_select_slot', 'Please choose a slot:');
+            $text=get_whatsapp_option('whatsapp_message_ask_select_slot', 'Veuillez choisir un créneau:');
             $text=__($text);
 
-            $button= get_whatsapp_option('whatsapp_button_text_select_slot', 'Select Slot');
+            $button= get_whatsapp_option('whatsapp_button_text_select_slot', 'Choisir un créneau');
             $button=__($button);
 
             $payload = [
@@ -440,7 +440,7 @@ class WhatsAppService
 //            'type' => 'interactive',
 //            'interactive' => [
 //                'type' => 'list',
-//                'body' => ['text' => 'Please choose a location:'],
+//                'body' => ['text' => 'Veuillez choisir le lieu de la prestation:'],
 //                'action' => [
 //                    'button' => 'Select Address',
 //                    'sections' => [
@@ -472,10 +472,10 @@ class WhatsAppService
 
         $text=$addon['title'];
         $text .="\n\n";
-        $text .= get_whatsapp_option('whatsapp_message_ask_select_addon_quantity', 'Please select quantity:');
+        $text .= get_whatsapp_option('whatsapp_message_ask_select_addon_quantity', 'Veuillez choisir la quantité:');
         $text=__($text);
 
-        $button=get_whatsapp_option('whatsapp_button_text_select_quantity', 'Select Quantity');
+        $button=get_whatsapp_option('whatsapp_button_text_select_quantity', 'Choisir la quantité');
         $button=__($button);
 
         $payload = [
@@ -507,11 +507,11 @@ class WhatsAppService
         $text= "Welcome! What would you like to do?";
         $text=__($text);
 
-        $search_service=get_whatsapp_option('whatsapp_button_text_service_search', 'Search Service');
+        $search_service=get_whatsapp_option('whatsapp_button_text_service_search', 'Chercher un service');
         $search_service=__($search_service);
-        $order_details=get_whatsapp_option('whatsapp_button_text_order_details', 'View Recent Orders');
+        $order_details=get_whatsapp_option('whatsapp_button_text_order_details', 'Mes commandes');
         $order_details=__($order_details);
-        $talk_to_support=get_whatsapp_option('whatsapp_button_text_talk_to_support', 'Talk to Support');
+        $talk_to_support=get_whatsapp_option('whatsapp_button_text_talk_to_support', 'Parler au support');
         $talk_to_support=__($talk_to_support);
 
 
@@ -561,11 +561,11 @@ class WhatsAppService
         $text = get_whatsapp_option("whatsapp_message_help_message","How can we help you?");
         $text=__($text);
 
-        $search_service = get_whatsapp_option('whatsapp_button_text_service_search', 'Search Service');
+        $search_service = get_whatsapp_option('whatsapp_button_text_service_search', 'Chercher un service');
         $search_service = __($search_service);
-        $order_details = get_whatsapp_option('whatsapp_button_text_view_recent_orders', 'View Recent Orders');
+        $order_details = get_whatsapp_option('whatsapp_button_text_view_recent_orders', 'Mes commandes');
         $order_details = __($order_details);
-        $talk_to_support =get_whatsapp_option('whatsapp_button_text_talk_to_support', 'Talk to Support');
+        $talk_to_support =get_whatsapp_option('whatsapp_button_text_talk_to_support', 'Parler au support');
         $talk_to_support = __($talk_to_support);
 
         $payload = [
@@ -613,9 +613,9 @@ class WhatsAppService
     {
         $text = get_whatsapp_option("whatsapp_message_cancel_confirmation","Do you want to cancel your order?");
         $text=__($text);
-        $agrred_to_cancel =get_whatsapp_option('whatsapp_button_text_agree_to_cancel_order', 'Yes, Cancel Order');
+        $agrred_to_cancel =get_whatsapp_option('whatsapp_button_text_agree_to_cancel_order', 'Oui, annuler');
         $agrred_to_cancel = __($agrred_to_cancel);
-        $disagree_to_cancel = get_whatsapp_option('whatsapp_button_text_disagree_to_cancel_order', 'Do not cancel order');
+        $disagree_to_cancel = get_whatsapp_option('whatsapp_button_text_disagree_to_cancel_order', 'Non, retour');
         $disagree_to_cancel = __($disagree_to_cancel);
         $payload = [
             'messaging_product' => 'whatsapp',
@@ -702,14 +702,14 @@ class WhatsAppService
                             'type' => 'reply',
                             'reply' => [
                                 'id' => 'confirm_order_yes',
-                                'title' => 'Confirm Order',
+                                'title' => 'Confirmer commande',
                             ]
                         ],
                         [
                             'type' => 'reply',
                             'reply' => [
                                 'id' => 'confirm_order_no',
-                                'title' => 'Cancel Order'
+                                'title' => 'Annuler la commande'
                             ]
                         ]
                     ]
@@ -726,9 +726,9 @@ class WhatsAppService
         $text = "Your Order Summary\n\nPlease choose an option below to view more details:";
         $text=__($text);
 
-        $order_service_details = get_whatsapp_option('whatsapp_button_text_order_service_details', 'Service Details');
+        $order_service_details = get_whatsapp_option('whatsapp_button_text_order_service_details', 'Détails du service');
         $order_service_details = __($order_service_details);
-        $order_other_details = get_whatsapp_option('whatsapp_button_text_order_other_details', 'Other Details');
+        $order_other_details = get_whatsapp_option('whatsapp_button_text_order_other_details', 'Autres détails');
         $order_other_details = __($order_other_details);
 
         $payload = [
@@ -773,11 +773,11 @@ class WhatsAppService
         }
         $text .= "Staff: {$result['staff']}\n";
 
-        $order_other_details =get_whatsapp_option('whatsapp_button_text_order_other_details', 'Other Details');
+        $order_other_details =get_whatsapp_option('whatsapp_button_text_order_other_details', 'Autres détails');
         $order_other_details = __($order_other_details);
-        $confirm_order_yes = get_whatsapp_option('whatsapp_button_text_confirm_order', 'Confirm Order');
+        $confirm_order_yes = get_whatsapp_option('whatsapp_button_text_confirm_order', 'Confirmer commande');
         $confirm_order_yes = __($confirm_order_yes);
-        $confirm_order_no = get_whatsapp_option('whatsapp_button_text_cancel_order', 'Cancel Order');
+        $confirm_order_no = get_whatsapp_option('whatsapp_button_text_cancel_order', 'Annuler la commande');
         $confirm_order_no = __($confirm_order_no);
 
         $payload = [
@@ -830,11 +830,11 @@ class WhatsAppService
         $text .= "Tax: {$result['tax']}\n";
         $text .= "Total: {$result['total']}\n";
 
-        $order_service_details = get_whatsapp_option('whatsapp_button_text_order_service_details', 'Service Details');
+        $order_service_details = get_whatsapp_option('whatsapp_button_text_order_service_details', 'Détails du service');
         $order_service_details = __($order_service_details);
-        $confirm_order_yes = get_whatsapp_option('whatsapp_button_text_confirm_order', 'Confirm Order');
+        $confirm_order_yes = get_whatsapp_option('whatsapp_button_text_confirm_order', 'Confirmer commande');
         $confirm_order_yes = __($confirm_order_yes);
-        $confirm_order_no = get_whatsapp_option('whatsapp_button_text_cancel_order', 'Cancel Order');
+        $confirm_order_no = get_whatsapp_option('whatsapp_button_text_cancel_order', 'Annuler la commande');
         $confirm_order_no = __($confirm_order_no);
 
         $payload = [
@@ -898,10 +898,10 @@ class WhatsAppService
             ];
         }, $data));
 
-        $text= get_whatsapp_option('whatsapp_message_ask_select_location', 'Please choose a location:');
+        $text= get_whatsapp_option('whatsapp_message_ask_select_location', 'Veuillez choisir le lieu de la prestation:');
         $text=__($text);
 
-        $button= get_whatsapp_option('whatsapp_button_text_select_location', 'Select Location');
+        $button= get_whatsapp_option('whatsapp_button_text_select_location', 'Choisir le lieu');
         $button=__($button);
 
         $payload = [

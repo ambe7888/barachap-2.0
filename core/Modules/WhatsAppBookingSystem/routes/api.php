@@ -24,6 +24,7 @@ Route::middleware(['auth:sanctum'])->prefix('v1')->name('api.')->group(function 
 Route::group(['prefix'=>'v1'],function(){
 
     Route::match(['GET', 'POST'], '/whatsapp/webhook', [WebhookController::class, 'receive']);
+    Route::match(['GET', 'POST'], '/webhook/whatsapp', [WebhookController::class, 'receive']);
 
 
    // Route::post('whatsapp/webhook', [WebhookController::class, 'receive']);
