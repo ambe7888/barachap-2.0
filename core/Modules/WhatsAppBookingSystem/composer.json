@@ -1,0 +1,31 @@
+{
+    "name": "nwidart/whatsappbookingsystem",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\WhatsAppBookingSystem\\": "",
+            "Modules\\WhatsAppBookingSystem\\App\\": "app/",
+            "Modules\\WhatsAppBookingSystem\\Database\\Factories\\": "database/factories/",
+            "Modules\\WhatsAppBookingSystem\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\WhatsAppBookingSystem\\Tests\\": "tests/"
+        }
+    }
+}

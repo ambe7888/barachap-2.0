@@ -193,6 +193,12 @@ class PluginManageController extends Controller
         ]);
         $status = $request->status == 1 ? false : true;
         PluginManageHelpers::getPluginInfo(implode("", explode(" ", $request->plugin)))->changePluginStatus($status)->saveModuleListFile();
+        
+        $plugin_name = implode("", explode(" ", $request->plugin));
+        if ($status && $plugin_name === 'WhatsAppBookingSystem') {
+            $this->move_whatsapp_booking_token_generate();
+        }
+        
         return response()->json("ok");
     }
 }

@@ -1,0 +1,64 @@
+{
+    "name": "WhatsAppBookingSystem",
+    "alias": "whatsappbookingsystem",
+    "description": "WhatsAppBookingSystem is a External Plugin developed by Core Team to enhance platform features",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\WhatsAppBookingSystem\\app\\Providers\\WhatsAppBookingSystemServiceProvider"
+    ],
+    "files": [],
+    "requires": [],
+    "xgMetaData": {
+        "plugin_type": "external",
+        "admin_settings": {
+            "show_admin_landlord": true,
+            "show_admin_tenant": true,
+            "menu_item": [
+                {
+                    "id": "whatsapp-settings-main",
+                    "label": "WhatsApp Settings",
+                    "route": "admin.whatsapp.setting",
+                    "parent": null,
+                    "icon": "lab la-whatsapp",
+                    "permissions": "whatsapp-setting",
+                    "class": "plugin-menu"
+                },
+                {
+                    "id": "whatsapp-settings",
+                    "label": "WhatsApp Settings",
+                    "route": "admin.whatsapp.setting",
+                    "parent": null,
+                    "icon": "lab la-whatsapp",
+                    "permissions": "whatsapp-setting",
+                    "class": "submenu-item"
+                },
+                {
+                    "id": "whatsapp-default-messages",
+                    "label": "Default Messages",
+                    "route": "admin.whatsapp.message.setting",
+                    "parent": "whatsapp-settings-main",
+                    "permissions": "whatsapp-setting",
+                    "class": "submenu-item"
+                },
+                {
+                    "id": "whatsapp-button-text",
+                    "label": "Set Button Text",
+                    "route": "admin.whatsapp.button-text.setting",
+                    "parent": "whatsapp-settings-main",
+                    "permissions": "whatsapp-setting",
+                    "class": "submenu-item"
+                },
+                {
+                    "id": "whatsapp-template-guide",
+                    "label": "Rules of Template Create",
+                    "route": "admin.whatsapp.message.template.guide",
+                    "parent": "whatsapp-settings-main",
+                    "permissions": "whatsapp-setting",
+                    "class": "submenu-item"
+                }
+            ]
+        }
+    }
+
+}

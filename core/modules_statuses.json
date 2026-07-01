@@ -12,5 +12,5 @@
     "Coupon": true,
     "Tax": true,
     "Blog": true,
-    "WhatsAppBookingSystem": false
+    "WhatsAppBookingSystem": true
 }
