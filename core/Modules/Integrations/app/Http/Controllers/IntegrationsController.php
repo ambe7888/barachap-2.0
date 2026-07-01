@@ -59,26 +59,8 @@ class IntegrationsController extends Controller
             'option_name' => "required"
         ]);
 
-        $newStatus = $request->status === 'on' ? 'off' : 'on';
-        update_static_option($request->option_name, $newStatus);
-
-        // If Whatsapp integration is being activated, ensure a verify token exists
-        if ($request->option_name === 'whatsapp_status' && $newStatus === 'on') {
-            try {
-                if (moduleExists('WhatsAppBookingSystem')) {
-                    $existing = get_whatsapp_option('whatsapp_verify_token');
-                    if (empty($existing)) {
-                        $token = 'prohandy__' . bin2hex(random_bytes(32));
-                        update_whatsapp_option('whatsapp_verify_token', $token);
-                    }
-                }
-            } catch (\Throwable $e) {
-                // don't break activation if token generation fails, but log for debugging
-                \Illuminate\Support\Facades\Log::error('WhatsApp verify token generation failed: ' . $e->getMessage());
-            }
-        }
-
-        return response()->json(['msg' => __('Settings Updated'),'type' => 'success','status'=>$newStatus]);
+        update_static_option($request->option_name,$request->status === 'on' ? 'off' : 'on');
+        return response()->json(['msg' => __('Settings Updated'),'type' => 'success','status'=>$request->status]);
     }
 
     private function google_tag_manager()

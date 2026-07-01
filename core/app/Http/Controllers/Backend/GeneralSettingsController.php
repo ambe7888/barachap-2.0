@@ -45,96 +45,62 @@ class GeneralSettingsController extends Controller
         return redirect()->back()->with(FlashMsg::settings_update());
     }
 
-    public function basicSettings()
-    {
-        $all_languages = Language::all();
-        return view('backend.general-settings.basic')->with(['all_languages' => $all_languages]);
-    }
-    public function updateBasicSettings(Request $request)
-    {
-        $this->validate($request, [
-            'language_select_option' => 'nullable|string',
-            'user_email_verify_enable_disable' => 'nullable|string',
-            'user_otp_verify_enable_disable' => 'nullable|string',
-            'site_main_color' => 'nullable|string',
-            'site_secondary_color' => 'nullable|string',
-            'site_maintenance_mode' => 'nullable|string',
-            'admin_loader_animation' => 'nullable|string',
-            'site_loader_animation' => 'nullable|string',
-            'site_force_ssl_redirection' => 'nullable|string',
-            'admin_panel_rtl_status' => 'nullable|string',
-            'site_google_captcha_enable' => 'nullable|string',
-            'site_title' => 'nullable|string',
-            'site_tag_line' => 'nullable|string',
-            'site_footer_copyright' => 'nullable|string',
-            'site_address' => 'nullable|string',
-            'site_email' => 'nullable|string',
-            'site_phone' => 'nullable|string',
-        ]);
+    public function updateVersionCheck(Request $request){
+        $result = XgApiClient::checkForUpdate(get_static_option("site_license_key"),get_static_option("site_script_version"));
+        if (isset($result["success"]) && $result["success"]){
+            $productUid = $result['data']['product_uid'] ?? null;
+            $clientVersion = $result['data']['client_version'] ?? null;
+            $latestVersion = $result['data']['latest_version'] ?? null;
+            $productName = $result['data']['product'] ?? null;
+            $releaseDate =  $result['data']['release_date'] ?? null;
+            $changelog =  $result['data']['changelog'] ?? null;
+            $phpVersionReq =  $result['data']['php_version'] ?? null;
+            $mysqlVersionReq =  $result['data']['mysql_version'] ?? null;
+            $extensions =  $result['data']['extension'] ?? null;
+            $isTenant =  $result['data']['is_tenant'] ?? null;
+            $daysDiff = $releaseDate;
+            $msg = $result['data']['message'] ?? null;
 
-        $this->validate($request, [
-            'site_title' => 'nullable|string',
-            'site_tag_line' => 'nullable|string',
-            'site_footer_copyright' => 'nullable|string',
-        ]);
-        $_title = 'site_title';
-        $_tag_line = 'site_tag_line';
-        $_footer_copyright = 'site_footer_copyright';
-        update_static_option($_title, $request->$_title);
-        update_static_option($_tag_line, $request->$_tag_line);
-        update_static_option($_footer_copyright, $request->$_footer_copyright);
+            $output = "";
+            $phpVCompare = version_compare(number_format((float) PHP_VERSION, 1), $phpVersionReq == 8 ? '8.0' : $phpVersionReq, '>=');
+            $mysqlServerVersion = DB::select('select version()')[0]->{'version()'};
+            $mysqlVCompare = version_compare(number_format((float) $mysqlServerVersion, 1), $mysqlVersionReq, '<=');
+            $extensionReq = true;
+            if ($extensions) {
+                foreach (explode(',', str_replace(' ','', strtolower($extensions))) as $extension) {
+                    if(!empty($extension)) continue;
+                    $extensionReq = XgApiClient::extensionCheck($extension);
+                }
+            }
+            if(($phpVCompare === false || $mysqlVCompare === false) && $extensionReq === false){
+                $output .='<div class="text-danger">'.__('Your server does not have required software version installed.  Required: Php'). $phpVersionReq == 8 ? '8.0' : $phpVersionReq .', Mysql'.  $mysqlVersionReq . '/ Extensions:' .$extensions . 'etc </div>';
+                return response()->json(["msg" => $result["message"],"type" => "success","markup" => $output ]);
+            }
 
+            if (!empty($latestVersion)){
+                $output .= '<div class="text-success">'.$msg.'</div>';
+                $output .= '<div class="card text-center" ><div class="card-header bg-transparent text-warning" >'.__("Please backup your database & script files before upgrading.").'</div>';
+                $output .= '<div class="card-body" ><h5 class="card-title" >'.__("new Version").' ('.$latestVersion.') '.__("is Available for").' '.$productName.'!</h5 >';
+                $updateActionUrl = route('admin.general.update.download.settings', [$productUid, $isTenant]);
+                $output .= '<a href = "#"  class="btn btn-warning" id="update_download_and_run_update" data-version="'.$latestVersion.'" data-action="'.$updateActionUrl.'"> <i class="fas fa-spinner fa-spin d-none"></i>'.__("Download & Update").' </a>';
+                $output .= '<small class="text-warning d-block">'.__('it can take upto 5-10min to complete update download and initiate upgrade').'</small></div>';
+                $changesLongByLine = explode("\n",$changelog);
+                $output .= '<p class="changes-log">';
+                $output .= '<strong>'.__("Released:")." ".$daysDiff." " . "</strong><br>";
+                $output .= "-------------------------------------------<br>";
+                foreach($changesLongByLine as $cg){
+                    $output .= $cg."<br>";
+                }
+                $output .= '</p>';
 
-        $all_fields = [
-            'language_select_option',
-            'user_email_verify_enable_disable',
-            'user_otp_verify_enable_disable',
-            'site_main_color',
-            'site_secondary_color',
-            'site_maintenance_mode',
-            'admin_loader_animation',
-            'site_loader_animation',
-            'admin_panel_rtl_status',
-            'site_force_ssl_redirection',
-            'site_google_captcha_enable',
-            'site_canonical_url_type',
-            'site_address',
-            'site_email',
-            'site_phone',
-        ];
-        foreach ($all_fields as $field) {
-            update_static_option($field, $request->$field);
+                $output .='</div>';
+            }
+
+            return response()->json(["msg" => $result["message"],"type" => "success","markup" => $output ]);
         }
-        return redirect()->back()->with(FlashMsg::settings_update());
-    }
 
+        return response()->json(["msg" => $result["message"],"type" => "danger","markup" => "<p class='text-danger'>".$result["message"]."</p>" ]);
 
-    public function colorSettings()
-    {
-        return view('backend.general-settings.color-settings');
-    }
-
-    public function updateColorSettings(Request $request)
-    {
-        $this->validate($request, [
-            'site_main_color_one' => 'nullable|string',
-            'site_main_color_two' => 'nullable|string',
-            'site_main_color_three' => 'nullable|string',
-        ]);
-
-        $all_fields = [
-            'site_main_color_one',
-            'site_main_color_two',
-            'site_main_color_three',
-            'heading_color',
-            'light_color',
-            'extra_light_color',
-        ];
-
-        foreach ($all_fields as $field) {
-            update_static_option($field, $request->$field);
-        }
-        return redirect()->back()->with(FlashMsg::settings_update());
     }
 
     public function scriptsSettings()
