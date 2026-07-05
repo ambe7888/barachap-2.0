@@ -40,7 +40,7 @@ dependencies:
   pusher_channels_flutter: 
     git:
       url: https://github.com/KamrulIbnZaman/pusher-channels-flutter
-      ref: master
+      ref: 8edb3c8df6064c4e52f51ab4f9add3ae844ffedb
   readmore: ^3.0.0
   shared_preferences: ^2.2.3
   sign_in_with_apple: ^6.1.1

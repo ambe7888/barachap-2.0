@@ -18,7 +18,7 @@ import GoogleMaps
     application.registerForRemoteNotifications()
     
     // Configure Google Maps
-    // GMSServices.provideAPIKey("GoogleMaps_API_Key_Here")
+    GMSServices.provideAPIKey("AIzaSyCn1MDwdGW3wlwUpn8L8_Hr4gLH4UQTUTk")
 
     GeneratedPluginRegistrant.register(with: self)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)

@@ -23,8 +23,17 @@ class Single_OrderServiceNotification
         // Check the main order user's type and create a notification if the user type is 1
         $main_user = $order_details->client;
         if ($main_user && $main_user->type === 1) {
-            $this->sendFirebaseNotification($main_user->firebase_token, __('Order Created'), __('Your order has been created successfully.'));
-            $this->sendUserNotification($last_order_id, $main_user->id, __('Your order has been placed successfully.'));
+            $locale = $main_user->selected_lang ?? 'en';
+            $this->sendFirebaseNotification(
+                $main_user->firebase_token, 
+                __('Order Created', [], $locale), 
+                __('Your order has been created successfully.', [], $locale)
+            );
+            $this->sendUserNotification(
+                $last_order_id, 
+                $main_user->id, 
+                __('Your order has been placed successfully.', [], $locale)
+            );
         }
 
 
@@ -37,14 +46,24 @@ class Single_OrderServiceNotification
             if (!empty($subOrder->admin_id) && !in_array($subOrder->admin_id, $notified_admins)) {
                 $this->sendAdminNotification($last_order_id, $subOrder->admin_id, __('You have a new order.'));
                 $notified_admins[] = $subOrder->admin_id; // Mark this admin as notified
-            }else{
+            } else {
+                $provider = $subOrder->provider;
+                $locale = $provider->selected_lang ?? 'en';
 
-                if($subOrder->provider){
-                    $this->sendFirebaseNotification($subOrder->provider->firebase_token, __('Order Created'), __('Your order has been created successfully.'));
+                if ($provider) {
+                    $this->sendFirebaseNotification(
+                        $provider->firebase_token, 
+                        __('Order Created', [], $locale), 
+                        __('Your order has been created successfully.', [], $locale)
+                    );
                 }
 
                 $provider_id = $subOrder->provider_id;
-                $this->sendUserNotification($last_order_id, $provider_id, __('You have a new order.'));
+                $this->sendUserNotification(
+                    $last_order_id, 
+                    $provider_id, 
+                    __('You have a new order.', [], $locale)
+                );
             }
         }
 

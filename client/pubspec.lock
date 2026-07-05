@@ -1217,7 +1217,7 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: master
+      ref: "8edb3c8df6064c4e52f51ab4f9add3ae844ffedb"
       resolved-ref: "8edb3c8df6064c4e52f51ab4f9add3ae844ffedb"
       url: "https://github.com/KamrulIbnZaman/pusher-channels-flutter"
     source: git
