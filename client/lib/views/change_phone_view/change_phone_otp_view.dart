@@ -193,8 +193,12 @@ class ChangePhoneOtpView extends StatelessWidget {
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
                       controller!.clear();
-                      Provider.of<PhoneManageService>(context, listen: false)
-                          .trySendingOtpToNewPhone();
+                      final pm = Provider.of<PhoneManageService>(context, listen: false);
+                      if (pm.currentChannel == 'sms') {
+                        pm.tryFirebaseOtp(phone: pm.phone ?? "", context: context);
+                      } else {
+                        pm.trySendingOtpToNewPhone();
+                      }
                     },
                   text: LocalKeys.sendAgain,
                   style: const TextStyle(

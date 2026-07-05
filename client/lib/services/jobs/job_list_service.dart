@@ -79,4 +79,25 @@ class JobListService with ChangeNotifier {
     nextPageLoading = false;
     notifyListeners();
   }
+
+  Future<bool> tryChangingJobPublishStatus(Job job) async {
+    var url = "${AppUrls.changeJobPublishStatusUrl}/${job.id}";
+    var data = {};
+
+    final responseData = await NetworkApiServices()
+        .postApi(data, url, LocalKeys.publish, headers: acceptJsonAuthHeader);
+
+    if (responseData != null) {
+      try {
+        final previousStatus = (job.isPublished).toString().parseToBool;
+        job.isPublished = previousStatus ? "0" : "1";
+        LocalKeys.jobPublishStatusChangedSuccessfully.showToast();
+      } catch (e) {
+        debugPrint(e.toString());
+      }
+      notifyListeners();
+      return true;
+    }
+    return false;
+  }
 }

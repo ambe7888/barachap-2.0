@@ -43,21 +43,57 @@ class ChatListView extends StatelessWidget {
             child: CustomFutureWidget(
               function: cl.shouldAutoFetch ? cl.fetchChatList() : null,
               shimmer: const ChatListSkeleton(),
-              child: cl.chatListModel.chatList.isEmpty
-                  ? EmptyWidget(
-                      title: LocalKeys.noConversationFound,
-                      differentImage: ImageAssets.emptyConversation,
-                    )
-                  : Scrollbar(
-                      controller: clm.scrollController,
-                      child: CustomScrollView(
-                        controller: clm.scrollController,
-                        physics: const AlwaysScrollableScrollPhysics(),
-                        slivers: [
-                          SliverList.separated(
-                            itemBuilder: (context, index) {
-                              final providerChat =
-                                  cl.chatListModel.chatList[index];
+              child: ValueListenableBuilder(
+                  valueListenable: clm.searchQuery,
+                  builder: (context, query, child) {
+                    final filteredChats = cl.chatListModel.chatList.where((c) =>
+                        query.isEmpty ||
+                        (c.providerName
+                                ?.toLowerCase()
+                                .contains(query.toLowerCase()) ==
+                            true) ||
+                        (c.clientName
+                                ?.toLowerCase()
+                                .contains(query.toLowerCase()) ==
+                            true)).toList();
+
+                    return filteredChats.isEmpty
+                        ? EmptyWidget(
+                            title: LocalKeys.noConversationFound,
+                            differentImage: ImageAssets.emptyConversation,
+                          )
+                        : Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 16.0, vertical: 8.0),
+                                child: TextFormField(
+                                  decoration: InputDecoration(
+                                    hintText: "Rechercher",
+                                    prefixIcon: const Icon(Icons.search),
+                                    border: OutlineInputBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(8),
+                                    ),
+                                    contentPadding:
+                                        const EdgeInsets.symmetric(
+                                            vertical: 0),
+                                  ),
+                                  onChanged: (v) =>
+                                      clm.searchQuery.value = v,
+                                ),
+                              ),
+                              Expanded(
+                                child: Scrollbar(
+                                  controller: clm.scrollController,
+                                  child: CustomScrollView(
+                                    controller: clm.scrollController,
+                                    physics: const AlwaysScrollableScrollPhysics(),
+                                    slivers: [
+                                      8.toHeight.toSliver,
+                                SliverList.separated(
+                                  itemBuilder: (context, index) {
+                                    final providerChat = filteredChats[index];
                               return GestureDetector(
                                   onTap: () {
                                     ConversationViewModel.dispose;
@@ -89,7 +125,7 @@ class ChatListView extends StatelessWidget {
                                 color: context.color.primaryBorderColor,
                               ),
                             ),
-                            itemCount: cl.chatListModel.chatList.length,
+                            itemCount: filteredChats.length,
                           ),
                           24.toHeight.toSliver,
                           if (cl.nextPage != null && !cl.nexLoadingFailed)
@@ -99,7 +135,11 @@ class ChatListView extends StatelessWidget {
                         ],
                       ),
                     ),
-            ),
+                  ),
+                ],
+              );
+            }),
+      ),
           );
         });
       }),

@@ -50,15 +50,31 @@ class SignInWithOtpView extends StatelessWidget {
                 isSuccess: false,
               ),
               24.toHeight,
-              ValueListenableBuilder(
-                valueListenable: sio.isLoading,
-                builder: (context, value, child) => CustomButton(
-                  onPressed: () {
-                    sio.trySignIn(context);
-                  },
-                  btText: LocalKeys.continueO,
-                  isLoading: value,
-                ),
+              Column(
+                children: [
+                  ValueListenableBuilder<bool>(
+                    valueListenable: sio.isWhatsappLoading,
+                    builder: (context, val, child) => CustomButton(
+                      onPressed: () {
+                        sio.trySignIn(context, channel: 'whatsapp');
+                      },
+                      btText: "Envoyer par WhatsApp",
+                      isLoading: val,
+                    ),
+                  ),
+                  12.toHeight,
+                  ValueListenableBuilder<bool>(
+                    valueListenable: sio.isSmsLoading,
+                    builder: (context, val, child) => CustomButton(
+                      onPressed: () {
+                        sio.trySignIn(context, channel: 'sms');
+                      },
+                      btText: "Envoyer par SMS",
+                      isLoading: val,
+                      backgroundColor: Colors.blueAccent,
+                    ),
+                  ),
+                ],
               )
             ],
           ),

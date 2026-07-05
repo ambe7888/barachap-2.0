@@ -8,6 +8,10 @@ import 'package:prohandy_client/views/job_list_view/components/job_tile_id_statu
 
 import '../../../models/job/job_list_model.dart';
 import '../../../utils/components/custom_squircle_widget.dart';
+import '../../../utils/components/alerts.dart';
+import 'package:provider/provider.dart';
+import '../../../services/jobs/job_list_service.dart';
+import 'package:prohandy_client/helper/extension/string_extension.dart';
 
 class JobTile extends StatelessWidget {
   final Job job;
@@ -40,9 +44,36 @@ class JobTile extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            JobTileIdStatus(
-              jobId: job.id,
-              jobStatus: job.status,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                JobTileIdStatus(
+                  jobId: job.id,
+                  jobStatus: job.status,
+                ),
+                if (job.isPublished != null)
+                  Transform.scale(
+                    scale: 0.8,
+                    child: Switch(
+                      value: job.isPublished.toString().parseToBool,
+                      onChanged: (newValue) {
+                        Alerts().confirmationAlert(
+                            context: context,
+                            title: LocalKeys.areYouSure,
+                            buttonText: LocalKeys.changeO,
+                            buttonColor: primaryColor,
+                            onConfirm: () async {
+                              await Provider.of<JobListService>(context, listen: false)
+                                  .tryChangingJobPublishStatus(job)
+                                  .then((v) {
+                                if (v != true) return;
+                                context.pop;
+                              });
+                            });
+                      },
+                    ),
+                  )
+              ],
             ),
             8.toHeight,
             Text(

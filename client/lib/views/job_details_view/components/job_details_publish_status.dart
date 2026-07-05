@@ -37,7 +37,7 @@ class JobDetailsPublishStatus extends StatelessWidget {
         contentPadding: EdgeInsets.zero,
         minVerticalPadding: 0,
         title: Text(
-          LocalKeys.jobPublished,
+          publishStatus ? "En ligne" : "Hors ligne",
           style: context.titleMedium?.bold,
         ),
         trailing: Transform.scale(

@@ -47,37 +47,75 @@ class OrderListView extends StatelessWidget {
                   ? EmptyWidget(title: LocalKeys.noOrdersFound)
                   : Scrollbar(
                       controller: olm.scrollController,
-                      child: ValueListenableBuilder(
-                          valueListenable: olm.statusType,
-                          builder: (context, value, child) {
-                            return CustomScrollView(
-                              controller: olm.scrollController,
-                              physics: const AlwaysScrollableScrollPhysics(),
-                              slivers: [
-                                8.toHeight.toSliver,
-                                SliverList.separated(
-                                  itemBuilder: (context, index) {
-                                    final order =
-                                        ol.myOrdersModel.orders[index];
-                                    return OrderListTile(
-                                      order: order,
-                                    );
-                                  },
-                                  separatorBuilder: (context, index) =>
-                                      16.toHeight,
-                                  itemCount: ol.myOrdersModel.orders.length,
-                                ),
+                    child: ValueListenableBuilder(
+                        valueListenable: olm.searchQuery,
+                        builder: (context, query, child) {
+                          return ValueListenableBuilder(
+                              valueListenable: olm.statusType,
+                              builder: (context, value, child) {
+                                final filteredOrders = ol.myOrdersModel.orders
+                                    .where((o) =>
+                                        query.isEmpty ||
+                                        (o.title
+                                                ?.toLowerCase()
+                                                .contains(query.toLowerCase()) ==
+                                            true) ||
+                                        (o.invoiceNumber
+                                                ?.toLowerCase()
+                                                .contains(query.toLowerCase()) ==
+                                            true))
+                                    .toList();
+
+                                return Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                                      child: TextFormField(
+                                        decoration: InputDecoration(
+                                          hintText: "Rechercher",
+                                          prefixIcon: const Icon(Icons.search),
+                                          border: OutlineInputBorder(
+                                            borderRadius: BorderRadius.circular(8),
+                                          ),
+                                          contentPadding: const EdgeInsets.symmetric(vertical: 0),
+                                        ),
+                                        onChanged: (v) => olm.searchQuery.value = v,
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: CustomScrollView(
+                                        controller: olm.scrollController,
+                                        physics: const AlwaysScrollableScrollPhysics(),
+                                        slivers: [
+                                          8.toHeight.toSliver,
+                                    SliverList.separated(
+                                      itemBuilder: (context, index) {
+                                        final order = filteredOrders[index];
+                                        return OrderListTile(
+                                          order: order,
+                                        );
+                                      },
+                                      separatorBuilder: (context, index) =>
+                                          16.toHeight,
+                                      itemCount: filteredOrders.length,
+                                    ),
                                 24.toHeight.toSliver,
                                 if (ol.nextPage != null && !ol.nexLoadingFailed)
                                   ScrollPreloader(loading: ol.nextPageLoading)
                                       .toSliver,
                                 24.toHeight.toSliver,
-                              ],
-                            );
-                          }),
-                    ),
-            ),
-          );
+                                  ],
+                                ), // end of CustomScrollView
+                              ), // end of Expanded
+                            ],
+                          ); // end of Column
+                          }, // end of second builder
+                        ); // end of second ValueListenableBuilder
+                      }, // end of first builder
+                    ), // end of first ValueListenableBuilder
+                  ), // end of Scrollbar
+                ), // end of CustomFutureWidget
+            ); // end of CustomRefreshIndicator
         });
       }),
     );

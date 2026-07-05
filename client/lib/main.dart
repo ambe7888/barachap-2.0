@@ -5,8 +5,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
-import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app.dart';
@@ -68,11 +67,7 @@ final navigatorKey = GlobalKey<NavigatorState>(debugLabel: "nav_key");
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final GoogleMapsFlutterPlatform mapsImplementation =
-      GoogleMapsFlutterPlatform.instance;
-  if (mapsImplementation is GoogleMapsFlutterAndroid) {
-    mapsImplementation.useAndroidViewSurface = true;
-  }
+
   if (kDebugMode) {
     // This will give you more detailed widget tree info
     debugPaintSizeEnabled = false; // Set to true if you want visual debugging

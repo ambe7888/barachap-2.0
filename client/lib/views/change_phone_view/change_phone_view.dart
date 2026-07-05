@@ -104,15 +104,32 @@ class ChangePhoneView extends StatelessWidget {
                 color: context.color.accentContrastColor,
                 border: Border(
                     top: BorderSide(color: context.color.primaryBorderColor))),
-            child: ValueListenableBuilder(
-              valueListenable: cep.isLoading,
-              builder: (context, value, child) => CustomButton(
-                onPressed: () {
-                  cep.tryChangingPhone(context);
-                },
-                btText: LocalKeys.sendVerificationCode,
-                isLoading: value,
-              ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ValueListenableBuilder<bool>(
+                  valueListenable: cep.isWhatsappLoading,
+                  builder: (context, val, child) => CustomButton(
+                    onPressed: () {
+                      cep.tryChangingPhone(context, channel: 'whatsapp');
+                    },
+                    btText: "Envoyer par WhatsApp",
+                    isLoading: val,
+                  ),
+                ),
+                12.toHeight,
+                ValueListenableBuilder<bool>(
+                  valueListenable: cep.isSmsLoading,
+                  builder: (context, val, child) => CustomButton(
+                    onPressed: () {
+                      cep.tryChangingPhone(context, channel: 'sms');
+                    },
+                    btText: "Envoyer par SMS",
+                    isLoading: val,
+                    backgroundColor: Colors.blueAccent,
+                  ),
+                ),
+              ],
             ),
           );
         }

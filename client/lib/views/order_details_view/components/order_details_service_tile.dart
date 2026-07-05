@@ -108,7 +108,13 @@ class OrderDetailsServiceTile extends StatelessWidget {
                       ]))
                 ],
               ),
-            )
+            ),
+            12.toWidth,
+            Icon(
+              Icons.chevron_right_rounded,
+              color: context.color.primaryBorderColor.withOpacity(0.8),
+              size: 24,
+            ),
           ],
         ),
       ),

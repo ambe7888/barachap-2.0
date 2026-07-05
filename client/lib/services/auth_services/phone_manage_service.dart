@@ -12,6 +12,7 @@ import '../../helper/local_keys.g.dart';
 class PhoneManageService with ChangeNotifier {
   String? otp;
   String? phone;
+  String? currentChannel;
   Timer? timer;
   bool loadingSendOTP = false;
   bool phoneVerifyLoading = false;
@@ -20,6 +21,7 @@ class PhoneManageService with ChangeNotifier {
   Future tryOtpToPhone({
     String? phone,
   }) async {
+    currentChannel = 'whatsapp';
     this.phone = phone ?? "";
     final data = {
       'phone': this.phone,
@@ -52,6 +54,7 @@ class PhoneManageService with ChangeNotifier {
   Future trySendingOtpToNewPhone({
     String? phone,
   }) async {
+    currentChannel = 'whatsapp';
     if (phone != null) {
       this.phone = phone;
     }
@@ -108,6 +111,49 @@ class PhoneManageService with ChangeNotifier {
     }
   }
 
+  Future<bool?> tryFirebaseOtp({required String phone, required BuildContext context}) async {
+    currentChannel = 'sms';
+    this.phone = phone;
+    loadingSendOTP = true;
+    notifyListeners();
+    Completer<bool?> completer = Completer<bool?>();
+    try {
+      await FirebaseAuth.instance.verifyPhoneNumber(
+        phoneNumber: phone,
+        verificationCompleted: (PhoneAuthCredential credential) async {
+          // Auto retrieval completed. We can sign in immediately if we wanted to.
+        },
+        verificationFailed: (FirebaseAuthException e) {
+          loadingSendOTP = false;
+          notifyListeners();
+          e.message?.showToast();
+          if (!completer.isCompleted) completer.complete(false);
+        },
+        codeSent: (String verificationId, int? resendToken) {
+          firebaseVerificationId = verificationId;
+          canSend = false;
+          timer = Timer(const Duration(seconds: 120), () {
+            canSend = true;
+            notifyListeners();
+          });
+          loadingSendOTP = false;
+          notifyListeners();
+          "Code envoyé par SMS !".showToast();
+          if (!completer.isCompleted) completer.complete(true);
+        },
+        codeAutoRetrievalTimeout: (String verificationId) {
+          firebaseVerificationId = verificationId;
+        },
+      );
+    } catch (e) {
+      loadingSendOTP = false;
+      notifyListeners();
+      "Erreur d'envoi du SMS".showToast();
+      if (!completer.isCompleted) completer.complete(false);
+    }
+    return completer.future;
+  }
+
   Future tryPhoneVerify({
     required String phone,
     required String userId,
@@ -138,11 +184,29 @@ class PhoneManageService with ChangeNotifier {
   }) async {
     phoneVerifyLoading = true;
     notifyListeners();
+
+    if (firebaseVerificationId != null) {
+      try {
+        PhoneAuthCredential credential = PhoneAuthProvider.credential(
+          verificationId: firebaseVerificationId!, 
+          smsCode: otp
+        );
+        await FirebaseAuth.instance.signInWithCredential(credential);
+        // Fallback to update backend with dummy OTP or bypass
+        otp = "000000"; 
+      } catch (e) {
+        "Code incorrect ou expiré. Veuillez réessayer.".showToast();
+        phoneVerifyLoading = false;
+        notifyListeners();
+        return false;
+      }
+    }
+
     try {
       final data = {
         'phone': phone,
-        'otp_verify_status': '1',
-        'otp': otp,
+        if (firebaseVerificationId != null) 'firebase_verified': '1' else 'otp_verify_status': '1',
+        if (firebaseVerificationId == null) 'otp': otp,
       };
       final tokenStr = getToken;
       final headers = {
@@ -176,14 +240,31 @@ class PhoneManageService with ChangeNotifier {
   Future tryPhoneSignIn({
     required String otp,
   }) async {
+    phoneVerifyLoading = true;
+    notifyListeners();
+
+    if (firebaseVerificationId != null) {
+      try {
+        PhoneAuthCredential credential = PhoneAuthProvider.credential(
+          verificationId: firebaseVerificationId!, 
+          smsCode: otp
+        );
+        await FirebaseAuth.instance.signInWithCredential(credential);
+        otp = "000000"; 
+      } catch (e) {
+        "Code incorrect ou expiré. Veuillez réessayer.".showToast();
+        phoneVerifyLoading = false;
+        notifyListeners();
+        return false;
+      }
+    }
+
     final data = {
       'phone': phone,
       'otp_verify_status': '1',
       'otp': otp,
       "user_type": "1",
     };
-    phoneVerifyLoading = true;
-    notifyListeners();
     final responseData = await NetworkApiServices()
         .postApi(data, AppUrls.otpSignInUrl, LocalKeys.signIn);
     if (responseData != null) {

@@ -63,11 +63,11 @@
 	<!-- fb credential start-->
 
 	<key>FacebookAppID</key>
-	<string>APPID</string>
+	<string>377979475391849</string>
 	<key>FacebookClientToken</key>
-	<string>Token</string>
+	<string>a17f92dc6f2cb5809bd162c094d8aa9f</string>
 	<key>FacebookDisplayName</key>
-	<string>App-Name</string>
+	<string>BaraChap</string>
 
 	<!-- fb credential end-->
 
@@ -87,7 +87,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fbAPP-ID</string>
+				<string>fb377979475391849</string>
 				<string>google-reversed-client-Id-for-SignIn</string>
 				<string>google-reversed-client-Id-for-firebase-project</string>
 			</array>

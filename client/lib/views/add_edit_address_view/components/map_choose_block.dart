@@ -61,6 +61,16 @@ class MapChooseBlock extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     child: GoogleMap(
+                      onMapCreated: (mapController) {
+                        controller = mapController;
+                        aea.controller = mapController;
+                        if (darkTheme && gl.dark != null) {
+                          controller?.setMapStyle(gl.dark);
+                        }
+                      },
+                      myLocationEnabled: true,
+                      myLocationButtonEnabled: false,
+                      zoomControlsEnabled: false,
                       initialCameraPosition: CameraPosition(
                         target: LatLng(
                             gl.geoLoc?.lat ??
@@ -71,45 +81,20 @@ class MapChooseBlock extends StatelessWidget {
                                 90.441897487471404),
                         zoom: 16.0,
                       ),
-                      zoomControlsEnabled: false,
-                      onMapCreated: (controller) {
-                        this.controller = controller;
-                        if (currentLoc.value != null) {
-                          debugPrint(
-                              "Current location is ----------------- ${currentLoc.value}"
-                                  .toString());
-                          controller
-                              .animateCamera(CameraUpdate.newCameraPosition(
-                            CameraPosition(
-                              target: LatLng(currentLoc.value!.latitude,
-                                  currentLoc.value!.longitude),
-                              zoom: 16,
-                            ),
-                          ));
-                        }
-                      },
-                      style: gl.dark,
-                      buildingsEnabled: false,
-                      mapToolbarEnabled: true,
-                      indoorViewEnabled: false,
-                      liteModeEnabled: false,
-                      rotateGesturesEnabled: false,
-                      myLocationButtonEnabled: true,
-                      myLocationEnabled: true,
-                      onCameraMove: (details) {
+                      onCameraMove: (position) {
                         timer?.cancel();
                         timer = Timer(
                           1.seconds,
                           () async {
                             if (gl.geoLoc?.lat.toString() ==
-                                    details.target.latitude.toString() &&
+                                    position.target.latitude.toString() &&
                                 gl.geoLoc?.lng.toString() ==
-                                    details.target.longitude.toString()) {
+                                    position.target.longitude.toString()) {
                               return;
                             }
                             await gl.fetchGEOLocations(
-                              lat: details.target.latitude,
-                              lng: details.target.longitude,
+                              lat: position.target.latitude,
+                              lng: position.target.longitude,
                             );
                             final aea = AddEditAddressViewModel.instance;
                             aea.addressController.text =
@@ -117,7 +102,6 @@ class MapChooseBlock extends StatelessWidget {
                           },
                         );
                       },
-                      mapType: MapType.normal,
                     ),
                   ),
                   Align(

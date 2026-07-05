@@ -91,15 +91,14 @@ class LocationSearchField extends StatelessWidget {
                                     null) {
                               return;
                             }
-                            await googleMapController
-                                ?.animateCamera(CameraUpdate.newCameraPosition(
-                              CameraPosition(
+                            googleMapController?.animateCamera(
+                              CameraUpdate.newCameraPosition(CameraPosition(
                                 target: LatLng(
                                     result!.result!.geometry!.location!.lat!,
                                     result.result!.geometry!.location!.lng!),
-                                zoom: 16,
-                              ),
-                            ));
+                                zoom: 16.0,
+                              )),
+                            );
                           });
                           context.unFocus;
                         },

@@ -32,6 +32,19 @@ class ProviderLocationBlock extends StatelessWidget {
     final darkTheme =
         Provider.of<ThemeService>(context, listen: false).darkTheme;
     final msl = MapSingleLocationViewModel.instance;
+    
+    // Create marker
+    final Set<Marker> _markers = {};
+    if (lat != null && lng != null) {
+      double lLat = lat is String ? double.parse(lat) : lat;
+      double lLng = lng is String ? double.parse(lng) : lng;
+      _markers.add(Marker(
+        markerId: const MarkerId('providerLocation'),
+        position: LatLng(lLat, lLng),
+        infoWindow: InfoWindow(title: title),
+      ));
+    }
+
     return Stack(
       alignment: Alignment.bottomRight,
       children: [
@@ -52,40 +65,25 @@ class ProviderLocationBlock extends StatelessWidget {
                   child: ValueListenableBuilder(
                       valueListenable: msl.mark,
                       builder: (context, value, child) {
+                        if (lat == null || lng == null) return const SizedBox.shrink();
+                        double lLat = lat is String ? double.parse(lat) : lat;
+                        double lLng = lng is String ? double.parse(lng) : lng;
+                        
                         return GoogleMap(
                           initialCameraPosition: CameraPosition(
-                            target: LatLng(lat, lng),
+                            target: LatLng(lLat, lLng),
                             zoom: 16.0,
                           ),
+                          markers: _markers,
                           zoomControlsEnabled: false,
-                          onMapCreated: (controller) async {
-                            msl.controller = controller;
-                            if (lat == null || lng == null) return;
-                            final markerId = MarkerId("$lat$lng");
-                            final latLng = LatLng(lat, lng);
-                            final markerIcon = await BitmapDescriptor.asset(
-                                const ImageConfiguration(),
-                                "assets/images/marker.png");
-                            msl.markers.putIfAbsent(
-                                markerId,
-                                () => Marker(
-                                      markerId: markerId,
-                                      position: latLng,
-                                      icon: markerIcon,
-                                    ));
-                            msl.mark.value = msl.markers;
-                          },
-                          style: gl.dark,
-                          buildingsEnabled: false,
-                          mapToolbarEnabled: true,
-                          indoorViewEnabled: false,
-                          liteModeEnabled: true,
-                          rotateGesturesEnabled: false,
+                          mapToolbarEnabled: false,
                           myLocationButtonEnabled: false,
-                          myLocationEnabled: false,
-                          onCameraMove: (details) {},
-                          mapType: MapType.normal,
-                          markers: Set<Marker>.of(value.values),
+                          onMapCreated: (GoogleMapController controller) {
+                            msl.controller = controller;
+                            if (darkTheme && gl.dark != null) {
+                              msl.controller?.setMapStyle(gl.dark);
+                            }
+                          },
                         );
                       }),
                 ),

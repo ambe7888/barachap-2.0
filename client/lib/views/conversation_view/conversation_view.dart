@@ -10,9 +10,23 @@ import '../../utils/components/navigation_pop_icon.dart';
 import 'components/conversation_message_list.dart';
 import 'components/conversation_skeleton.dart';
 
-class ConversationView extends StatelessWidget {
+class ConversationView extends StatefulWidget {
   static const routeName = "conversation_view";
   const ConversationView({super.key});
+
+  @override
+  State<ConversationView> createState() => _ConversationViewState();
+}
+
+class _ConversationViewState extends State<ConversationView> {
+  bool _isSearching = false;
+  final TextEditingController _searchController = TextEditingController();
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +39,34 @@ class ConversationView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: const NavigationPopIcon(),
-        title: Text(name),
+        title: _isSearching
+            ? TextField(
+                controller: _searchController,
+                autofocus: true,
+                decoration: InputDecoration(
+                  hintText: "Rechercher",
+                  border: InputBorder.none,
+                  hintStyle: TextStyle(color: Colors.white70),
+                ),
+                style: const TextStyle(color: Colors.white),
+                onChanged: (val) {
+                  setState(() {});
+                },
+              )
+            : Text(name),
+        actions: [
+          IconButton(
+            icon: Icon(_isSearching ? Icons.close : Icons.search),
+            onPressed: () {
+              setState(() {
+                if (_isSearching) {
+                  _searchController.clear();
+                }
+                _isSearching = !_isSearching;
+              });
+            },
+          ),
+        ],
       ),
       body: Stack(
         children: [

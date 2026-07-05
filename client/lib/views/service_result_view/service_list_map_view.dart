@@ -6,10 +6,13 @@ import 'package:prohandy_client/helper/extension/string_extension.dart';
 import 'package:prohandy_client/utils/components/custom_future_widget.dart';
 import 'package:prohandy_client/utils/components/navigation_pop_icon.dart';
 import 'package:provider/provider.dart';
+import 'package:prohandy_client/customizations/colors.dart';
 
 import '../../helper/image_assets.dart';
 import '../../models/home_models/services_list_model.dart';
 import '../../services/theme_service.dart';
+import '../../utils/components/custom_network_image.dart';
+import '../../helper/constant_helper.dart';
 import 'components/service_tile_sheet.dart';
 
 class ServiceListMapView extends StatelessWidget {
@@ -17,57 +20,46 @@ class ServiceListMapView extends StatelessWidget {
   ServiceListMapView({super.key, required this.serviceList});
 
   LatLng? firstLocation;
-  ValueNotifier<Map<MarkerId, Marker>> mark = ValueNotifier({});
-  final Map<MarkerId, Marker> _markers = {};
-  Map<MarkerId, Marker> get markers => _markers;
-  final jobsLatLng = {};
+  ValueNotifier<Set<Marker>> mark = ValueNotifier({});
+  final Set<Marker> _markers = {};
+  Set<Marker> get markers => _markers;
 
   Future<void> getMarkers(BuildContext context) async {
-    final markerIcon = await BitmapDescriptor.asset(
-        const ImageConfiguration(), "assets/images/marker.png");
-
     for (ServiceModel e in serviceList) {
-      if ((e.provider?.latitude ?? e.admin?.serviceArea?.latitude) == null)
-        continue;
       if ((e.provider?.latitude ?? e.admin?.serviceArea?.latitude) == null ||
           (e.provider?.longitude ?? e.admin?.serviceArea?.longitude) == null) {
         continue;
       }
-      final markerId = MarkerId(
-          (e.provider?.latitude ?? e.admin?.serviceArea?.latitude).toString());
       final latLng = LatLng(
           (e.provider?.latitude ?? e.admin?.serviceArea?.latitude) ?? 0.0,
           (e.provider?.longitude ?? e.admin?.serviceArea?.longitude) ?? 0.0);
-      _markers.putIfAbsent(
-          markerId,
-          () => Marker(
-                markerId: markerId,
-                position: latLng,
-                icon: markerIcon,
-                onTap: () {
-                  showModalBottomSheet(
-                    context: context,
-                    isScrollControlled: true,
-                    backgroundColor: context.color.accentContrastColor,
-                    builder: (context) {
-                      if (e.provider != null) {
-                        return ServiceTileSheet(
-                            serviceList: serviceList.where((s) {
-                          return (s.provider?.id).toString() ==
-                              e.provider?.id.toString();
-                        }).toList());
-                      }
-                      return ServiceTileSheet(serviceList: serviceList);
-                    },
-                  );
-                },
-              ));
+      _markers.add(Marker(
+        markerId: MarkerId(e.id.toString()),
+        position: latLng,
+        onTap: () {
+          showModalBottomSheet(
+            context: context,
+            isScrollControlled: true,
+            backgroundColor: context.color.accentContrastColor,
+            builder: (context) {
+              if (e.provider != null) {
+                return ServiceTileSheet(
+                    serviceList: serviceList.where((s) {
+                  return (s.provider?.id).toString() ==
+                      e.provider?.id.toString();
+                }).toList());
+              }
+              return ServiceTileSheet(serviceList: serviceList);
+            },
+          );
+        },
+      ));
       firstLocation ??= latLng;
-      await Future.delayed(300.milliseconds);
-      mark.value = markers;
+      await Future.delayed(50.milliseconds);
+      mark.value = Set.from(markers);
     }
-    debugPrint("Markers length is- ${markers.length}".toString());
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -90,25 +82,14 @@ class ServiceListMapView extends StatelessWidget {
         child: ValueListenableBuilder(
           valueListenable: mark,
           builder: (context, value, child) {
-            debugPrint(value.toString());
-            debugPrint(Set<Marker>.of(value.values).length.toString());
             return GoogleMap(
               initialCameraPosition: CameraPosition(
                 target: firstLocation ??
                     const LatLng(23.75617346773963, 90.441897487471404),
                 zoom: 13.0,
               ),
-              zoomControlsEnabled: false,
-              onMapCreated: (controller) {},
-              markers: Set<Marker>.of(value.values),
-              buildingsEnabled: false,
-              mapToolbarEnabled: true,
-              indoorViewEnabled: false,
-              liteModeEnabled: false,
-              rotateGesturesEnabled: false,
-              myLocationButtonEnabled: true,
+              markers: value,
               myLocationEnabled: true,
-              mapType: MapType.normal,
             );
           },
         ),

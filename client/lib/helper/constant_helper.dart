@@ -37,6 +37,8 @@ setToken(token) {
   sPref?.setString("token", token ?? "");
 }
 
+String mapBoxToken = "";
+
 get commonAuthHeader => {'Authorization': 'Bearer $getToken'};
 get acceptJsonHeader => {'Accept': 'application/json'};
 get acceptJsonAuthHeader => {

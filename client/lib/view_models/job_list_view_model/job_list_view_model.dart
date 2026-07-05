@@ -6,6 +6,7 @@ class JobListViewModel {
   ScrollController scrollController = ScrollController();
   final GlobalKey<RefreshIndicatorState> refreshKey =
       GlobalKey<RefreshIndicatorState>();
+  final ValueNotifier<String> searchQuery = ValueNotifier("");
   JobListViewModel._init();
   static JobListViewModel? _instance;
   static JobListViewModel get instance {

@@ -21,28 +21,57 @@ class BookingSummeryButtons extends StatelessWidget {
           top: BorderSide(color: context.color.primaryBorderColor),
         ),
       ),
-      child: Row(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Expanded(
-            flex: 1,
-            child: OutlinedButton(
-              onPressed: () {
-                svm.tryAddingCart(context);
-                LandingViewModel.instance.navigateToLanding(context);
-              },
-              child: Text(LocalKeys.addToCart),
+          Container(
+            padding: const EdgeInsets.all(8),
+            margin: const EdgeInsets.only(bottom: 12),
+            decoration: BoxDecoration(
+              color: Colors.orange.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: Colors.orange.withOpacity(0.5)),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Icon(Icons.warning_amber_rounded,
+                    color: Colors.orange, size: 20),
+                8.toWidth,
+                Expanded(
+                  child: Text(
+                    "Toute annulation inopinée d'une demande de service peut engendrer des pénalités, réfléchissez bien avant de réserver.",
+                    style: context.titleSmall?.copyWith(
+                        color: Colors.orange[800], fontSize: 12),
+                  ),
+                ),
+              ],
             ),
           ),
-          12.toWidth,
-          Expanded(
-            flex: 1,
-            child: ElevatedButton(
-              onPressed: () {
-                svm.setInstantBooking();
-                context.toPage(const BookingPaymentChooseView());
-              },
-              child: Text(LocalKeys.proceedToPay),
-            ),
+          Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: OutlinedButton(
+                  onPressed: () {
+                    svm.tryAddingCart(context);
+                    LandingViewModel.instance.navigateToLanding(context);
+                  },
+                  child: Text(LocalKeys.addToCart),
+                ),
+              ),
+              12.toWidth,
+              Expanded(
+                flex: 1,
+                child: ElevatedButton(
+                  onPressed: () {
+                    svm.setInstantBooking();
+                    context.toPage(const BookingPaymentChooseView());
+                  },
+                  child: Text(LocalKeys.proceedToPay),
+                ),
+              ),
+            ],
           ),
         ],
       ),

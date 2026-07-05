@@ -42,6 +42,7 @@ class Job {
   final dynamic view;
   final String? description;
   final String status;
+  String? isPublished;
   final num jobOffersCount;
   final List<JobOffer>? jobOffers;
 
@@ -53,6 +54,7 @@ class Job {
     this.view,
     this.description,
     this.status = "",
+    this.isPublished,
     this.jobOffersCount = 0,
     this.jobOffers,
   });
@@ -65,6 +67,7 @@ class Job {
         view: json["view"].toString().tryToParse,
         description: json["description"],
         status: json["status"].toString(),
+        isPublished: json["is_published"]?.toString(),
         jobOffersCount: json["job_offers_count"].toString().tryToParse,
       );
 
@@ -76,6 +79,7 @@ class Job {
         "view": view,
         "description": description,
         "status": status,
+        "is_published": isPublished,
         "job_offers_count": jobOffersCount,
         "job_offers": jobOffers == null
             ? []

@@ -56,20 +56,56 @@ class JobListView extends StatelessWidget {
                   child: CustomFutureWidget(
                      function: jl.shouldAutoFetch ? jl.fetchJobList() : null,
                     shimmer: const JobListSkeleton(),
-                    child: jl.jobListModel.jobs?.isEmpty ?? true
-                        ? EmptyWidget(title: LocalKeys.noJobFound)
-                        : CustomScrollView(
-                            physics: const AlwaysScrollableScrollPhysics(),
-                            controller: jlm.scrollController,
-                            slivers: [
-                               SliverList.separated(
-                                 itemBuilder: (context, index) {
-                                   final job = jl.jobListModel.jobs![index];
-                                   return JobTile(job: job);
-                                 },
-                                 separatorBuilder: (context, index) => const SizedBox(),
-                                 itemCount: jl.jobListModel.jobs?.length ?? 0,
-                               ),
+                    child: ValueListenableBuilder(
+                        valueListenable: jlm.searchQuery,
+                        builder: (context, query, child) {
+                          final filteredJobs = (jl.jobListModel.jobs ?? [])
+                              .where((j) =>
+                                  query.isEmpty ||
+                                  (j.title
+                                          ?.toLowerCase()
+                                          .contains(query.toLowerCase()) ==
+                                      true))
+                              .toList();
+                          return filteredJobs.isEmpty
+                              ? EmptyWidget(title: LocalKeys.noJobFound)
+                              : Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 16.0, vertical: 8.0),
+                                      child: TextFormField(
+                                        decoration: InputDecoration(
+                                          hintText: "Rechercher",
+                                          prefixIcon:
+                                              const Icon(Icons.search),
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          contentPadding:
+                                              const EdgeInsets.symmetric(
+                                                  vertical: 0),
+                                        ),
+                                        onChanged: (v) =>
+                                            jlm.searchQuery.value = v,
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: CustomScrollView(
+                                        physics: const AlwaysScrollableScrollPhysics(),
+                                        controller: jlm.scrollController,
+                                        slivers: [
+                                          8.toHeight.toSliver,
+                                    SliverList.separated(
+                                      itemBuilder: (context, index) {
+                                        final job = filteredJobs[index];
+                                        return JobTile(job: job);
+                                      },
+                                      separatorBuilder: (context, index) =>
+                                          const SizedBox(),
+                                      itemCount: filteredJobs.length,
+                                    ),
                               24.toHeight.toSliver,
                               if (jl.nextPage != null &&
                                   !jl.nexLoadingFailed) ...[
@@ -78,8 +114,13 @@ class JobListView extends StatelessWidget {
                                 ).toSliver,
                                 24.toHeight.toSliver
                               ],
-                            ],
-                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                );
+                        },
+                      ),
                   ),
                 );
               })),

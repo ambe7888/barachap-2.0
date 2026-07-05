@@ -193,8 +193,12 @@ class PhoneOtpView extends StatelessWidget {
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
                       controller!.clear();
-                      Provider.of<PhoneManageService>(context, listen: false)
-                          .tryOtpToPhone();
+                      final pm = Provider.of<PhoneManageService>(context, listen: false);
+                      if (pm.currentChannel == 'sms') {
+                        pm.tryFirebaseOtp(phone: pm.phone ?? "", context: context);
+                      } else {
+                        pm.tryOtpToPhone();
+                      }
                     },
                   text: LocalKeys.sendAgain,
                   style: const TextStyle(

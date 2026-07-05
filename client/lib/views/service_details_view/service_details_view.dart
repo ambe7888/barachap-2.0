@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:prohandy_client/helper/extension/context_extension.dart';
 import 'package:prohandy_client/helper/extension/int_extension.dart';
 import 'package:prohandy_client/helper/extension/widget_extension.dart';
@@ -213,19 +214,26 @@ class ServiceDetailsView extends StatelessWidget {
                     top: BorderSide(color: context.color.primaryBorderColor),
                   ),
                 ),
-                child: CustomButton(
-                  onPressed: () {
-                    ServiceBookingViewModel.dispose;
-                    final svm = ServiceBookingViewModel.instance;
-                    svm.selectedService.value =
-                        sd.serviceDetailsModel(id).allServices!;
-                    Provider.of<BookingAddonsService>(
-                      context,
-                      listen: false,
-                    ).reset();
-                    context.animateToPage(const ServiceBookingAddonsView());
-                  },
-                  btText: LocalKeys.bookService,
+                child: Row(
+                  children: [
+
+                    Expanded(
+                      child: CustomButton(
+                        onPressed: () {
+                          ServiceBookingViewModel.dispose;
+                          final svm = ServiceBookingViewModel.instance;
+                          svm.selectedService.value =
+                              sd.serviceDetailsModel(id).allServices!;
+                          Provider.of<BookingAddonsService>(
+                            context,
+                            listen: false,
+                          ).reset();
+                          context.animateToPage(const ServiceBookingAddonsView());
+                        },
+                        btText: LocalKeys.bookService,
+                      ),
+                    ),
+                  ],
                 ),
               );
         },

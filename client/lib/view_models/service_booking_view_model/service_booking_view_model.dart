@@ -197,7 +197,7 @@ class ServiceBookingViewModel {
     final cProvider = Provider.of<CartService>(context, listen: false);
 
     cProvider.updateToCart(
-      selectedService.value?.id?.toString() ?? "",
+      _orderDetailsId?.toString() ?? selectedService.value?.id?.toString() ?? "",
       selectedService.value?.toMinimizedJson(),
       selectedAddress.value?.toJson(),
       selectedDate.value?.toIso8601String(),
@@ -213,12 +213,13 @@ class ServiceBookingViewModel {
   tryRemoveCart(BuildContext context) async {
     final cProvider = Provider.of<CartService>(context, listen: false);
 
-    cProvider.deleteFromCart(selectedService.value?.id?.toString() ?? "");
+    cProvider.deleteFromCart(_orderDetailsId?.toString() ?? selectedService.value?.id?.toString() ?? "");
     context.pop;
   }
 
   initCartItem(cartItem) {
     fromCart = true;
+    _orderDetailsId = cartItem["serviceId"];
     selectedService.value = ServiceDetails.fromJson(cartItem["service"]);
     selectedAddress.value = Address.fromJson(cartItem["address"]);
     selectedDate.value = DateTime.tryParse(cartItem["date"].toString());

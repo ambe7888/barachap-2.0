@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapSingleLocationViewModel {
-  final Map<MarkerId, Marker> markers = {};
-  ValueNotifier<Map<MarkerId, Marker>> mark = ValueNotifier({});
+  final List<Marker> markers = [];
+  ValueNotifier<List<Marker>> mark = ValueNotifier([]);
   GoogleMapController? controller;
 
   MapSingleLocationViewModel._init();
