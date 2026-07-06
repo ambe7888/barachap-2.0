@@ -1,4 +1,4 @@
-package com.xgenious.prohandy_provider
+package ci.barachap.pro
 
 import io.flutter.embedding.android.FlutterActivity
 

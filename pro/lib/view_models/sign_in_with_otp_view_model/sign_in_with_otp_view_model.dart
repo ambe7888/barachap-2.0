@@ -13,6 +13,8 @@ class SignInWithOtpViewModel {
 
   final ValueNotifier<Phone?> phone = ValueNotifier(null);
   final ValueNotifier<bool> isLoading = ValueNotifier(false);
+  final ValueNotifier<bool> isWhatsappLoading = ValueNotifier(false);
+  final ValueNotifier<bool> isSmsLoading = ValueNotifier(false);
 
   final GlobalKey<FormState> formKey = GlobalKey();
 
@@ -29,29 +31,54 @@ class SignInWithOtpViewModel {
     return true;
   }
 
-  void trySignIn(BuildContext context) async {
+  void trySignIn(BuildContext context, {String channel = 'whatsapp'}) async {
     if (formKey.currentState!.validate() != true) return;
-    isLoading.value = true;
+    if (channel == 'sms') {
+      isSmsLoading.value = true;
+    } else {
+      isWhatsappLoading.value = true;
+    }
     try {
-      final otpResult =
-          await Provider.of<PhoneManageService>(context, listen: false)
-              .tryOtpToPhone(phone: phoneController.text);
-      if (otpResult == true) {
-        final vResult = await Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => PhoneOtpView(),
-            ));
-        if (vResult == true) {
-          await Provider.of<ProfileInfoService>(context, listen: false)
-              .fetchProfileInfo();
-          context.toUntilPage(const LandingView());
+      final dialCode = phone.value?.dialCode ?? "225";
+      final fullPhone = "+$dialCode${phoneController.text}";
+      
+      final pm = Provider.of<PhoneManageService>(context, listen: false);
+      pm.firebaseVerificationId = null; // reset
+
+      if (channel == 'sms') {
+        final otpResult = await pm.tryFirebaseOtp(phone: fullPhone, context: context);
+        if (otpResult == true) {
+          final vResult = await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => PhoneOtpView(),
+              ));
+          if (vResult == true) {
+            await Provider.of<ProfileInfoService>(context, listen: false)
+                .fetchProfileInfo();
+            context.toUntilPage(const LandingView());
+          }
+        }
+      } else {
+        final otpResult = await pm.tryOtpToPhone(phone: fullPhone);
+        if (otpResult == true) {
+          final vResult = await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => PhoneOtpView(),
+              ));
+          if (vResult == true) {
+            await Provider.of<ProfileInfoService>(context, listen: false)
+                .fetchProfileInfo();
+            context.toUntilPage(const LandingView());
+          }
         }
       }
     } catch (e) {
       debugPrint(e.toString());
     } finally {
-      isLoading.value = false;
+      isWhatsappLoading.value = false;
+      isSmsLoading.value = false;
     }
   }
 }

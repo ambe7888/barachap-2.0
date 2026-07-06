@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -81,6 +82,17 @@ class SocialSignInViewModel {
       return;
     }
     GoogleSignInAccount? user = googleUser;
+
+    try {
+      final googleAuth = await googleUser.authentication;
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+      await FirebaseAuth.instance.signInWithCredential(credential);
+    } catch (e) {
+      debugPrint("Firebase Google Sign-In failed: $e");
+    }
 
     type = "google";
     fName = user.displayName?.split(" ").firstOrNull ?? "";

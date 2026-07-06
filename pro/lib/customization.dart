@@ -1,7 +1,7 @@
-String siteLink = 'https://prohandy.xgenious.com';
+String siteLink = 'https://barachap.babishop.ci';
 
-String appLabel = 'Prohandy Pro';
-String storeLabel = "Prohandy Pro";
+String appLabel = 'BaraChap Pro';
+String storeLabel = "BaraChap Pro";
 String appVersion = '1.0';
 
 String mapApiKey = '';

@@ -1,45 +1,81 @@
 {
   "project_info": {
-    "project_number": "1035048558864",
-    "project_id": "prohandy-xgenious",
-    "storage_bucket": "prohandy-xgenious.appspot.com"
+    "project_number": "166692814675",
+    "project_id": "barapush-ecdb8",
+    "storage_bucket": "barapush-ecdb8.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1035048558864:android:c2af1851edd5afb8e6c595",
+        "mobilesdk_app_id": "1:166692814675:android:9a121bafed8cec7401eba6",
         "android_client_info": {
-          "package_name": "com.xgenious.prohandy_client"
+          "package_name": "ci.barachap.client"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "166692814675-nnmvebv0jtnfslut7eoquv4plggt4gfk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ci.barachap.client",
+            "certificate_hash": "30a06d5b7db695bae46e802ba55c98cff7174e11"
+          }
+        },
+        {
+          "client_id": "166692814675-tgnmbq114ha96lg9v5uvpcvbfsob6lg4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ci.barachap.client",
+            "certificate_hash": "391f78a883493f2ad36c60f69bdf937d645ff691"
+          }
+        },
+        {
+          "client_id": "166692814675-7rqh54elebd4sgepn8nv7hjefcvp60sp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyBQLipF-WE-LxjWvblcjmimFesMsE7-urc"
+          "current_key": "AIzaSyDDtWT2z63w36_J5jtj70kmdMVaGA7nOCQ"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "166692814675-7rqh54elebd4sgepn8nv7hjefcvp60sp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1035048558864:android:78558e21c2a98311e6c595",
+        "mobilesdk_app_id": "1:166692814675:android:0f4b8391b139dadd01eba6",
         "android_client_info": {
-          "package_name": "com.xgenious.prohandy_provider"
+          "package_name": "ci.barachap.pro"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "166692814675-7rqh54elebd4sgepn8nv7hjefcvp60sp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyBQLipF-WE-LxjWvblcjmimFesMsE7-urc"
+          "current_key": "AIzaSyDDtWT2z63w36_J5jtj70kmdMVaGA7nOCQ"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "166692814675-7rqh54elebd4sgepn8nv7hjefcvp60sp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

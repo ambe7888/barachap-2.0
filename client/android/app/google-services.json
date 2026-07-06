@@ -49,6 +49,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:166692814675:android:0f4b8391b139dadd01eba6",
+        "android_client_info": {
+          "package_name": "ci.barachap.pro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "166692814675-7rqh54elebd4sgepn8nv7hjefcvp60sp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDtWT2z63w36_J5jtj70kmdMVaGA7nOCQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "166692814675-7rqh54elebd4sgepn8nv7hjefcvp60sp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"
