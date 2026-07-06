@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:prohand/models/color_model.dart';
 
-const Color primaryColor = Color(0xFF007549);
+const Color primaryColor = Color(0xFFed7901);
 Color get mutedPrimaryColor => primaryColor.withOpacity(.2);
 
 //Light theme colors
@@ -39,6 +39,6 @@ final ColorModel darkColors = ColorModel(
 get gridColors => [
       const Color(0xFFEA580C),
       const Color(0xFF3B82F6),
-      const Color(0xFF007549),
+      const Color(0xFF22C55E),
       const Color(0xFF9333EA),
     ];

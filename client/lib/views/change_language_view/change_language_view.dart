@@ -74,6 +74,7 @@ class ChangeLanguageView extends StatelessWidget {
                                       LocalKeys.selectLanguage,
                                       ds.languageListModel.language
                                               ?.map((l) => l.name!)
+                                              .toSet()
                                               .toList() ??
                                           [],
                                       (lang) {

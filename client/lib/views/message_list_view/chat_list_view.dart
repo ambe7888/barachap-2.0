@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:prohandy_client/helper/extension/context_extension.dart';
 import 'package:prohandy_client/helper/extension/int_extension.dart';
 import 'package:prohandy_client/helper/extension/widget_extension.dart';
+import 'package:prohandy_client/helper/extension/string_extension.dart';
 import 'package:prohandy_client/helper/image_assets.dart';
 import 'package:prohandy_client/helper/local_keys.g.dart';
 import 'package:prohandy_client/services/chat_services/chat_list_service.dart';
@@ -57,87 +58,84 @@ class ChatListView extends StatelessWidget {
                                 .contains(query.toLowerCase()) ==
                             true)).toList();
 
-                    return filteredChats.isEmpty
-                        ? EmptyWidget(
-                            title: LocalKeys.noConversationFound,
-                            differentImage: ImageAssets.emptyConversation,
-                          )
-                        : Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 16.0, vertical: 8.0),
-                                child: TextFormField(
-                                  decoration: InputDecoration(
-                                    hintText: "Rechercher",
-                                    prefixIcon: const Icon(Icons.search),
-                                    border: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(8),
-                                    ),
-                                    contentPadding:
-                                        const EdgeInsets.symmetric(
-                                            vertical: 0),
-                                  ),
-                                  onChanged: (v) =>
-                                      clm.searchQuery.value = v,
-                                ),
+                    return Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16.0, vertical: 8.0),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              hintText: "Search".tr(),
+                              prefixIcon: const Icon(Icons.search),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
                               ),
-                              Expanded(
-                                child: Scrollbar(
+                              contentPadding:
+                                  const EdgeInsets.symmetric(vertical: 0),
+                            ),
+                            onChanged: (v) => clm.searchQuery.value = v,
+                          ),
+                        ),
+                        Expanded(
+                          child: filteredChats.isEmpty
+                              ? EmptyWidget(
+                                  title: LocalKeys.noConversationFound,
+                                  differentImage: ImageAssets.emptyConversation,
+                                )
+                              : Scrollbar(
                                   controller: clm.scrollController,
                                   child: CustomScrollView(
                                     controller: clm.scrollController,
                                     physics: const AlwaysScrollableScrollPhysics(),
                                     slivers: [
                                       8.toHeight.toSliver,
-                                SliverList.separated(
-                                  itemBuilder: (context, index) {
-                                    final providerChat = filteredChats[index];
-                              return GestureDetector(
-                                  onTap: () {
-                                    ConversationViewModel.dispose;
-                                    PusherHelper().connectToPusher(
-                                      context,
-                                      providerChat.clientId,
-                                      providerChat.providerId,
-                                    );
-                                    ConversationViewModel
-                                        .instance.messageController
-                                        .clear();
-                                    context.toNamed(ConversationView.routeName,
-                                        arguments: [
-                                          providerChat.providerId,
-                                          providerChat.providerName,
-                                          providerChat.providerImage,
-                                          providerChat.clientId,
-                                        ], then: () {
-                                      PusherHelper().disConnect();
-                                    });
-                                  },
-                                  child: ChatTile(chat: providerChat));
-                            },
-                            separatorBuilder: (context, index) => Padding(
-                              padding: 24.paddingH,
-                              child: Divider(
-                                height: 2,
-                                thickness: 2,
-                                color: context.color.primaryBorderColor,
-                              ),
-                            ),
-                            itemCount: filteredChats.length,
-                          ),
-                          24.toHeight.toSliver,
-                          if (cl.nextPage != null && !cl.nexLoadingFailed)
-                            ScrollPreloader(loading: cl.nextPageLoading)
-                                .toSliver,
-                          24.toHeight.toSliver,
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              );
+                                      SliverList.separated(
+                                        itemBuilder: (context, index) {
+                                          final providerChat = filteredChats[index];
+                                          return GestureDetector(
+                                              onTap: () {
+                                                ConversationViewModel.dispose;
+                                                PusherHelper().connectToPusher(
+                                                  context,
+                                                  providerChat.clientId,
+                                                  providerChat.providerId,
+                                                );
+                                                ConversationViewModel
+                                                    .instance.messageController
+                                                    .clear();
+                                                context.toNamed(ConversationView.routeName,
+                                                    arguments: [
+                                                      providerChat.providerId,
+                                                      providerChat.providerName,
+                                                      providerChat.providerImage,
+                                                      providerChat.clientId,
+                                                    ], then: () {
+                                                  PusherHelper().disConnect();
+                                                });
+                                              },
+                                              child: ChatTile(chat: providerChat));
+                                        },
+                                        separatorBuilder: (context, index) => Padding(
+                                          padding: 24.paddingH,
+                                          child: Divider(
+                                            height: 2,
+                                            thickness: 2,
+                                            color: context.color.primaryBorderColor,
+                                          ),
+                                        ),
+                                        itemCount: filteredChats.length,
+                                      ),
+                                      24.toHeight.toSliver,
+                                      if (cl.nextPage != null && !cl.nexLoadingFailed)
+                                        ScrollPreloader(loading: cl.nextPageLoading)
+                                            .toSliver,
+                                      24.toHeight.toSliver,
+                                    ],
+                                  ),
+                                ),
+                        ),
+                      ],
+                    );
             }),
       ),
           );

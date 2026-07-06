@@ -69,30 +69,6 @@ class ProfileInfoTiles extends StatelessWidget {
             onPress: () {
               context.toPage(const ChangePasswordView());
             },
-            haveDivider: true,
-          ),
-          MenuTile(
-            title: LocalKeys.serviceArea,
-            svg: SvgAssets.mapPin,
-            onPress: () {
-              ProfileEditViewModel.dispose;
-              ProfileEditViewModel.instance
-                  .initProfile(pi.profileInfoModel.userDetails!);
-              context.toPage(const SignUpServiceArea(
-                fromSettings: true,
-              ));
-            },
-            haveDivider: true,
-          ),
-          MenuTile(
-            title: LocalKeys.serviceTye,
-            svg: SvgAssets.settings,
-            onPress: () {
-              ProfileEditViewModel.dispose;
-              ProfileEditViewModel.instance
-                  .initProfile(pi.profileInfoModel.userDetails!);
-              context.toPage(const UserServiceTypeView());
-            },
           ),
         ],
       ),

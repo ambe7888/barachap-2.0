@@ -240,15 +240,20 @@ class PhoneField extends StatelessWidget {
   }
 
   loadCountries() async {
+    if (countryList.isNotEmpty) return;
     var data = await rootBundle.loadString("assets/files/phones.json");
     List tempList = json.decode(data);
     for (var element in tempList) {
-      countryList.add(Phone(
+      final p = Phone(
           name: element['label'],
           code: element["code"],
           dialCode: element['phone'],
           flag: element['flag'],
-          phoneLength: element['phoneLength']));
+          phoneLength: element['phoneLength']);
+      countryList.add(p);
+      if (phone.value == null && element['code'] == 'CI') {
+        phone.value = p;
+      }
     }
   }
 }

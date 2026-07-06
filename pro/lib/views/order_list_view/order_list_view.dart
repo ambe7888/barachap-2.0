@@ -74,34 +74,103 @@ class OrderListView extends StatelessWidget {
               function: ol.shouldAutoFetch ? ol.fetchOrderList() : null,
               isLoading: ol.isLoading,
               shimmer: const OrderListSkeleton(),
-              child: ol.myOrdersModel.allOrders.isEmpty
-                  ? EmptyWidget(title: LocalKeys.noOrdersFound)
-                  : ValueListenableBuilder(
-                      valueListenable: olm.statusType,
-                      builder: (context, value, child) {
-                        return CustomScrollView(
-                          controller: olm.scrollController,
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          slivers: [
-                            12.toHeight.toSliver,
-                            SliverList.separated(
-                              itemBuilder: (context, index) {
-                                final order = ol.myOrdersModel.allOrders[index];
-                                return OrderListTile(
-                                  order: order,
-                                );
-                              },
-                              separatorBuilder: (context, index) => 16.toHeight,
-                              itemCount: ol.myOrdersModel.allOrders.length,
-                            ),
-                            24.toHeight.toSliver,
-                            if (ol.nextPage != null && !ol.nexLoadingFailed)
-                              ScrollPreloader(loading: ol.nextPageLoading)
-                                  .toSliver,
-                            24.toHeight.toSliver,
-                          ],
-                        );
-                      }),
+              child: ValueListenableBuilder(
+                  valueListenable: olm.searchQuery,
+                  builder: (context, query, child) {
+                    return ValueListenableBuilder(
+                        valueListenable: olm.statusType,
+                        builder: (context, value, child) {
+                          final filteredOrders = ol.myOrdersModel.allOrders
+                              .where((o) =>
+                                  query.isEmpty ||
+                                  (o.id
+                                          ?.toString()
+                                          .contains(query.toLowerCase()) ==
+                                      true) ||
+                                  (o.subOrderLocations?.address
+                                          ?.toLowerCase()
+                                          .contains(query.toLowerCase()) ==
+                                      true))
+                              .toList();
+
+                          if (filteredOrders.isEmpty) {
+                            return Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 24.0, vertical: 8.0),
+                                  child: TextFormField(
+                                    decoration: InputDecoration(
+                                      hintText: LocalKeys.search,
+                                      prefixIcon: const Icon(Icons.search),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      contentPadding:
+                                          const EdgeInsets.symmetric(vertical: 0),
+                                    ),
+                                    onChanged: (v) =>
+                                        olm.searchQuery.value = v,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: EmptyWidget(
+                                      title: LocalKeys.noOrdersFound),
+                                ),
+                              ],
+                            );
+                          }
+
+                          return Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 24.0, vertical: 8.0),
+                                child: TextFormField(
+                                  decoration: InputDecoration(
+                                    hintText: LocalKeys.search,
+                                    prefixIcon: const Icon(Icons.search),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    contentPadding:
+                                        const EdgeInsets.symmetric(vertical: 0),
+                                  ),
+                                  onChanged: (v) =>
+                                      olm.searchQuery.value = v,
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomScrollView(
+                                  controller: olm.scrollController,
+                                  physics: const AlwaysScrollableScrollPhysics(),
+                                  slivers: [
+                                    12.toHeight.toSliver,
+                                    SliverList.separated(
+                                      itemBuilder: (context, index) {
+                                        final order = filteredOrders[index];
+                                        return OrderListTile(
+                                          order: order,
+                                        );
+                                      },
+                                      separatorBuilder: (context, index) =>
+                                          16.toHeight,
+                                      itemCount: filteredOrders.length,
+                                    ),
+                                    24.toHeight.toSliver,
+                                    if (ol.nextPage != null &&
+                                        !ol.nexLoadingFailed)
+                                      ScrollPreloader(
+                                              loading: ol.nextPageLoading)
+                                          .toSliver,
+                                    24.toHeight.toSliver,
+                                  ],
+                                ),
+                              ),
+                            ],
+                          );
+                        });
+                  }),
             );
           }),
         ),

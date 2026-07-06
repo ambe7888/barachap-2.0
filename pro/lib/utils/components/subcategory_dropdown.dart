@@ -156,7 +156,7 @@ class SubcategoryDropdown extends StatelessWidget {
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 8, vertical: 14),
                                           child: Text(
-                                            element.name ?? "",
+                                            (element.name ?? "").tr(),
                                             style: textStyle,
                                           ),
                                         ),
@@ -193,7 +193,7 @@ class SubcategoryDropdown extends StatelessWidget {
                   children: [
                     8.toWidth,
                     Text(
-                      c?.name ?? LocalKeys.selectSubcategory,
+                      c?.name?.tr() ?? LocalKeys.selectSubcategory,
                       style: context.titleSmall?.copyWith(
                           color: (c?.name == null
                               ? context.color.secondaryContrastColor

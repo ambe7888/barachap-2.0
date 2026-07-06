@@ -14,17 +14,23 @@ class MenuTile extends StatelessWidget {
   final void Function()? onPress;
   final bool haveDivider;
   final Widget? trailing;
+  final Color? titleColor;
+  final Color? iconColor;
+  final double opacity;
   const MenuTile(
       {super.key,
       required this.title,
       required this.svg,
       this.onPress,
       this.trailing,
-      this.haveDivider = false});
+      this.haveDivider = false,
+      this.titleColor,
+      this.iconColor,
+      this.opacity = 1.0});
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    Widget content = GestureDetector(
       onTap: onPress,
       child: Column(
         children: [
@@ -35,14 +41,14 @@ class MenuTile extends StatelessWidget {
               color: context.color.accentContrastColor,
             ),
             child: Row(children: [
-              svg.toSVGSized(20, color: context.color.tertiaryContrastColo),
+              svg.toSVGSized(20, color: iconColor ?? context.color.tertiaryContrastColo),
               12.toWidth,
               Expanded(
                 flex: 1,
                 child: Text(
                   title,
                   style: context.titleMedium?.bold6
-                      .copyWith(color: context.color.primaryContrastColor),
+                      .copyWith(color: titleColor ?? context.color.primaryContrastColor),
                 ),
               ),
               12.toWidth,
@@ -65,5 +71,6 @@ class MenuTile extends StatelessWidget {
         ],
       ),
     );
+    return opacity == 1.0 ? content : Opacity(opacity: opacity, child: content);
   }
 }

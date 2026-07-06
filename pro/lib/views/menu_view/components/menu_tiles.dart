@@ -19,6 +19,9 @@ import 'package:prohand/views/ratings_and_review_view/ratings_and_review_view.da
 import 'package:prohand/views/sign_in_view/sign_in_view.dart';
 import 'package:prohand/views/support_ticket_view/support_ticket_view.dart';
 import 'package:prohand/views/tac_pp_view/tac_pp_view.dart';
+import 'package:prohand/view_models/profile_edit_view_model/profile_edit_view_model.dart';
+import 'package:prohand/views/service_area_view/service_area_view.dart';
+import 'package:prohand/views/user_service_type_view/user_service_type_view.dart';
 import 'package:provider/provider.dart';
 
 import '../../../view_models/sign_in_view_model/sign_in_view_model.dart';
@@ -97,11 +100,48 @@ class MenuTiles extends StatelessWidget {
                   onPress: () {
                     context.toPage(const NotificationListView());
                   },
+                  haveDivider: false,
                 ),
               ]
             ],
           ),
         ),
+        if (logedIn) ...[
+          8.toHeight,
+          Container(
+            color: context.color.accentContrastColor,
+            child: Column(
+              children: [
+                MenuTile(
+                  title: LocalKeys.serviceArea,
+                  svg: SvgAssets.mapPin,
+                  onPress: () {
+                    final pi = Provider.of<ProfileInfoService>(context, listen: false);
+                    ProfileEditViewModel.dispose;
+                    ProfileEditViewModel.instance
+                        .initProfile(pi.profileInfoModel.userDetails!);
+                    context.toPage(const SignUpServiceArea(
+                      fromSettings: true,
+                    ));
+                  },
+                  haveDivider: true,
+                ),
+                MenuTile(
+                  title: LocalKeys.serviceTye,
+                  svg: SvgAssets.settings,
+                  onPress: () {
+                    final pi = Provider.of<ProfileInfoService>(context, listen: false);
+                    ProfileEditViewModel.dispose;
+                    ProfileEditViewModel.instance
+                        .initProfile(pi.profileInfoModel.userDetails!);
+                    context.toPage(const UserServiceTypeView());
+                  },
+                  haveDivider: false,
+                ),
+              ],
+            ),
+          ),
+        ],
         8.toHeight,
         Container(
           color: context.color.accentContrastColor,
@@ -160,6 +200,7 @@ class MenuTiles extends StatelessWidget {
                 MenuTile(
                   title: LocalKeys.deleteAccount,
                   svg: SvgAssets.trash,
+                  opacity: 0.5,
                   onPress: () {
                     DeleteAccountViewModel.dispose;
                     context.toPage(const DeleteAccountView());
@@ -169,6 +210,8 @@ class MenuTiles extends StatelessWidget {
                 MenuTile(
                   title: LocalKeys.signOut,
                   svg: SvgAssets.logout,
+                  titleColor: Colors.red,
+                  iconColor: Colors.red,
                   onPress: () {
                     Alerts().confirmationAlert(
                       context: context,

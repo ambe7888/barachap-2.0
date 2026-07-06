@@ -11,6 +11,7 @@ class OrderListViewModel {
       ValueNotifier({StatusType.all});
   final ValueNotifier<BookingStatus?> bookingStatus = ValueNotifier(null);
   final ValueNotifier<PaymentStatus?> paymentStatus = ValueNotifier(null);
+  final ValueNotifier<String> searchQuery = ValueNotifier("");
 
   OrderListViewModel._init();
   static OrderListViewModel? _instance;

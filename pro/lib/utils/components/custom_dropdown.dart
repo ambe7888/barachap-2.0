@@ -49,7 +49,7 @@ class CustomDropdown extends StatelessWidget {
             if (svgIcon != null) svgIcon!.toSVG,
             if (svgIcon != null) EmptySpaceHelper.emptyWidth(12),
             Text(
-              hintText,
+              hintText.tr(),
               style: Theme.of(context).textTheme.titleSmall!.copyWith(
                     color: color ?? context.color.secondaryContrastColor,
                     fontSize: 14,

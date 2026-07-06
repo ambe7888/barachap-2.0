@@ -58,7 +58,7 @@ class CustomerSatisfactionRate extends StatelessWidget {
                           onPressed: () {
                             Alerts().showInfoDialogue(
                               context: context,
-                              title: LocalKeys.orderCompletion,
+                              title: LocalKeys.customerSatisfaction,
                               description: LocalKeys
                                   .overallCustomerSatisfactionsFromYourRatings,
                             );

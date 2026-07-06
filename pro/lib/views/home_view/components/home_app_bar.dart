@@ -16,6 +16,13 @@ class HomeAppBar extends StatelessWidget {
       return Consumer<ProfileInfoService>(builder: (context, pi, child) {
         return Row(
           children: [
+            Image.asset(
+              'assets/images/app_icon.png',
+              height: 32,
+              width: 32,
+              fit: BoxFit.contain,
+            ),
+            8.toWidth,
             Expanded(
               flex: 1,
               child: Text(
@@ -23,9 +30,8 @@ class HomeAppBar extends StatelessWidget {
                 style: context.titleLarge?.bold,
               ),
             ),
-            12.toHeight,
+            12.toWidth,
             const Notifications(),
-            12.toHeight,
           ],
         );
       });

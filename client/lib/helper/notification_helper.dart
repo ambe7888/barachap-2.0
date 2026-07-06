@@ -82,7 +82,6 @@ class NotificationHelper {
       String? description = message.data['body'] ?? "";
       String identity = message.data['identify']?.toString() ?? "";
       log(jsonEncode(message.data));
-      if (message.data['type'] == "order") {}
       if (message.data['type'] == "chat") {
         if (message.data["user_id"]?.toString() == chatProviderId) {
           return;
@@ -90,6 +89,7 @@ class NotificationHelper {
         try {
           title =
               message.data["user_name"] ?? message.data["message_title"] ?? "";
+          description = message.data["message"]?.toString();
         } catch (e) {}
       }
       selectedNotificationPayload = jsonEncode(message.data);

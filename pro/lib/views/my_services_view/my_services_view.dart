@@ -70,33 +70,46 @@ class _MyServicesViewState extends State<MyServicesView> {
                               textInputAction: TextInputAction.search,
                               decoration: InputDecoration(
                                 hintText: LocalKeys.search,
-                                prefixIcon: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    FittedBox(
-                                      child: Row(
-                                        children: [
-                                          4.toWidth,
-                                          SvgAssets.search.toSVGSized(24,
-                                              color: context
-                                                  .color.primaryContrastColor),
-                                        ],
+                                prefixIcon: const Icon(Icons.search),
+                                suffixIcon: msm.titleController.text.isEmpty
+                                    ? const SizedBox()
+                                    : GestureDetector(
+                                        onTap: () {
+                                          msm.titleController.clear();
+                                          context.unFocus;
+                                          setState(() {
+                                            Provider.of<ServiceListService>(
+                                                    context,
+                                                    listen: false)
+                                                .fetchServiceList(refresh: true)
+                                                .then((_) {
+                                              setState(() {});
+                                            });
+                                          });
+                                        },
+                                        child: Icon(
+                                          Icons.close_rounded,
+                                          size: 20,
+                                          color: context.color.tertiaryContrastColo,
+                                        ),
                                       ),
-                                    )
-                                  ],
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8),
                                 ),
+                                contentPadding: const EdgeInsets.symmetric(vertical: 0),
                               ),
+                              onChanged: (value) {
+                                setState(() {});
+                              },
                               onFieldSubmitted: (value) {
-                                if ((value).trim().isNotEmpty) {
-                                  setState(() {
-                                    Provider.of<ServiceListService>(context,
-                                            listen: false)
-                                        .fetchServiceList()
-                                        .then((_) {
-                                      setState(() {});
-                                    });
+                                setState(() {
+                                  Provider.of<ServiceListService>(context,
+                                          listen: false)
+                                      .fetchServiceList(refresh: true)
+                                      .then((_) {
+                                    setState(() {});
                                   });
-                                }
+                                });
                               },
                             )),
                       ],

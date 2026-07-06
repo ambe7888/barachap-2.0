@@ -48,10 +48,10 @@ coreInit(BuildContext context) async {
   sPref ??= await SharedPreferences.getInstance();
 
   try {
-    final slug = sPref?.getString("lang_slug") ?? "en";
+    final slug = sPref?.getString("lang_slug") ?? "fr";
     timeago.setLocaleMessages(
       slug,
-      timeAgoSupportedLangs[slug] ?? timeago.EnMessages(),
+      timeAgoSupportedLangs[slug] ?? timeago.FrMessages(),
     );
     timeago.setDefaultLocale(slug);
   } catch (e) {

@@ -79,7 +79,10 @@ extension NumConversionExtensionD on dynamic {
 extension CurrencyDynamicExtension on String {
   String get cur {
     String symbol = dProvider.currencySymbol;
-    return dProvider.currencyRight ? "$this$symbol" : "$symbol$this";
+    final cleanStr = replaceAll(RegExp(r'[^\d.]'), '');
+    final parsed = num.tryParse(cleanStr);
+    final formatted = parsed != null ? parsed.round().toString() : this;
+    return dProvider.currencyRight ? "$formatted$symbol" : "$symbol$formatted";
   }
 }
 

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class ChatListViewModel {
   ScrollController scrollController = ScrollController();
 
+  final ValueNotifier<String> searchQuery = ValueNotifier("");
+
   ChatListViewModel._init();
   static ChatListViewModel? _instance;
   static ChatListViewModel get instance {

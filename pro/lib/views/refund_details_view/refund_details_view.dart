@@ -4,6 +4,7 @@ import 'package:prohand/services/order_services/order_details_service.dart';
 import 'package:provider/provider.dart';
 
 import '../../helper/extension/int_extension.dart';
+import '../../helper/extension/string_extension.dart';
 import '../../helper/extension/widget_extension.dart';
 import '../../helper/local_keys.g.dart';
 import '../../services/order_services/refund_manage_service.dart';
@@ -26,7 +27,10 @@ class RefundDetailsView extends StatelessWidget {
     final rmProvider = Provider.of<RefundManageService>(context, listen: false);
     final rlm = RefundListViewModel.instance;
     return Scaffold(
-      appBar: AppBar(leading: NavigationPopIcon()),
+      appBar: AppBar(
+        leading: NavigationPopIcon(),
+        title: Text("Refund Details".tr()),
+      ),
       body: CustomRefreshIndicator(
         refreshKey: rlm.refreshKey,
         onRefresh: () async {

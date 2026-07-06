@@ -49,6 +49,12 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
           "";
     } catch (e) {}
   }
+  if (type == "chat") {
+    try {
+      title = message.data["user_name"] ?? message.data["message_title"] ?? "";
+      description = message.data["message"]?.toString() ?? "";
+    } catch (e) {}
+  }
   debugPrint(message.data.toString());
   try {
     NotificationHelper().triggerNotification(

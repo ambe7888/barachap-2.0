@@ -122,9 +122,10 @@ class RequestWithdrawView extends StatelessWidget {
                                             .map(
                                           (e) {
                                             return FieldWithLabel(
-                                              label: gateway.field[e],
+                                              label: gateway.field[e].tr(),
                                               hintText: gateway.field[e]
                                                       ?.toString()
+                                                      .tr()
                                                       .capitalize ??
                                                   "",
                                               isRequired: true,
@@ -133,7 +134,7 @@ class RequestWithdrawView extends StatelessWidget {
                                               validator: (value) {
                                                 if (value!.isEmpty) {
                                                   return gateway
-                                                      .field[e].capitalize;
+                                                      .field[e].tr().capitalize;
                                                 }
                                                 return null;
                                               },

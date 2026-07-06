@@ -3,6 +3,8 @@ import 'package:prohand/helper/extension/context_extension.dart';
 import 'package:prohand/helper/extension/int_extension.dart';
 import 'package:prohand/helper/extension/widget_extension.dart';
 import 'package:prohand/helper/local_keys.g.dart';
+import 'package:prohand/utils/components/navigation_pop_icon.dart';
+import 'package:prohand/view_models/sign_in_with_otp_view_model/sign_in_with_otp_view_model.dart';
 import 'package:prohand/views/sign_in_view/components/email_sign_in.dart';
 import 'package:prohand/views/sign_in_view/components/social_sign_in_button.dart';
 
@@ -16,23 +18,41 @@ class SignInView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.color.accentContrastColor,
+      backgroundColor: context.color.backgroundColor,
       appBar: AppBar(
-        leading: const SizedBox(),
-        leadingWidth: 12,
+        leading: const NavigationPopIcon(),
         title: Text(LocalKeys.signIn),
       ),
       body: Scrollbar(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: Column(
             children: [
-              const EmailSignIn(),
+              Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: context.color.accentContrastColor,
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(
+                    color: context.color.primaryBorderColor.withOpacity(0.6),
+                    width: 1,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.02),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: const EmailSignIn(),
+              ),
               12.toHeight,
               SocialSignInButton(
                   title: LocalKeys.otpSignIn,
                   image: null,
                   onTap: () {
+                    SignInWithOtpViewModel.dispose;
                     context.toPage(const SignInWithOtpView());
                   }),
               24.toHeight,

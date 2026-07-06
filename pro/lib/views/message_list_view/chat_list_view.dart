@@ -45,57 +45,93 @@ class ChatListView extends StatelessWidget {
                 child: CustomFutureWidget(
                   function: cl.shouldAutoFetch ? cl.fetchChatList() : null,
                   shimmer: const ChatListSkeleton(),
-                  child: cl.chatListModel.chatList.isEmpty
-                      ? EmptyWidget(
-                          title: LocalKeys.noConversationFound,
-                          differentImage: ImageAssets.conversationEmpty,
-                        )
-                      : CustomScrollView(
-                          controller: clm.scrollController,
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          slivers: [
-                            SliverList.separated(
-                              itemBuilder: (context, index) {
-                                final clientChat =
-                                    cl.chatListModel.chatList[index];
-                                return GestureDetector(
-                                    onTap: () {
-                                      ConversationViewModel.dispose;
-                                      debugPrint(
-                                          "view conversation".toString());
-                                      PusherHelper().connectToPusher(
-                                        context,
-                                        clientChat.providerId,
-                                        clientChat.clientId,
-                                      );
-                                      ConversationViewModel
-                                          .instance.messageController
-                                          .clear();
-                                      context.toNamed(
-                                          ConversationView.routeName,
-                                          arguments: clientChat, then: () {
-                                        PusherHelper().disConnect();
-                                      });
-                                    },
-                                    child: ChatTile(chat: clientChat));
-                              },
-                              separatorBuilder: (context, index) => Padding(
-                                padding: 24.paddingH,
-                                child: Divider(
-                                  height: 2,
-                                  thickness: 2,
-                                  color: context.color.primaryBorderColor,
+                  child: ValueListenableBuilder(
+                      valueListenable: clm.searchQuery,
+                      builder: (context, query, child) {
+                        final filteredChats = cl.chatListModel.chatList.where((c) =>
+                            query.isEmpty ||
+                            (c.providerName
+                                    ?.toLowerCase()
+                                    .contains(query.toLowerCase()) ==
+                                true) ||
+                            (c.clientName
+                                    ?.toLowerCase()
+                                    .contains(query.toLowerCase()) ==
+                                true)).toList();
+
+                        return Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 16.0, vertical: 8.0),
+                              child: TextFormField(
+                                decoration: InputDecoration(
+                                  hintText: LocalKeys.search,
+                                  prefixIcon: const Icon(Icons.search),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  contentPadding:
+                                      const EdgeInsets.symmetric(vertical: 0),
                                 ),
+                                onChanged: (v) => clm.searchQuery.value = v,
                               ),
-                              itemCount: cl.chatListModel.chatList.length,
                             ),
-                            24.toHeight.toSliver,
-                            if (cl.nextPage != null && !cl.nexLoadingFailed)
-                              ScrollPreloader(loading: cl.nextPageLoading)
-                                  .toSliver,
-                            24.toHeight.toSliver,
+                            Expanded(
+                              child: filteredChats.isEmpty
+                                  ? EmptyWidget(
+                                      title: LocalKeys.noConversationFound,
+                                      differentImage: ImageAssets.conversationEmpty,
+                                    )
+                                  : CustomScrollView(
+                                      controller: clm.scrollController,
+                                      physics: const AlwaysScrollableScrollPhysics(),
+                                      slivers: [
+                                        SliverList.separated(
+                                          itemBuilder: (context, index) {
+                                            final clientChat = filteredChats[index];
+                                            return GestureDetector(
+                                                onTap: () {
+                                                  ConversationViewModel.dispose;
+                                                  debugPrint(
+                                                      "view conversation".toString());
+                                                  PusherHelper().connectToPusher(
+                                                    context,
+                                                    clientChat.providerId,
+                                                    clientChat.clientId,
+                                                  );
+                                                  ConversationViewModel
+                                                      .instance.messageController
+                                                      .clear();
+                                                  context.toNamed(
+                                                      ConversationView.routeName,
+                                                      arguments: clientChat, then: () {
+                                                    PusherHelper().disConnect();
+                                                  });
+                                                },
+                                                child: ChatTile(chat: clientChat));
+                                          },
+                                          separatorBuilder: (context, index) => Padding(
+                                            padding: 24.paddingH,
+                                            child: Divider(
+                                              height: 2,
+                                              thickness: 2,
+                                              color: context.color.primaryBorderColor,
+                                            ),
+                                          ),
+                                          itemCount: filteredChats.length,
+                                        ),
+                                        24.toHeight.toSliver,
+                                        if (cl.nextPage != null && !cl.nexLoadingFailed)
+                                          ScrollPreloader(loading: cl.nextPageLoading)
+                                              .toSliver,
+                                        24.toHeight.toSliver,
+                                      ],
+                                    ),
+                            ),
                           ],
-                        ),
+                        );
+                      }),
                 ));
           });
         }),

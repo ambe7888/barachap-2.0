@@ -16,14 +16,14 @@ class DynamicsService with ChangeNotifier {
 
   bool _noConnection = false;
 
-  String languageSlug = 'en_GB';
+  String languageSlug = 'fr_FR';
 
   bool currencyRight = false;
   bool textDirectionRight = false;
   String currencySymbol = "\$";
   String currencyCode = "USD";
   get noConnection => _noConnection;
-  Locale _appLocal = const Locale("en", "GB");
+  Locale _appLocal = const Locale("fr", "FR");
 
   get appLocal => _appLocal;
 
@@ -43,9 +43,13 @@ class DynamicsService with ChangeNotifier {
             ?.firstWhere((l) => l.slug == localSlug)
             .name;
       } else {
-        final defaultLang = languageListModel.language
-            ?.firstWhere((l) => l.languageDefault.toString() == "1");
-        sPref?.setString("lang_slug", defaultLang?.slug ?? "");
+        final defaultLang = languageListModel.language?.firstWhere(
+            (l) => l.slug?.startsWith("fr") == true,
+            orElse: () => languageListModel.language!.firstWhere(
+              (l) => l.languageDefault.toString() == "1",
+              orElse: () => languageListModel.language!.first,
+            ));
+        sPref?.setString("lang_slug", defaultLang?.slug ?? "fr");
         return defaultLang?.name;
       }
     } catch (e) {
@@ -116,16 +120,16 @@ class DynamicsService with ChangeNotifier {
         return;
       }
       try {
-        for (var lang in _languageListModel?.language ?? []) {
-          if (lang.languageDefault == "1") {
-            debugPrint(responseData.toString());
-            debugPrint(lang.direction.toString());
-            debugPrint(lang.slug.toString());
-            languageSlug = lang.slug ?? "";
-            textDirectionRight = lang.direction != "ltr";
-            languageSlug = lang.slug ?? "";
-            break;
-          }
+        var defaultLang = _languageListModel?.language?.firstWhere(
+          (l) => l.slug?.startsWith("fr") == true,
+          orElse: () => _languageListModel!.language!.firstWhere(
+            (l) => l.languageDefault == "1",
+            orElse: () => _languageListModel!.language!.first,
+          ),
+        );
+        if (defaultLang != null) {
+          languageSlug = defaultLang.slug ?? "fr";
+          textDirectionRight = defaultLang.direction != "ltr";
         }
         setLangSlug(languageSlug, textDirectionRight, setLocally: true);
       } catch (e) {}
