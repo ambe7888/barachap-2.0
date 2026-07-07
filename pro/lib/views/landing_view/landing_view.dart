@@ -3,6 +3,10 @@ import 'package:prohand/helper/extension/context_extension.dart';
 import 'package:prohand/view_models/landding_view_model/landding_view_model.dart';
 import 'package:prohand/views/landing_view/components/landing_bottom_nav.dart';
 import 'package:prohand/views/my_services_view/my_services_view.dart';
+import 'package:provider/provider.dart';
+
+import '../../services/profile_services/profile_info_service.dart';
+import '../onboarding_wizard_view/onboarding_wizard_view.dart';
 
 import '../home_view/home_view.dart';
 import '../job_list_view/job_list_view.dart';
@@ -14,6 +18,21 @@ class LandingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Check if onboarding is needed
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final profileService = Provider.of<ProfileInfoService>(context, listen: false);
+      final userDetails = profileService.profileInfoModel.userDetails;
+      if (userDetails != null) {
+        final bool isPhoneMissing = userDetails.phone == null || userDetails.phone.toString().isEmpty;
+        final bool isServiceAreaMissing = userDetails.serviceArea == null;
+        final bool isServiceTypesMissing = userDetails.serviceTypes == null || userDetails.serviceTypes!.isEmpty;
+        
+        if (isPhoneMissing || isServiceAreaMissing || isServiceTypesMissing) {
+          context.toUntilPage(const OnboardingWizardView());
+        }
+      }
+    });
+
     final lvm = LandingViewModel.instance;
     final widgets = [
       const HomeView(),

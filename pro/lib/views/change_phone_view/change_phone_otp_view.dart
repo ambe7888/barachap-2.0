@@ -49,9 +49,9 @@ class ChangePhoneOtpView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Center(
-                            child: ImageAssets.verification.toAImage(),
+                            child: Icon(Icons.security, size: 80, color: primaryColor),
                           ),
-                          24.toHeight,
+                          16.toHeight,
                           Form(
                               child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,

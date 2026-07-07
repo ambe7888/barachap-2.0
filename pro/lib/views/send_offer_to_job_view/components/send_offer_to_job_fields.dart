@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prohand/customizations/colors.dart';
 import 'package:prohand/helper/extension/context_extension.dart';
 import 'package:prohand/helper/extension/int_extension.dart';
 import 'package:prohand/helper/extension/string_extension.dart';
@@ -57,12 +58,22 @@ class SendOfferToJobFields extends StatelessWidget {
                   if (value.toString().tryToParse <= 0) {
                     return LocalKeys.invalidPrice;
                   }
-                  if (jobDetails.budget < value.toString().tryToParse) {
-                    return LocalKeys.offerAmountShouldBeLessThenJobBudget;
-                  }
                   return null;
                 },
               ),
+              8.toHeight,
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: [
+                  _PriceChip(price: jobDetails.budget, controller: jdm.priceController),
+                  _PriceChip(price: jobDetails.budget + 1000, controller: jdm.priceController),
+                  _PriceChip(price: jobDetails.budget + 2000, controller: jdm.priceController),
+                  if (jobDetails.budget > 1000)
+                    _PriceChip(price: jobDetails.budget - 1000, controller: jdm.priceController),
+                ],
+              ),
+              16.toHeight,
               FieldWithLabel(
                 label: LocalKeys.coverLetter,
                 hintText: LocalKeys.writeAboutTheServiceYourOffering,
@@ -74,5 +85,26 @@ class SendOfferToJobFields extends StatelessWidget {
         ),
       );
     });
+  }
+}
+
+class _PriceChip extends StatelessWidget {
+  final num price;
+  final TextEditingController controller;
+
+  const _PriceChip({required this.price, required this.controller});
+
+  @override
+  Widget build(BuildContext context) {
+    return ActionChip(
+      label: Text(
+        price.toString(),
+        style: context.titleSmall?.copyWith(color: context.color.accentContrastColor),
+      ),
+      backgroundColor: primaryColor,
+      onPressed: () {
+        controller.text = price.toString();
+      },
+    );
   }
 }

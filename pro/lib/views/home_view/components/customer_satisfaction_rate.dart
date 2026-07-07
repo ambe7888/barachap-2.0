@@ -72,11 +72,11 @@ class CustomerSatisfactionRate extends StatelessWidget {
                     SquircleContainer(
                         width: double.infinity,
                         radius: 10,
-                        color: context.color.mutedPendingColor,
+                        color: Color.lerp(Colors.red, Colors.green, pct)?.withOpacity(.2),
                         child: Row(
                           children: [
                             SquircleContainer(
-                                color: context.color.primaryPendingColor,
+                                color: Color.lerp(Colors.red, Colors.green, pct),
                                 radius: 10,
                                 padding: 6.paddingAll,
                                 width: (context.width - 48) *

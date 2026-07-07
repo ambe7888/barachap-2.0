@@ -14,6 +14,7 @@ class CustomButton extends StatelessWidget {
   final Color? backgroundColor;
   final Color? foregroundColor;
   final Color? borderColor;
+  final Widget? icon;
 
   const CustomButton({
     super.key,
@@ -25,6 +26,7 @@ class CustomButton extends StatelessWidget {
     this.backgroundColor,
     this.foregroundColor,
     this.borderColor,
+    this.icon,
   });
 
   @override
@@ -76,11 +78,17 @@ class CustomButton extends StatelessWidget {
                 ),
               )
             : FittedBox(
-                child: Text(
-                  btText,
-                  maxLines: 1,
-                  style: context.titleSmall?.bold6
-                      .copyWith(color: context.color.accentContrastColor),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    if (icon != null) ...[icon!, const SizedBox(width: 8)],
+                    Text(
+                      btText,
+                      maxLines: 1,
+                      style: context.titleSmall?.bold6
+                          .copyWith(color: context.color.accentContrastColor),
+                    ),
+                  ],
                 ),
               ),
       ),

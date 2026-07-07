@@ -9,6 +9,7 @@ import 'package:prohand/views/service_area_view/service_area_view.dart';
 import 'package:provider/provider.dart';
 
 import '../../../helper/svg_assets.dart';
+import '../../../view_models/change_email_phone_view_model/change_email_phone_view_model.dart';
 import '../../change_email_view/change_email_view.dart';
 import '../../change_password_view/change_password_view.dart';
 import '../../change_phone_view/change_phone_view.dart';
@@ -51,6 +52,7 @@ class ProfileInfoTiles extends StatelessWidget {
             title: LocalKeys.changeEmail,
             svg: SvgAssets.email,
             onPress: () {
+              ChangeEmailPhoneViewModel.dispose;
               context.toPage(const ChangeEmailView());
             },
             haveDivider: true,
@@ -59,6 +61,17 @@ class ProfileInfoTiles extends StatelessWidget {
             title: LocalKeys.changePhone,
             svg: SvgAssets.phone,
             onPress: () {
+              ChangeEmailPhoneViewModel.dispose;
+              if (pi.profileInfoModel.userDetails?.phone != null) {
+                String fullPhone = pi.profileInfoModel.userDetails!.phone!;
+                if (fullPhone.startsWith('+225')) {
+                  fullPhone = fullPhone.substring(4);
+                } else if (fullPhone.startsWith('225')) {
+                  fullPhone = fullPhone.substring(3);
+                }
+                ChangeEmailPhoneViewModel.instance.phoneController.text =
+                    fullPhone;
+              }
               context.toPage(const ChangePhoneView());
             },
             haveDivider: true,

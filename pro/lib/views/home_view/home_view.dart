@@ -18,6 +18,7 @@ import 'components/home_app_bar.dart';
 import 'components/home_bar_chart.dart';
 import 'components/home_drawer.dart';
 import 'components/home_new_order.dart';
+import 'components/home_onboarding_banner.dart';
 import 'components/home_service_create_banner.dart';
 import 'components/order_completion_rate.dart';
 
@@ -53,6 +54,7 @@ class HomeView extends StatelessWidget {
               physics: const AlwaysScrollableScrollPhysics(),
               child: Column(
                 children: [
+                  const HomeOnboardingBanner(),
                   if (1 == 2) const HomeNewOrder(),
                   const HomeOrderInfoGrid(),
                   const HomeTodaysOrders(),

@@ -59,6 +59,8 @@ class SignInWithOtpView extends StatelessWidget {
                       },
                       btText: "Envoyer par WhatsApp",
                       isLoading: val,
+                      backgroundColor: Colors.green,
+                      icon: const Icon(Icons.wechat, color: Colors.white),
                     ),
                   ),
                   12.toHeight,

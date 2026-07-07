@@ -70,11 +70,11 @@ class OrderCompletionRate extends StatelessWidget {
                     SquircleContainer(
                         width: double.infinity,
                         radius: 10,
-                        color: primaryColor.withOpacity(.2),
+                        color: Color.lerp(Colors.red, Colors.blue, pct)?.withOpacity(.2),
                         child: Row(
                           children: [
                             SquircleContainer(
-                                color: primaryColor,
+                                color: Color.lerp(Colors.red, Colors.blue, pct),
                                 radius: 10,
                                 padding: 6.paddingAll,
                                 width: (context.width - 48) *
