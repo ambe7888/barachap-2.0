@@ -20,7 +20,7 @@ class SignInView extends StatelessWidget {
     return Scaffold(
       backgroundColor: context.color.backgroundColor,
       appBar: AppBar(
-        leading: const NavigationPopIcon(),
+        automaticallyImplyLeading: false,
         title: Text(LocalKeys.signIn),
       ),
       body: Scrollbar(

@@ -4,21 +4,21 @@ import 'package:shared_preferences/shared_preferences.dart';
 class IntroService with ChangeNotifier {
   final introData = [
     {
-      "title": "Browse Projects",
+      "title": "Trouvez des Missions",
       "description":
-          "Browse and find thousands of projects offered by freelancers using our filters and get order for your dream projects.",
+          "Consultez et trouvez des milliers de missions proposées par les clients et obtenez des commandes.",
       "image": "assets/images/intro_1.png",
     },
     {
-      "title": "Post Jobs",
+      "title": "Postulez aux Demandes",
       "description":
-          "Need something specific? Post jobs for your specific needs.",
+          "Répondez aux besoins spécifiques des clients en proposant vos services.",
       "image": "assets/images/intro_2.png",
     },
     {
-      "title": "Live Chat",
+      "title": "Chat en Direct",
       "description":
-          "Talk with Freelancers directly and work efficiently towards a great project.",
+          "Discutez directement avec les clients pour collaborer efficacement.",
       "image": "assets/images/intro_3.png",
     },
   ];

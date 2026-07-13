@@ -210,6 +210,34 @@ class ProviderOrderController extends Controller
                             'message' => $message_body_admin
                         ]));
 
+                        // Database Notification to Client
+                        $client_title = __('Order Completion Request');
+                        $client_body = __('Your provider requested to complete the order # :id', ['id' => $sub_order->id]);
+                        user_notification($sub_order->order_id, $sub_order->client_id, 'order', $client_body, 'unread');
+                        
+                        // Push Notification to Client
+                        $client_token = [];
+                        if(!empty($order->client?->firebase_token)){
+                           $client_token[] = $order->client?->firebase_token;
+                        }
+                        
+                        if (!empty($client_token)){
+                             $notification = new \App\Http\Services\OrderServiceNotification();
+                             $client_notification_data = [
+                                "title" => $client_title,
+                                "detailed_title" => "-",
+                                "identify" => $sub_order->order_id,
+                                "sub_order_id" => $sub_order->id,
+                                "user_id" => $sub_order->client_id,
+                                "body" => $client_body,
+                                "description" => "-",
+                                "type" => "order",
+                                "sound" => "default",
+                                "screen" => "-"
+                             ];
+                             $notification->sendFirebaseNotification($client_token, $client_title, $client_body, $client_notification_data);
+                        }
+
                     } catch (\Exception $e) {}
 
                     return response()->json([

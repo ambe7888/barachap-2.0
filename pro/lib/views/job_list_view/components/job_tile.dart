@@ -27,20 +27,52 @@ class JobTile extends StatelessWidget {
         margin: hideBorder ? null : 25.paddingH,
         padding: hideBorder ? 24.paddingH : 16.paddingAll,
         radius: hideBorder ? null : 8,
-        borderColor: context.color.primaryBorderColor,
+        borderColor: job.isApplied ? context.color.primarySuccessColor : context.color.primaryBorderColor,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                if (job.image != null && job.image!.isNotEmpty)
+                  Padding(
+                    padding: const EdgeInsets.only(right: 12.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.network(
+                        job.image!,
+                        height: 50,
+                        width: 50,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) => const SizedBox(),
+                      ),
+                    ),
+                  ),
                 Expanded(
                   flex: 1,
-                  child: Text(
-                    job.title ?? "---",
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: context.titleMedium?.bold,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        job.title ?? "---",
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: context.titleMedium?.bold,
+                      ),
+                      if (job.isApplied)
+                        Container(
+                          margin: const EdgeInsets.only(top: 4),
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                          decoration: BoxDecoration(
+                            color: context.color.primarySuccessColor.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                          child: Text(
+                            "Offer sent".tr(),
+                            style: context.titleSmall?.copyWith(color: context.color.primarySuccessColor),
+                          ),
+                        ),
+                    ],
                   ),
                 ),
                 12.toWidth,

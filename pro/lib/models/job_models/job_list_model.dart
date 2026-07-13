@@ -44,6 +44,8 @@ class Job {
   final Address? jobLocation;
   final String? latLng;
   final DateTime? createdAt;
+  final String? image;
+  final bool isApplied;
 
   Job({
     this.id,
@@ -56,6 +58,8 @@ class Job {
     this.jobLocation,
     this.latLng,
     this.createdAt,
+    this.image,
+    this.isApplied = false,
   });
 
   factory Job.fromJson(Map<String, dynamic> json) => Job(
@@ -72,6 +76,8 @@ class Job {
         jobLocation: json["job_location"] == null
             ? null
             : Address.fromJson(json["job_location"]),
+        image: json["image"],
+        isApplied: json["is_applied"] ?? false,
       );
 
   Map<String, dynamic> toJson() => {

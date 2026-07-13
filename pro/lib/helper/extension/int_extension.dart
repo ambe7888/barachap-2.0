@@ -30,7 +30,7 @@ extension CurrencyExtension on num {
     NumberFormat formatter = NumberFormat.currency(
       locale: dProvider.languageSlug.split('_').firstOrNull?.trim() ?? 'en',
       symbol: dProvider.currencySymbol,
-      decimalDigits: 2,
+      decimalDigits: 0,
     );
     return formatter.format(this).trim();
   }

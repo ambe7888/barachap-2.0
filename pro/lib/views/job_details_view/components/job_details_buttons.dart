@@ -20,15 +20,15 @@ class JobDetailsButtons extends StatelessWidget {
           border:
               Border(top: BorderSide(color: context.color.primaryBorderColor))),
       child: Consumer<JobDetailsService>(builder: (context, jd, child) {
-        return ElevatedButton(
-          onPressed: jd.jobDetailsModel.jobOffer != null
-              ? null
-              : () {
+        return jd.jobDetailsModel.jobOffer != null
+            ? const SizedBox()
+            : ElevatedButton(
+                onPressed: () {
                   JobDetailsViewModel.dispose;
                   context.toPage(const SendOfferToJobView());
                 },
-          child: Text(LocalKeys.sendAnOffer),
-        );
+                child: Text(LocalKeys.sendAnOffer),
+              );
       }),
     );
   }

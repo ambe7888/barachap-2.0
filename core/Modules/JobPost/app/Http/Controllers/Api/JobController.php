@@ -30,7 +30,7 @@ class JobController extends Controller
         $is_job_hired = JobPostOffer::where('job_post_id', $job->id)->where('is_hired', 1)->count();
 
         $provider_offer = null;
-        if (Auth::guard('sanctum')->check() && Auth::guard('sanctum')->user()->type === 0){
+        if (Auth::guard('sanctum')->check() && Auth::guard('sanctum')->user()->type == 0){
                 $provider_offer = JobPostOffer::where('job_post_id', $job->id)
                     ->where('provider_id', Auth::guard('sanctum')->user()->id)
                     ->first();

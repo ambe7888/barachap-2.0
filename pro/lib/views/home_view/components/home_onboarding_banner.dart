@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 
 import '../../../helper/local_keys.g.dart';
 import '../../../services/profile_services/profile_info_service.dart';
-import '../../onboarding_wizard_view/onboarding_wizard_view.dart';
+import '../../identity_verify_view/identity_verify_view.dart';
 
 class HomeOnboardingBanner extends StatelessWidget {
   const HomeOnboardingBanner({super.key});
@@ -20,13 +20,9 @@ class HomeOnboardingBanner extends StatelessWidget {
         final userDetails = profileService.profileInfoModel.userDetails;
         if (userDetails == null) return const SizedBox.shrink();
 
-        final bool isPhoneMissing = userDetails.phone == null || userDetails.phone.toString().isEmpty;
-        final bool isServiceAreaMissing = userDetails.serviceArea == null;
-        final bool isServiceTypesMissing = userDetails.serviceTypes == null || userDetails.serviceTypes!.isEmpty;
+        final isVerified = userDetails.verifiedStatus == "1";
 
-        final bool isProfileIncomplete = isPhoneMissing || isServiceAreaMissing || isServiceTypesMissing;
-
-        if (!isProfileIncomplete) return const SizedBox.shrink();
+        if (isVerified) return const SizedBox.shrink();
 
         return Container(
           width: context.width,
@@ -41,19 +37,19 @@ class HomeOnboardingBanner extends StatelessWidget {
           child: Column(
             children: [
               Icon(
-                Icons.settings_suggest_outlined,
+                Icons.verified_user_outlined,
                 size: 64,
-                color: primaryColor,
+                color: context.color.primaryWarningColor,
               ),
               16.toHeight,
               Text(
-                "Complétez votre profil",
+                "Vérification de Compte",
                 style: context.titleLarge?.bold,
                 textAlign: TextAlign.center,
               ),
               4.toHeight,
               Text(
-                "Veuillez configurer votre profil (numéro, zone, types de service) pour commencer à recevoir des demandes.",
+                "Votre compte n'est pas encore vérifié. Veuillez soumettre vos informations pour obtenir le badge de vérification.",
                 textAlign: TextAlign.center,
                 style: context.bodyMedium?.copyWith(
                   color: context.color.secondaryContrastColor,
@@ -62,9 +58,9 @@ class HomeOnboardingBanner extends StatelessWidget {
               24.toHeight,
               CustomButton(
                   onPressed: () {
-                    context.toPage(const OnboardingWizardView());
+                    context.toPage(const IdentityVerifyView());
                   },
-                  btText: "Configurer mon profil",
+                  btText: "Vérifier le profil",
                   isLoading: false)
             ],
           ),

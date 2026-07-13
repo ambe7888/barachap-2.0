@@ -70,14 +70,8 @@ class ProviderJobOfferController extends Controller
                 $request->validate([
                     'job_post_id'=> 'required',
                     'budget' => 'required|numeric',
-                    'cover_letter'=> 'required',
+                    'cover_letter'=> 'nullable',
                 ]);
-
-                if($request->budget > $job->budget){
-                    return response()->json([
-                        'msg'=>'Your budget must be less than or equal to the original budget',
-                    ], 400);
-                }
 
                 $provider_request_count = JobPostOffer::where('provider_id',$provider_id)
                     ->where('job_post_id',$request->job_post_id)

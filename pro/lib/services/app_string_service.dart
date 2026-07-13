@@ -10,6 +10,18 @@ import '../helper/local_keys.g.dart';
 class AppStringService with ChangeNotifier {
   var translatedString = {};
   static const Map<String, String> _frenchFallback = {
+    "Sign up": "S'inscrire",
+    "Sign In with OTP": "Se connecter par SMS",
+    "Sign in with Google": "Continuer avec Google",
+    "Sign in with Facebook": "Continuer avec Facebook",
+    "Sign in with Apple": "Continuer avec Apple",
+    "Sign up with Google": "S'inscrire avec Google",
+    "Sign up with Facebook": "S'inscrire avec Facebook",
+    "Sign up With Apple": "S'inscrire avec Apple",
+    "Don't have an account?": "Pas encore de compte ?",
+    "Already have an account?": "Vous avez déjà un compte ?",
+    "Create Account": "Créer un compte",
+    "Welcome to": "Bienvenue sur",
     "Enter a title & choose job category you need": "Saisir un titre et choisir la catégorie",
     "Enter job title": "Saisir le titre",
     "Enter Email": "Saisir l'adresse e-mail",
@@ -295,6 +307,10 @@ class AppStringService with ChangeNotifier {
     "Schedule availability": "Disponibilité des horaires",
     "Select the days and times when you are available to provide your services": "Sélectionnez les jours et heures où vous êtes disponible",
     "New Staff": "Nouveau personnel",
+    "No jobs found": "Aucune mission trouvée",
+    "New Service": "Nouveau service",
+    "Offer sent successfully": "Offre envoyée avec succès",
+    "No services found": "Aucun service trouvé",
   };
 
   String getString(String s) {

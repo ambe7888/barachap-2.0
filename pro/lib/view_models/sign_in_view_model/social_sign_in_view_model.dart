@@ -74,6 +74,7 @@ class SocialSignInViewModel {
   }
 
   google() async {
+    await googleSignIn.signOut();
     final googleUser = await googleSignIn.signIn();
 
     print(googleUser?.displayName);
