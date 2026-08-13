@@ -1,1 +1,43 @@
+# Environment
 core/env
+.env
+
+# Flutter / Dart Build Outputs
+client/build/
+pro/build/
+client/.dart_tool/
+pro/.dart_tool/
+client/.flutter-plugins
+pro/.flutter-plugins
+client/.flutter-plugins-dependencies
+pro/.flutter-plugins-dependencies
+client/.pub-cache/
+pro/.pub-cache/
+
+# Android generated files
+client/android/.gradle/
+pro/android/.gradle/
+client/android/local.properties
+pro/android/local.properties
+client/android/app/release/
+pro/android/app/release/
+
+# iOS / macOS generated files
+client/ios/Pods/
+pro/ios/Pods/
+client/ios/.symlinks/
+pro/ios/.symlinks/
+client/ios/Runner.xcworkspace
+pro/ios/Runner.xcworkspace
+
+# Compiled APK / IPA outputs
+*.apk
+*.aab
+*.ipa
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
