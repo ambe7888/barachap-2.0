@@ -1,15 +1,10 @@
 <div class="dashboard__header single_border_bottom">
     <div class="row gx-4 align-items-center justify-content-between">
-        <!--left sidebar open close start -->
+       <!--left sidebar open close start -->
         <div class="col-sm-2">
             <div class="dashboard__header__left">
-                <div class="dashboard__header__left__inner d-flex align-items-center">
-                    <span class="dashboard__sidebarIcon sidebar-toggle-desktop d-none d-lg-inline-flex align-items-center justify-content-center" id="sidebar_toggle_desktop" title="{{ __('Plier / Déplier le menu') }}">
-                        <i class="las la-bars"></i>
-                    </span>
-                    <span class="dashboard__sidebarIcon__mobile sidebar-icon d-lg-none" title="{{ __('Menu') }}">
-                        <i class="las la-bars"></i>
-                    </span>
+                <div class="dashboard__header__left__inner">
+                    <span class="dashboard__sidebarIcon__mobile sidebar-icon d-lg-none"></span>
                 </div>
             </div>
         </div>
