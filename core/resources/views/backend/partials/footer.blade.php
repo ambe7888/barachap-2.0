@@ -18,4 +18,25 @@
 
 @yield('scripts')
 
+<script>
+    (function($) {
+        "use strict";
+        $(document).ready(function() {
+            // Sync initial state
+            if (localStorage.getItem('admin_sidebar_collapsed') === 'true') {
+                $('body').addClass('iocn_view');
+                $('html').addClass('iocn_view');
+            }
+
+            // Desktop toggle click handler
+            $(document).on('click', '#sidebar_toggle_desktop, .sidebar-toggle-desktop', function(e) {
+                e.preventDefault();
+                $('body').toggleClass('iocn_view');
+                $('html').toggleClass('iocn_view');
+                var isCollapsed = $('body').hasClass('iocn_view');
+                localStorage.setItem('admin_sidebar_collapsed', isCollapsed);
+            });
+        });
+    })(jQuery);
+</script>
 <x-popup.default-js-popup/>

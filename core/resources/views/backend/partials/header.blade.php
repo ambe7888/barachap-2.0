@@ -43,4 +43,13 @@
     @if(get_user_lang_direction() == 'rtl')
         <link rel="stylesheet" href="{{asset('assets/backend/css/rtl.css')}}">
     @endif
+    <script>
+        (function() {
+            try {
+                if (localStorage.getItem('admin_sidebar_collapsed') === 'true') {
+                    document.documentElement.classList.add('iocn_view');
+                }
+            } catch (e) {}
+        })();
+    </script>
 </head>
