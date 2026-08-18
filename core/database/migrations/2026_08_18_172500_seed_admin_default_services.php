@@ -518,5 +518,37 @@ return new class extends Migration
      */
     public function down(): void
     {
+        $admin = Admin::first();
+        $adminId = $admin ? $admin->id : 1;
+
+        $slugs = [
+            'soin-du-visage-et-maquillage-professionnel',
+            'fabrication-et-pose-de-dressing-sur-mesure',
+            'entretien-et-nettoyage-profond-de-climatiseur-split',
+            'installation-de-luminaires-et-mise-aux-normes-de-prises',
+            'demenagement-residentiel-formule-confort',
+            'nettoyage-et-repassage-de-vetements-au-kilo',
+            'debouchage-de-canalisations-et-recherche-de-fuite',
+            'rafraichissement-peinture-interieure-mur-et-plafond',
+            'nettoyage-en-profondeur-fin-de-chantier-grand-menage',
+            'entretien-complet-du-jardin-et-tonte-de-pelouse',
+            'montage-de-meubles-en-kit-et-fixations-murales',
+            'depannage-nettoyage-pc-et-installation-de-logiciels',
+            'vidange-et-revision-complete-automobile-a-domicile',
+            'cours-particuliers-de-mathematiques-et-physique',
+            'baby-sitting-en-soiree-et-aide-au-coucher',
+            'creation-de-gateau-danniversaire-personnalise-cake-design'
+        ];
+
+        $services = Service::where('admin_id', $adminId)->whereIn('slug', $slugs)->get();
+
+        foreach ($services as $service) {
+            $service->includes()->forceDelete();
+            $service->excludes()->forceDelete();
+            $service->addons()->forceDelete();
+            $service->faqs()->forceDelete();
+            $service->metaData()->forceDelete();
+            $service->forceDelete();
+        }
     }
 };
